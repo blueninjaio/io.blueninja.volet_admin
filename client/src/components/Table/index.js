@@ -16,31 +16,40 @@ export class index extends Component {
         <table className="table fixed-table-head table-bordered">
           <thead>
             <tr>
-              {/* {this.props.head.map(x => (
+              {this.props.head.map(x => (
                 <th key={x.id} style={{ width: x.width }}>
                   {x.title}
                 </th>
-              ))} */}
-
-              <th>Test</th>
-              <th>Test</th>
-              <th>Test</th>
-              <th>Test</th>
+              ))}
             </tr>
           </thead>
         </table>
         <table className="table table-bordered user-table">
           <tbody>
-            {/* {this.props.body.map(x => (
-              <tr onClick={() => this.props.viewProfile(x)}>
-                <td key={x.id} style={{ width: x.noWidth }}>
-                  {x.no}
+            {this.props.body.map(x => (
+              <tr>
+                <td key={x.id} style={{ width: this.props.head[0].width }}>
+                  {x.firstName}
                 </td>
-                <td style={{ width: x.fnameWidth }}>{x.fname}</td>
-                {!x.lname ? (
+                <td style={{ width: this.props.head[1].width }}>
+                  {x.lastName}
+                </td>
+                <td style={{ width: this.props.head[2].width }}>{x.email}</td>
+                <td style={{ width: this.props.head[3].width }}>{x.contact}</td>
+                <td style={{ width: this.props.head[4].width }}>
+                  {x.facebookID}
+                </td>
+                <td style={{ width: this.props.head[5].width }}>
+                  {x.googleID}
+                </td>
+                <td style={{ width: this.props.head[6].width }}>{x.credits}</td>
+                <td style={{ width: this.props.head[7].width }}>
+                  {x.timestamp}
+                </td>
+                {/* {!x.email ? (
                   <td key={x.id} style={{ display: "none" }} />
                 ) : (
-                  <td style={{ width: x.lnameWidth }}>{x.lname}</td>
+                  <td >{x.email}</td>
                 )}
                 {!x.username ? (
                   <td key={x.id} style={{ display: "none" }} />
@@ -51,77 +60,9 @@ export class index extends Component {
                   <td key={x.id} style={{ display: "none" }} />
                 ) : (
                   <td>{x.date}</td>
-                )}
+                )} */}
               </tr>
-            ))} */}
-            <tr>
-              <td>Test</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Test</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Test</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Test</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Test</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Test</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-
-            <tr>
-              <td>Test</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Test</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Test</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-
-            <tr>
-              <td>Test</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Test</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-            </tr>
+            ))}
           </tbody>
         </table>
       </div>

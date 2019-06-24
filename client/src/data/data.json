@@ -1,0 +1,300 @@
+{
+    "tHeadUsers": [
+        {
+            "id": 1,
+            "title": "First Name",
+            "width": "8.3%"
+        },
+        {
+            "id": 2,
+            "title": "Last Name",
+            "width": "8.3%"
+        },
+        {
+            "id": 3,
+            "title": "Email",
+            "width": "16.7%"
+        },
+        {
+            "id": 4,
+            "title": "Contact",
+            "width": "15%"
+        },
+        {
+            "id": 5,
+            "title": "Facebook ID",
+            "width": "15.7%"
+        },
+        {
+            "id": 6,
+            "title": "Google ID",
+            "width": "18%"
+        },
+        {
+            "id": 7,
+            "title": "Credits"
+            
+        },
+        {
+            "id": 8,
+            "title": "Registered Date"
+            
+            
+        }
+    ],
+    "tBodyUsers": [
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleID": "james@google.com",
+            "googleWidth": "18%",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        },
+        {
+            "id": 1,
+            "firstName": "James",
+            "lastName": "James",
+            "email": "test@gmail.com",
+            "contact": "+6012-3456789",
+            "facebookID": "james@fb.com",
+            "googleWidth": "18%",
+            "googleID": "james@google.com",
+            "credits": 90,   
+            "creditsWidth": "7.7%",
+            "timestamp": "12 July 2019",
+            "timestampWidth": "10.6%"
+        }
+        
+    ]
+}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Card from "../../../components/Card";
 import Table from "../../../components/Table";
+import data from "../../../data/data.json";
 
 export class index extends Component {
   constructor(props) {
@@ -8,34 +9,6 @@ export class index extends Component {
 
     this.state = {
       isChecked: false,
-      allUsers: [
-        {
-          name: "Sarah Rock",
-          email: "test@gmail.com",
-          phone: "+6012-3456789"
-        }
-      ],
-      fbUsers: [
-        {
-          name: "Sarah Rock",
-          fb: "test@fb.com",
-          phone: "+6012-3456789"
-        }
-      ],
-      gmailUsers: [
-        {
-          name: "Sarah Rock",
-          gmail: "test@fb.com",
-          phone: "+6012-3456789"
-        }
-      ],
-      emailUsers: [
-        {
-          name: "Sarah Rock",
-          email: "test@fb.com",
-          phone: "+6012-3456789"
-        }
-      ],
       filterUsers: "all"
     };
   }
@@ -92,8 +65,8 @@ export class index extends Component {
           </div>
         </div>
 
-        <div className="container-fluid" style={{ paddingTop: "13rem" }}>
-          <Table />
+        <div className="container-fluid" style={{ paddingTop: "14.5rem" }}>
+          <Table head={data.tHeadUsers} body={data.tBodyUsers} />
         </div>
       </div>
     );
