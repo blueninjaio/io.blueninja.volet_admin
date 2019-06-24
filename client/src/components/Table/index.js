@@ -15,7 +15,12 @@ export class index extends Component {
       <div>
         <table className="table fixed-table-head table-bordered">
           <thead>
-            <tr>
+            <tr
+              style={{
+                background: "rgb(248,248,248)",
+                color: "rgb(204,204,204)"
+              }}
+            >
               {this.props.head.map(x => (
                 <th key={x.id} style={{ width: x.width }}>
                   {x.title}
@@ -26,25 +31,23 @@ export class index extends Component {
         </table>
         <table className="table table-bordered user-table">
           <tbody>
-            {this.props.body.map(x => (
+            {this.props.body.map((x, i) => (
               <tr>
-                <td key={x.id} style={{ width: this.props.head[0].width }}>
-                  {x.firstName}
+                <td key={x.id} style={{ width: this.props.head[i].width }}>
+                  {x.f_name}
                 </td>
-                <td style={{ width: this.props.head[1].width }}>
-                  {x.lastName}
+                <td style={{ width: this.props.head[i].width }}>{x.l_name}</td>
+                <td style={{ width: this.props.head[i].width }}>{x.email}</td>
+                <td style={{ width: this.props.head[i].width }}>{x.contact}</td>
+                <td style={{ width: this.props.head[i].width }}>
+                  {x.facebook_id}
                 </td>
-                <td style={{ width: this.props.head[2].width }}>{x.email}</td>
-                <td style={{ width: this.props.head[3].width }}>{x.contact}</td>
-                <td style={{ width: this.props.head[4].width }}>
-                  {x.facebookID}
+                <td style={{ width: this.props.head[i].width }}>
+                  {x.google_id}
                 </td>
-                <td style={{ width: this.props.head[5].width }}>
-                  {x.googleID}
-                </td>
-                <td style={{ width: this.props.head[6].width }}>{x.credits}</td>
-                <td style={{ width: this.props.head[7].width }}>
-                  {x.timestamp}
+                <td style={{ width: this.props.head[i].width }}>{x.credits}</td>
+                <td style={{ width: this.props.head[i].width }}>
+                  {x.dateCreated}
                 </td>
                 {/* {!x.email ? (
                   <td key={x.id} style={{ display: "none" }} />

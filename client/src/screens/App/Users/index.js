@@ -9,13 +9,41 @@ export class index extends Component {
 
     this.state = {
       isChecked: false,
-      filterUsers: "all"
+      filterUsers: "all",
+      users: []
     };
+  }
+
+  componentDidMount() {
+    this.fetchAllUsers();
   }
 
   //   viewUser = () => {
   //     this.props.history.push("/viewuser");
   //   };
+
+  fetchAllUsers = () => {
+    fetch("http://192.168.0.152:5000/api/users", {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+
+        // 'Authorization': 'Bearer '+ token,
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data, "hello here")
+        if (data.success) {
+          this.setState({ users: data.users });
+          console.log("Users: ", data.users);
+        }
+      })
+      .catch(err => console.log(err));
+  };
 
   toggle = async () => {
     await this.setState({ isChecked: !this.state.isChecked });
@@ -66,7 +94,7 @@ export class index extends Component {
         </div>
 
         <div className="container-fluid" style={{ paddingTop: "14.5rem" }}>
-          <Table head={data.tHeadUsers} body={data.tBodyUsers} />
+          <Table head={data.tHeadUsers} body={this.state.users} />
         </div>
       </div>
     );
