@@ -9,6 +9,19 @@ body{
   font-family: "Poppins";
 }
 
+.fixed-table-head{
+  position: fixed;
+  top: 14.7rem;
+  width: 77%;
+  background: #fcfcfc;
+  left: 19rem;
+}
+
+.user-table{
+  margin-left: 1.8rem;
+  width: 95%;
+}
+
 .login-main-container{
   display: flex;
 }
@@ -175,15 +188,15 @@ body{
 }
 
 .main-content{
-  padding-top: 116px;
+  padding-top: 75px;
   min-height: 100vh;
   background:#fcfcfc;
 }
 
 .dashboard-container{
   /* background: #dbdbdb; */
-  padding-left: 19rem;
-  padding-bottom:3rem;
+  padding-left: 17.2rem;
+  padding-bottom: 3rem;
 }
 
 .container-fluid{
@@ -296,12 +309,14 @@ body{
 }
 
 .user-toggle{
-  /* background: red; */
-  position: absolute;
-  right: 1rem;
-  top: 8rem;
-  display: flex;
-  width:13rem;
+    /* background: red; */
+    position: absolute;
+    /* right: 1rem; */
+    top: 5rem;
+    display: flex;
+    /* width: 13rem; */
+    left: 2rem;
+    width: 18%;
 }
 
 .nav-link{
@@ -655,8 +670,9 @@ input[type="checkbox"].user-agent:checked + div > div {
 .filter-pages{
   width: 13rem;
   position: absolute;
-  right: 1rem;
-  margin-top: 6px;
+  right: 2rem;
+  margin-top: -2px;
+  background: rgb(247,247,247);
 }
 
 .static-container{
@@ -751,6 +767,29 @@ input[type="checkbox"].user-agent:checked + div > div {
 
 .settings-input{
   margin-bottom: 1rem;
+}
+
+
+.dashboard-header{
+  width: 81%;
+  position: fixed;
+  top: 4.7rem;
+  height: 10rem;
+  background: #fcfcfc;
+  /* background: red; */
+  padding-top: 1rem;
+}
+
+.table-page-title{
+  margin-left: 2rem;
+  margin-top: 21px;
+  font-size: 25px;
+  color: rgb(64,64,64);
+  /* font-weight: bold; */
+}
+
+.filter-users-container{
+  display: flex;
 }
 
 @media screen and (min-width: 1600px) {
