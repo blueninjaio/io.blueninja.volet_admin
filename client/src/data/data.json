@@ -3,42 +3,43 @@
         {
             "id": 1,
             "title": "First Name",
-            "width": "8.3%"
+            "width": "12.3%"
         },
         {
             "id": 2,
             "title": "Last Name",
-            "width": "8.3%"
+            "width": "12.1%"
         },
         {
             "id": 3,
             "title": "Email",
-            "width": "16.7%"
+            "width": "12.85%"
         },
         {
             "id": 4,
             "title": "Contact",
-            "width": "15%"
+            "width": "12.2%"
         },
         {
             "id": 5,
             "title": "Facebook ID",
-            "width": "15.7%"
+            "width": "12.4%"
         },
         {
             "id": 6,
             "title": "Google ID",
-            "width": "18%"
+            "width": "12.7%"
         },
         {
             "id": 7,
             "title": "Credits",
-            "width": "6.8%"
+            "width": "13.1%"
+            
         },
         {
             "id": 8,
-            "title": "Registered Date"
-            
+            "title": "Registered Date",
+            "width": "12.5%"
             
         }
     ],

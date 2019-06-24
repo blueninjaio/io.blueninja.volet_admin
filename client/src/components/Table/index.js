@@ -22,31 +22,45 @@ export class index extends Component {
               }}
             >
               {this.props.head.map(x => (
-                <th key={x.id} style={{ width: x.width }}>
+                <th
+                  key={x.id}
+                  style={{ width: x.width, textAlign: "center", border: 0 }}
+                >
                   {x.title}
                 </th>
               ))}
             </tr>
           </thead>
         </table>
-        <table className="table table-bordered user-table">
+        <table
+          className="table table-bordered user-table"
+          style={{ fontSize: 14 }}
+        >
           <tbody>
             {this.props.body.map((x, i) => (
               <tr>
                 <td key={x.id} style={{ width: this.props.head[i].width }}>
                   {x.f_name}
                 </td>
-                <td style={{ width: this.props.head[i].width }}>{x.l_name}</td>
-                <td style={{ width: this.props.head[i].width }}>{x.email}</td>
-                <td style={{ width: this.props.head[i].width }}>{x.contact}</td>
-                <td style={{ width: this.props.head[i].width }}>
+                <td style={{ width: "12.4%", textAlign: "center" }}>
+                  {x.l_name}
+                </td>
+                <td style={{ width: "12.4%", textAlign: "center" }}>
+                  {x.email}
+                </td>
+                <td style={{ width: "12.4%", textAlign: "center" }}>
+                  {x.contact}
+                </td>
+                <td style={{ width: "12.4%", textAlign: "center" }}>
                   {x.facebook_id}
                 </td>
-                <td style={{ width: this.props.head[i].width }}>
+                <td style={{ width: "12.4%", textAlign: "center" }}>
                   {x.google_id}
                 </td>
-                <td style={{ width: this.props.head[i].width }}>{x.credits}</td>
-                <td style={{ width: this.props.head[i].width }}>
+                <td style={{ width: "12.4%", textAlign: "center" }}>
+                  {x.credits}
+                </td>
+                <td style={{ width: "12.4%", textAlign: "center" }}>
                   {x.dateCreated}
                 </td>
                 {/* {!x.email ? (
