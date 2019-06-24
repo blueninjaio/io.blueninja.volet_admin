@@ -17,13 +17,21 @@ body{
   left: 19rem;
 }
 
+.main-dashboard-container{
+  padding-left: 18.2rem;
+  padding-bottom: 3rem;
+  padding-top: 2.5rem;
+}
+
 .user-table{
   margin-left: 1.8rem;
-  width: 95%;
+  width: 95.1%;
 }
 
 .login-main-container{
   display: flex;
+
+  height: 100vh;
 }
 
 
