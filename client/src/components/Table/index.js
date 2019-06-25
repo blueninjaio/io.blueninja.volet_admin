@@ -40,7 +40,7 @@ export class index extends Component {
           <tbody>
             {this.props.body.map((x, i) => (
               <tr
-                onClick={() => this.props.method(i)}
+                onClick={() => this.props.method(i, true)}
                 key={x.id}
                 style={{
                   textAlign: "center",

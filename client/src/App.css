@@ -800,6 +800,113 @@ input[type="checkbox"].user-agent:checked + div > div {
   display: flex;
 }
 
+.view-business-container{
+  background: white;
+  position: absolute;
+  right: 0;
+  top: 4.7rem;
+  width: 45%;
+  z-index: 100;
+  /* height: 100%; */
+}
+
+.modal-opacity{
+  position: fixed;
+  top: 4.7rem;
+  right: 0;
+  bottom: 0;
+  left: 17rem;
+  z-index: 1040;
+  background-color: #000;
+  opacity: .5;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.exit-btn-view-business{
+  width: 5%;
+  height: 28px;
+  float: right;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  background: transparent;
+  border: 0;
+}
+
+.exit-btn-view-business img{
+  width:100%; 
+  height: 100%;
+}
+
+.business-profile-container{
+  display: flex;
+    /* background: red; */
+    height: 5rem;
+    margin-top: 4rem;
+    padding-left: 6rem;
+    margin-bottom: 1rem;
+}
+
+.business-profile-container img{
+  width: 14%;
+  border-radius: 6rem;
+  margin-right:3rem;
+}
+
+.business-profile-container span{
+  margin-top: 26px;
+  font-size: 18px;
+}
+.business-email-container{
+  padding-left: 6rem;
+  padding-top: 1rem;
+  font-size:16px;
+}
+
+.email-span{
+  float: right;
+  margin-right: 3rem;
+}
+
+.border-view-business{
+  border-bottom: 1px solid #dbdbdb;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 78%;
+  margin-left: 6rem;
+}
+
+.view-business-tabs{
+  padding-left: 6rem;
+}
+
+.view-business-tabs button{
+  font-size:17px;
+  background: transparent;
+  border: 0;
+}
+
+.view-business-tabs button:first-child{
+  margin-right: 2rem;
+}
+
+.main-field-container{
+  padding-left: 6.5rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  overflow: scroll;
+  max-height: 17.9rem;
+}
+
+.field-container{
+  margin-top:1rem
+}
+
+
+.view-business-tab-active{
+  border-bottom: 2px solid #dbdbdb !important;
+}
+
 @media screen and (min-width: 1600px) {
   .send-voucher-btn{
     width: 13%;

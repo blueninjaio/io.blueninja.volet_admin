@@ -90,5 +90,27 @@
             "business_email": "test@gmail.com",
             "business_contact": "+6012-3456789"
         }
+    ],
+    "tHeadMerchantBusiness": [
+        {
+            "id": 1,
+            "title": "First Name", 
+            "width": "25%"
+        },
+        {
+            "id": 2,
+            "title": "Last Name",
+            "width": "25%"
+        }, 
+        {
+            "id": 3,
+            "title": "Business Type",
+            "width": "25%"
+        },
+        {
+            "id": 4,
+            "title": "Business Name",
+            "width": "25%"
+        }
     ]
 }
