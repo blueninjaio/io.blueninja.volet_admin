@@ -11,6 +11,7 @@ import ViewMerchant from "./ViewMerchant";
 import Static from "./Static";
 import Settings from "./Settings";
 import Transaction from "./Transaction";
+import Business from "./Business";
 import { logoutNow } from "../../actions/actions";
 import Sidebar from "../../components/Sidebar";
 
@@ -180,6 +181,7 @@ class index extends Component {
               <Route path="/viewagent" component={ViewAgent} />
               <Route path="/viewmerchant" component={ViewMerchant} />
               <Route path="/static" component={Static} />
+              <Route path="/business" component={Business} />
               <Route path="/settings" component={Settings} />
             </Switch>
           </div>

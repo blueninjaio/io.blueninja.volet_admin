@@ -13,12 +13,12 @@
         {
             "id": 3,
             "title": "Email",
-            "width": "12.85%"
+            "width": "13.5%"
         },
         {
             "id": 4,
             "title": "Contact",
-            "width": "12.2%"
+            "width": "13.2%"
         },
         {
             "id": 5,
@@ -33,7 +33,7 @@
         {
             "id": 7,
             "title": "Credits",
-            "width": "13.1%"
+            "width": "11.1%"
             
         },
         {
@@ -54,6 +54,41 @@
             "google_id": "james@google.com",
             "credits": 90,   
             "dateCreated": "12 July 2019"   
+        }
+    ], 
+    "tHeadBusiness": [
+        {
+            "id": 1,
+            "title": "First Name", 
+            "width": "20%"
+        },
+        {
+            "id": 2,
+            "title": "Last Name",
+            "width": "20%"
+        }, 
+        {
+            "id": 3,
+            "title": "Email",
+            "width": "20%"
+        },
+        {
+            "id": 4,
+            "title": "Contact",
+            "width": "20%"
+        },
+        {
+            "id": 5,
+            "title": "Date Created",
+            "width": "20%"
+        }
+    ],
+    "tBodyBusiness": [
+        {
+            "id": 1,
+            "merchant": "James Chelvan",
+            "business_email": "test@gmail.com",
+            "business_contact": "+6012-3456789"
         }
     ]
 }

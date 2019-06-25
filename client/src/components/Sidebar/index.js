@@ -37,6 +37,11 @@ export default class index extends Component {
               Static Pages
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/business" className="remove-hover">
+              Business
+            </NavLink>
+          </li>
         </ul>
       </div>
     );

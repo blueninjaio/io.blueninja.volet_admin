@@ -11,20 +11,21 @@ export class index extends Component {
     this.state = {
       isChecked: false,
       filterUsers: "all",
-      merchants: []
+      business: [],
+      businesData: []
     };
   }
 
   componentDidMount() {
-    this.fetchAllMerchants();
+    this.fetchAllBusiness();
   }
 
-  //   viewUser = () => {
-  //     this.props.history.push("/viewuser");
-  //   };
+  passedFromChild = i => {
+    console.log("Passed:", this.state.businessData[i]);
+  };
 
-  fetchAllMerchants = () => {
-    fetch("http://165.22.245.137/api/merchants", {
+  fetchAllBusiness = () => {
+    fetch("http://165.22.245.137/api/business", {
       method: "GET",
       mode: "cors",
       headers: {
@@ -42,8 +43,9 @@ export class index extends Component {
           //   this.setState({ users: data.merchants });
           //   console.log("Business: ", data.merchants);
 
-          let merchants = [];
-          data.merchants.map(x => {
+          let business = [];
+          console.log("Business: ", data.businesses);
+          data.businesses.map(x => {
             let merchant = {
               f_name: x.f_name,
               l_name: x.l_name,
@@ -51,10 +53,10 @@ export class index extends Component {
               contact: x.contact,
               dateCreated: x.dateCreated
             };
-            merchants.push(merchant);
+            business.push(merchant);
           });
-          console.log("Final Merchants: ", merchants);
-          this.setState({ merchants });
+          console.log("Final Merchants: ", business);
+          this.setState({ business, businessData: data.businesses });
         }
       })
       .catch(err => console.log(err));
@@ -81,12 +83,24 @@ export class index extends Component {
     return (
       <div className="dashboard-container">
         <div className="dashboard-header">
-          <h3 className="table-page-title">Merchants</h3>
+          <h3 className="table-page-title">Business</h3>
         </div>
 
         <div className="container-fluid" style={{ paddingTop: "13rem" }}>
-          <Table head={data.tHeadBusiness} body={this.state.merchants} />
+          <Table
+            head={data.tHeadBusiness}
+            body={this.state.business}
+            data={this.state.businessData}
+            link={"/busines/profile"}
+            method={this.passedFromChild}
+          />
         </div>
+
+        {/* <div className="container-fluid">
+          <div className="view-business-container">
+
+          </div>
+        </div> */}
       </div>
     );
   }

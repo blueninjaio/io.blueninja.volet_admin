@@ -38,8 +38,26 @@ export class index extends Component {
       .then(data => {
         // console.log(data, "hello here")
         if (data.success) {
-          this.setState({ users: data.users });
-          console.log("Users: ", data.users);
+          // this.setState({ users: data.users });
+          // console.log("Users: ", data.users);
+
+          let users = [];
+          data.users.map(x => {
+            let user = {
+              f_name: x.f_name,
+              l_name: x.l_name,
+              email: x.email,
+              contact: x.contact,
+              facebook_id: x.facebook_id,
+              google_id: x.google_id,
+              credits: x.credits,
+              dateCreated: x.dateCreated
+            };
+            users.push(user);
+          });
+
+          console.log("Final Users:", users);
+          this.setState({ users });
         }
       })
       .catch(err => console.log(err));

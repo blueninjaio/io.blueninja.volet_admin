@@ -6,7 +6,8 @@ export class index extends Component {
 
     this.state = {
       w: "",
-      bAccRow: false
+      bAccRow: false,
+      columns: []
     };
   }
 
@@ -38,46 +39,19 @@ export class index extends Component {
         >
           <tbody>
             {this.props.body.map((x, i) => (
-              <tr>
-                <td key={x.id} style={{ width: this.props.head[i].width }}>
-                  {x.f_name}
-                </td>
-                <td style={{ width: "12.5%", textAlign: "center" }}>
-                  {x.l_name}
-                </td>
-                <td style={{ width: "12.5%", textAlign: "center" }}>
-                  {x.email}
-                </td>
-                <td style={{ width: "12.5%", textAlign: "center" }}>
-                  {x.contact}
-                </td>
-                <td style={{ width: "12.5%", textAlign: "center" }}>
-                  {x.facebook_id}
-                </td>
-                <td style={{ width: "12.5%", textAlign: "center" }}>
-                  {x.google_id}
-                </td>
-                <td style={{ width: "12.5%", textAlign: "center" }}>
-                  {x.credits}
-                </td>
-                <td style={{ width: "12.5%", textAlign: "center" }}>
-                  {x.dateCreated}
-                </td>
-                {/* {!x.email ? (
-                  <td key={x.id} style={{ display: "none" }} />
-                ) : (
-                  <td >{x.email}</td>
-                )}
-                {!x.username ? (
-                  <td key={x.id} style={{ display: "none" }} />
-                ) : (
-                  <td style={{ width: x.usernameWidth }}>{x.username}</td>
-                )}
-                {!x.date ? (
-                  <td key={x.id} style={{ display: "none" }} />
-                ) : (
-                  <td>{x.date}</td>
-                )} */}
+              <tr
+                onClick={() => this.props.method(i)}
+                key={x.id}
+                style={{
+                  textAlign: "center",
+                  border: 0
+                }}
+              >
+                {Object.values(x).map((y, i) => (
+                  <td key={i} style={{ width: this.props.head[i].width }}>
+                    {y}
+                  </td>
+                ))}
               </tr>
             ))}
           </tbody>
