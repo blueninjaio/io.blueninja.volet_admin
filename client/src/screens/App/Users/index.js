@@ -23,7 +23,7 @@ export class index extends Component {
   //   };
 
   fetchAllUsers = () => {
-    fetch("http://192.168.0.152:5000/api/users", {
+    fetch("http://165.22.245.137/api/users", {
       method: "GET",
       mode: "cors",
       headers: {

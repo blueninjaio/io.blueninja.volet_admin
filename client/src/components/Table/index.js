@@ -42,25 +42,25 @@ export class index extends Component {
                 <td key={x.id} style={{ width: this.props.head[i].width }}>
                   {x.f_name}
                 </td>
-                <td style={{ width: "12.4%", textAlign: "center" }}>
+                <td style={{ width: "12.5%", textAlign: "center" }}>
                   {x.l_name}
                 </td>
-                <td style={{ width: "12.4%", textAlign: "center" }}>
+                <td style={{ width: "12.5%", textAlign: "center" }}>
                   {x.email}
                 </td>
-                <td style={{ width: "12.4%", textAlign: "center" }}>
+                <td style={{ width: "12.5%", textAlign: "center" }}>
                   {x.contact}
                 </td>
-                <td style={{ width: "12.4%", textAlign: "center" }}>
+                <td style={{ width: "12.5%", textAlign: "center" }}>
                   {x.facebook_id}
                 </td>
-                <td style={{ width: "12.4%", textAlign: "center" }}>
+                <td style={{ width: "12.5%", textAlign: "center" }}>
                   {x.google_id}
                 </td>
-                <td style={{ width: "12.4%", textAlign: "center" }}>
+                <td style={{ width: "12.5%", textAlign: "center" }}>
                   {x.credits}
                 </td>
-                <td style={{ width: "12.4%", textAlign: "center" }}>
+                <td style={{ width: "12.5%", textAlign: "center" }}>
                   {x.dateCreated}
                 </td>
                 {/* {!x.email ? (
