@@ -9,13 +9,7 @@ body{
   font-family: "Poppins";
 }
 
-.fixed-table-head{
-  position: fixed;
-  top: 14.7rem;
-  width: 77%;
-  background: #fcfcfc;
-  left: 19rem;
-}
+
 
 .main-dashboard-container{
   padding-left: 18.2rem;
@@ -23,10 +17,6 @@ body{
   padding-top: 2.5rem;
 }
 
-.user-table{
-  margin-left: 1.8rem;
-  width: 95.1%;
-}
 
 .login-main-container{
   display: flex;
@@ -106,13 +96,13 @@ body{
 }
 
 .logo{
-  /* background: #f5f5f5; */
+  
   height: 75px;
-  /* padding: 35px; */
+  
   padding-top: 15px;
   text-align: center;
   background: none;
-  /* border-right: 1px solid #dbdbdb; */
+  
   width: 18.8rem;
 }
 
@@ -136,7 +126,6 @@ body{
   display: flex;
     right: 0;
     position: absolute;
-    /* background: #f5f5f5; */
     height: 100%;
     width: 19rem;
 }
@@ -173,27 +162,7 @@ body{
   margin-right: 2rem;
 }
 
-.sidebar-content-container{
-  padding: 35px;
-  
-}
 
-.sidebar-list{
-  list-style: none;
-  text-align: center;
-  padding-left: 0;
-  margin-top: 4rem;
-}
-
-.sidebar-list li{
-  font-size:18px;
-  margin-bottom:1rem;
-  padding: 15px 0; 
-}
-
-.sidebar-list li:hover{
-  cursor: pointer;
-}
 
 .main-content{
   padding-top: 75px;
@@ -202,7 +171,7 @@ body{
 }
 
 .dashboard-container{
-  /* background: #dbdbdb; */
+  
   padding-left: 17.2rem;
   padding-bottom: 3rem;
 }
@@ -213,8 +182,8 @@ body{
     padding-left: 0 !important;
     margin-right: auto;
     margin-left: auto;
-    /* display: flex; */
-    /* padding-top:1rem; */
+   
+    
 }
 
 .graph-container{
@@ -247,82 +216,14 @@ body{
   box-shadow: 0px 2px 4px 0px #dbdbdb;
 }
 
-.profile-card-container{
-  padding-top: 3.5rem;
-  display: flex;
-}
-
-
-.profile-card{
-  margin-bottom:30px;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: 3px;
-  width:33%;
-  margin-right: 1rem;
-}
-
-.card-header{
-    padding: .75rem 1.25rem;
-    margin-bottom: 0;
-    background-color: rgba(0,0,0,.03);
-    border-bottom: 1px solid rgba(0,0,0,.125);
-}
-
-.card-body{
-  padding: 1.25rem;
-}
-
-.card-body-content{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.card-body-content img{
-  
-  width: 5rem;
-  height: 5rem;
-  border-radius: 3rem;
-  margin:0 auto;
-}
-
-.card-body-content span{
-  margin-top:1rem;
-}
-
-.card-footer{
-  display: flex;
-  padding:0;
-}
-
-.profile-view-btn{
-  width: 50%;
-  height: 3rem;
-  background: #77dd77;
-  color: white;
-  font-weight: bold;
-  border:0;
-}
-
-.profile-delete-btn{
-  width:50%;
-  height: 3rem;
-  background: #bd3131;
-  color: white;
-  font-weight: bold;
-  border:0;
-}
 
 .user-toggle{
-    /* background: red; */
+    
     position: absolute;
-    /* right: 1rem; */
+    
     top: 5rem;
     display: flex;
-    /* width: 13rem; */
+    
     left: 2rem;
     width: 18%;
 }
@@ -422,11 +323,6 @@ input[type="checkbox"].bigswitch.switch + div > div {
 	margin-top: 1px;
 }
 
-
-input[type="checkbox"].switch:checked + div > div {
-	/* -webkit-transform: translate3d(46px, 0, 0); */
-	/* transform: translate3d(46px, 0, 0); */
-}
 
 
 .user-toggle-text{
@@ -706,10 +602,10 @@ input[type="checkbox"].user-agent:checked + div > div {
   text-decoration: none;
 }
 
-.remove-hover:hover{
+/* .remove-hover:hover{
   text-decoration: none;
   color: darkblue;
-}
+} */
 
 .sidebar-list li a {
   color: grey;

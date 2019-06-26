@@ -11,10 +11,11 @@ export class index extends Component {
     };
   }
 
-  viewAgent = () => {
-    this.props.history.push("/viewagent");
-  };
-
+  /**
+  |--------------------------------------------------
+  | changes states on toggle
+  |--------------------------------------------------
+  */
   toggle = async () => {
     await this.setState({ isChecked: !this.state.isChecked });
     console.log(this.state.isChecked);
@@ -25,11 +26,21 @@ export class index extends Component {
     }
   };
 
+  /**
+  |--------------------------------------------------
+  | Filter Users based on select
+  |--------------------------------------------------
+  */
   filterPage = async event => {
     await this.setState({ filterUsers: event.target.value });
     console.log(this.state.filterUsers);
   };
 
+  /**
+  |--------------------------------------------------
+  | renders user agent page
+  |--------------------------------------------------
+  */
   render() {
     return (
       <div className="main-dashboard-container">

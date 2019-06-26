@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Card from "../../../components/Card";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
+import { url } from "../../../config";
 
 export class index extends Component {
   constructor(props) {
@@ -10,37 +10,54 @@ export class index extends Component {
     this.state = {
       isChecked: false,
       filterUsers: "all",
-      users: []
+      users: [],
+      sendState: false,
+      sendData: null
     };
   }
 
+  /**
+  |--------------------------------------------------
+  | receives and sets state 
+    selected row data from the Table component
+  |--------------------------------------------------
+  */
+  passedFromChild = (i, state) => {
+    let arr = this.state.sendData;
+    let send = this.state.sendState;
+
+    this.setState({ sendData: arr });
+    this.setState({ sendState: send });
+  };
+
+  /**
+  |--------------------------------------------------
+  | on load page calls fetchAllUsers function
+  |--------------------------------------------------
+  */
   componentDidMount() {
     this.fetchAllUsers();
   }
 
-  //   viewUser = () => {
-  //     this.props.history.push("/viewuser");
-  //   };
-
+  /**
+  |--------------------------------------------------
+  | fetches all data for users from api and stores
+    in an array
+  |--------------------------------------------------
+  */
   fetchAllUsers = () => {
-    fetch("http://165.22.245.137/api/users", {
+    fetch(`${url}/api/users`, {
       method: "GET",
       mode: "cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json; charset=utf-8",
         Accept: "application/json"
-
-        // 'Authorization': 'Bearer '+ token,
       }
     })
       .then(res => res.json())
       .then(data => {
-        // console.log(data, "hello here")
         if (data.success) {
-          // this.setState({ users: data.users });
-          // console.log("Users: ", data.users);
-
           let users = [];
           data.users.map(x => {
             let user = {
@@ -60,9 +77,23 @@ export class index extends Component {
           this.setState({ users });
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log("Error for users page", err);
+
+        alert(
+          "Error connecting to server",
+
+          [{ text: "OK", onClick: () => null }],
+          { cancelable: false }
+        );
+      });
   };
 
+  /**
+  |--------------------------------------------------
+  | changes state on click toggle button
+  |--------------------------------------------------
+  */
   toggle = async () => {
     await this.setState({ isChecked: !this.state.isChecked });
     console.log(this.state.isChecked);
@@ -75,11 +106,11 @@ export class index extends Component {
     }
   };
 
-  //   filterPage = async event => {
-  //     await this.setState({ filterUsers: event.target.value });
-  //     console.log(this.state.filterUsers);
-  //   };
-
+  /**
+  |--------------------------------------------------
+  | renders users page
+  |--------------------------------------------------
+  */
   render() {
     return (
       <div className="dashboard-container">
@@ -98,11 +129,7 @@ export class index extends Component {
               </div>
               <span>Agents</span>
             </div>
-            <select
-              className="form-control filter-pages"
-              value={this.state.filterUsers}
-              onChange={this.filterPage}
-            >
+            <select className="form-control filter-pages">
               <option value="all">All</option>
               <option value="email">Email</option>
               <option value="gmail">Gmail</option>
@@ -112,7 +139,11 @@ export class index extends Component {
         </div>
 
         <div className="container-fluid" style={{ paddingTop: "14.5rem" }}>
-          <Table head={data.tHeadUsers} body={this.state.users} />
+          <Table
+            head={data.tHeadUsers}
+            body={this.state.users}
+            method={this.passedFromChild}
+          />
         </div>
       </div>
     );

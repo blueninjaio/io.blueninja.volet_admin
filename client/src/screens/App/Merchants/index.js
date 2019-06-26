@@ -1,8 +1,8 @@
 //
 import React, { Component } from "react";
-import Card from "../../../components/Card";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
+import { url } from "../../../config";
 
 export class index extends Component {
   constructor(props) {
@@ -11,37 +11,53 @@ export class index extends Component {
     this.state = {
       isChecked: false,
       filterUsers: "all",
-      merchants: []
+      merchants: [],
+      sendState: false,
+      sendData: null
     };
   }
 
+  /**
+  |--------------------------------------------------
+  | receives and sets state 
+    selected row data from the Table component
+  |--------------------------------------------------
+  */
+  passedFromChild = (i, state) => {
+    let arr = this.state.sendData;
+    let send = this.state.sendState;
+
+    this.setState({ sendData: arr });
+    this.setState({ sendState: send });
+  };
+
+  /**
+  |--------------------------------------------------
+  | On page load, fetch from api
+  |--------------------------------------------------
+  */
   componentDidMount() {
     this.fetchAllMerchants();
   }
 
-  //   viewUser = () => {
-  //     this.props.history.push("/viewuser");
-  //   };
-
+  /**
+  |--------------------------------------------------
+  | Fetches data from Api and stores in an array
+  |--------------------------------------------------
+  */
   fetchAllMerchants = () => {
-    fetch("http://165.22.245.137/api/merchants", {
+    fetch(`${url}/api/merchants`, {
       method: "GET",
       mode: "cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json; charset=utf-8",
         Accept: "application/json"
-
-        // 'Authorization': 'Bearer '+ token,
       }
     })
       .then(res => res.json())
       .then(data => {
-        // console.log(data, "hello here")
         if (data.success) {
-          //   this.setState({ users: data.merchants });
-          //   console.log("Business: ", data.merchants);
-
           let merchants = [];
           data.merchants.map(x => {
             let merchant = {
@@ -57,9 +73,23 @@ export class index extends Component {
           this.setState({ merchants });
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log("Error for merchants page", err);
+
+        alert(
+          "Error connecting to server",
+
+          [{ text: "OK", onClick: () => null }],
+          { cancelable: false }
+        );
+      });
   };
 
+  /**
+  |--------------------------------------------------
+  | changes state on toggle
+  |--------------------------------------------------
+  */
   toggle = async () => {
     await this.setState({ isChecked: !this.state.isChecked });
     console.log(this.state.isChecked);
@@ -72,11 +102,6 @@ export class index extends Component {
     }
   };
 
-  //   filterPage = async event => {
-  //     await this.setState({ filterUsers: event.target.value });
-  //     console.log(this.state.filterUsers);
-  //   };
-
   render() {
     return (
       <div className="dashboard-container">
@@ -85,7 +110,11 @@ export class index extends Component {
         </div>
 
         <div className="container-fluid" style={{ paddingTop: "13rem" }}>
-          <Table head={data.tHeadBusiness} body={this.state.merchants} />
+          <Table
+            head={data.tHeadBusiness}
+            body={this.state.merchants}
+            method={this.passedFromChild}
+          />
         </div>
       </div>
     );

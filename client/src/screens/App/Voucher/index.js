@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
 export default class index extends Component {
+  /**
+  |--------------------------------------------------
+  | navigates to view voucher page
+  |--------------------------------------------------
+  */
   viewVoucher = () => {
     this.props.history.push("/viewvoucher");
   };
@@ -14,7 +19,10 @@ export default class index extends Component {
           data-toggle="modal"
           data-target="#exampleModal"
         >
-          <img src="https://png.pngtree.com/svg/20161118/6fc980719c.svg" />
+          <img
+            src="https://png.pngtree.com/svg/20161118/6fc980719c.svg"
+            alt="add-modal-icon"
+          />
         </button>
         {/* Modal */}
         <div
@@ -59,7 +67,10 @@ export default class index extends Component {
         <div className="container-fluid">
           <div className="voucher-container">
             <div className="voucher-img">
-              <img src="https://i.kinja-img.com/gawker-media/image/upload/s--vHt6tbFa--/c_scale,f_auto,fl_progressive,q_80,w_800/xjmx1csashjww8j8jwyh.jpg" />
+              <img
+                alt="voucher-img"
+                src="https://i.kinja-img.com/gawker-media/image/upload/s--vHt6tbFa--/c_scale,f_auto,fl_progressive,q_80,w_800/xjmx1csashjww8j8jwyh.jpg"
+              />
             </div>
             <div className="voucher-desc">
               <span>Title</span>
@@ -79,7 +90,10 @@ export default class index extends Component {
           </div>
           <div className="voucher-container">
             <div className="voucher-img">
-              <img src="https://www.rd.com/wp-content/uploads/2018/04/9-Foods-You-Should-Never-Eat-Before-Bed-760x506.jpg" />
+              <img
+                alt="voucher-img-2"
+                src="https://www.rd.com/wp-content/uploads/2018/04/9-Foods-You-Should-Never-Eat-Before-Bed-760x506.jpg"
+              />
             </div>
             <div className="voucher-desc">
               <span>Title</span>
@@ -99,7 +113,10 @@ export default class index extends Component {
           </div>
           <div className="voucher-container">
             <div className="voucher-img">
-              <img src="https://amp.insider.com/images/5ad792ffbd967146008b45d9-750-562.jpg" />
+              <img
+                alt="voucher-img-3"
+                src="https://amp.insider.com/images/5ad792ffbd967146008b45d9-750-562.jpg"
+              />
             </div>
             <div className="voucher-desc">
               <span>Title</span>

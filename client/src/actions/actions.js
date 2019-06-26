@@ -1,5 +1,4 @@
-import { LOGIN, SETTINGS} from './actionTypes.js'
-
+import { LOGIN } from "./actionTypes.js";
 
 /**
 |--------------------------------------------------
@@ -7,11 +6,11 @@ import { LOGIN, SETTINGS} from './actionTypes.js'
 |--------------------------------------------------
 */
 export const loginNow = () => dispatch => {
-    dispatch({
-        type: LOGIN,
-        payload: true
-    })
-}
+  dispatch({
+    type: LOGIN,
+    payload: true
+  });
+};
 
 /**
 |--------------------------------------------------
@@ -20,11 +19,8 @@ export const loginNow = () => dispatch => {
 */
 
 export const logoutNow = () => dispatch => {
-    dispatch({
-        type: LOGIN,
-        payload: false
-    })
-}
-
-
-
+  dispatch({
+    type: LOGIN,
+    payload: false
+  });
+};

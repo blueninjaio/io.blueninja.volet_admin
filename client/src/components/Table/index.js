@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./styles.css";
 
 export class index extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export class index extends Component {
             {this.props.body.map((x, i) => (
               <tr
                 onClick={() => this.props.method(i, true)}
-                key={x.id}
+                key={i}
                 style={{
                   textAlign: "center",
                   border: 0

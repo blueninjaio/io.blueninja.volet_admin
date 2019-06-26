@@ -7,6 +7,11 @@ import {
   VictoryBar
 } from "victory";
 
+/**
+|--------------------------------------------------
+| renders the Dashboard page
+|--------------------------------------------------
+*/
 export default class index extends Component {
   render() {
     return (
@@ -40,23 +45,10 @@ export default class index extends Component {
               <p>Graph</p>
               <VictoryPie
                 innerRadius={200}
-                // style={{
-                //     data: {
-                //       fill: 'lightBlue'
-                //     },
-                //     labels: {
-                //       display: 'none'
-                //     }
-                //   }}
-                data={[
-                  { x: 11, y: 35 },
-                  { x: 11, y: 40 }
-                  // { x: 11, y: 55 }
-                ]}
+                data={[{ x: 11, y: 35 }, { x: 11, y: 40 }]}
                 style={{
                   data: {
                     fill: ({ y }) =>
-                      // y > 49 ? 'green'
                       y > 39 ? "rgb(95,153,252)" : "rgb(12,96,250)"
                   }
                 }}
@@ -92,23 +84,10 @@ export default class index extends Component {
               <p>Graph</p>
               <VictoryPie
                 innerRadius={200}
-                // style={{
-                //     data: {
-                //       fill: 'lightBlue'
-                //     },
-                //     labels: {
-                //       display: 'none'
-                //     }
-                //   }}
-                data={[
-                  { x: 11, y: 35 },
-                  { x: 11, y: 40 }
-                  // { x: 11, y: 55 }
-                ]}
+                data={[{ x: 11, y: 35 }, { x: 11, y: 40 }]}
                 style={{
                   data: {
                     fill: ({ y }) =>
-                      // y > 49 ? 'green'
                       y > 39 ? "rgb(95,153,252)" : "rgb(12,96,250)"
                   }
                 }}
@@ -139,7 +118,6 @@ export default class index extends Component {
                   style={{
                     data: {
                       fill: ({ y }) =>
-                        // y > 49 ? 'green'
                         y > 39 ? "rgb(95,153,252)" : "rgb(12,96,250)"
                     }
                   }}
@@ -170,7 +148,6 @@ export default class index extends Component {
                   style={{
                     data: {
                       fill: ({ y }) =>
-                        // y > 49 ? 'green'
                         y > 39 ? "rgb(95,153,252)" : "rgb(12,96,250)"
                     }
                   }}

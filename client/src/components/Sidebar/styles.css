@@ -1,0 +1,26 @@
+.sidebar-content-container{
+    padding: 35px;
+    
+  }
+  
+  .sidebar-list{
+    list-style: none;
+    text-align: center;
+    padding-left: 0;
+    margin-top: 4rem;
+  }
+  
+  .sidebar-list li{
+    font-size:18px;
+    margin-bottom:1rem;
+    padding: 15px 0; 
+  }
+  
+  .sidebar-list li:hover{
+    cursor: pointer;
+  }
+
+  .remove-hover:hover{
+    text-decoration: none;
+    color: darkblue;
+  }

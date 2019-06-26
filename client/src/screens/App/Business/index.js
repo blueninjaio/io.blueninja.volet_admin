@@ -1,8 +1,7 @@
-//
 import React, { Component } from "react";
-import Card from "../../../components/Card";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
+import { url } from "../../../config";
 
 export class index extends Component {
   constructor(props) {
@@ -20,10 +19,21 @@ export class index extends Component {
     };
   }
 
+  /**
+  |--------------------------------------------------
+  | Upon page loading, fetches all the data from the api
+  |--------------------------------------------------
+  */
   componentDidMount() {
     this.fetchAllBusiness();
   }
 
+  /**
+  |--------------------------------------------------
+  | receives and sets state 
+    selected row data from the Table component
+  |--------------------------------------------------
+  */
   passedFromChild = (i, state) => {
     let arr = this.state.selectedData;
     console.log("Passed:", this.state.businessData[i]);
@@ -33,16 +43,19 @@ export class index extends Component {
     console.log("Details saved", this.state.selectedData);
   };
 
+  /**
+  |--------------------------------------------------
+  | fetches data from api
+  |--------------------------------------------------
+  */
   fetchAllBusiness = () => {
-    fetch("http://165.22.245.137/api/business", {
+    fetch(`${url}/api/business`, {
       method: "GET",
       mode: "cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json; charset=utf-8",
         Accept: "application/json"
-
-        // 'Authorization': 'Bearer '+ token,
       }
     })
       .then(res => res.json())
@@ -63,9 +76,23 @@ export class index extends Component {
           this.setState({ business, businessData: data.businesses });
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log("Error for business page", err);
+
+        alert(
+          "Error connecting to server",
+
+          [{ text: "OK", onClick: () => null }],
+          { cancelable: false }
+        );
+      });
   };
 
+  /**
+  |--------------------------------------------------
+  | changes state onToggle
+  |--------------------------------------------------
+  */
   toggle = async () => {
     await this.setState({ isChecked: !this.state.isChecked });
     console.log(this.state.isChecked);
@@ -77,11 +104,6 @@ export class index extends Component {
       }, 400);
     }
   };
-
-  //   filterPage = async event => {
-  //     await this.setState({ filterUsers: event.target.value });
-  //     console.log(this.state.filterUsers);
-  //   };
 
   render() {
     return (
@@ -110,10 +132,16 @@ export class index extends Component {
                   className="exit-btn-view-business"
                   onClick={() => this.setState({ rowSelected: false })}
                 >
-                  <img src="https://img.pngio.com/index-of-v2-imgs-x-png-black-and-white-256_256.png" />
+                  <img
+                    alt="selected-user-x-icon"
+                    src="https://img.pngio.com/index-of-v2-imgs-x-png-black-and-white-256_256.png"
+                  />
                 </button>
                 <div className="business-profile-container">
-                  <img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQ3NjM5MzQyOTU5OTYxNDc2/lil_wayne_photo_by_ray_tamarra_getty_images_entertainment_getty_56680625.jpg" />
+                  <img
+                    alt="selected-user-profile-icon"
+                    src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQ3NjM5MzQyOTU5OTYxNDc2/lil_wayne_photo_by_ray_tamarra_getty_images_entertainment_getty_56680625.jpg"
+                  />
                   <span>
                     {x.f_name} {x.l_name}
                   </span>

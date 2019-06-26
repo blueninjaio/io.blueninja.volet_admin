@@ -1,0 +1,12 @@
+.fixed-table-head{
+    position: fixed;
+    top: 14.7rem;
+    width: 77%;
+    background: #fcfcfc;
+    left: 19rem;
+  }
+  
+  .user-table{
+    margin-left: 1.8rem;
+    width: 95.1%;
+  }

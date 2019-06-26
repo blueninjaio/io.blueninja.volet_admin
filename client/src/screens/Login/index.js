@@ -4,6 +4,11 @@ import Login from "./Login";
 import Register from "./Register";
 import ForgotPassword from "./ForgotPassword";
 
+/**
+|--------------------------------------------------
+| renders Login page and initialises all the routes
+|--------------------------------------------------
+*/
 export default class index extends Component {
   render() {
     return (
@@ -11,6 +16,7 @@ export default class index extends Component {
         <div className="login-main-container">
           <div className="login-side-img-container">
             <img
+              alt="landing-page-img"
               src="https://images.pexels.com/photos/1227520/pexels-photo-1227520.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
               style={{ width: "100%", height: "100%" }}
             />
