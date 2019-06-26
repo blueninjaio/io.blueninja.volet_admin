@@ -1,4 +1,3 @@
-//
 import React, { Component } from "react";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
