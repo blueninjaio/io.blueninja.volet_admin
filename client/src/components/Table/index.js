@@ -12,6 +12,10 @@ export class index extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log("Body:", this.props.body);
+  }
+
   render() {
     return (
       <div>

@@ -803,6 +803,113 @@ input[type="checkbox"].user-agent:checked + div > div {
   border-bottom: 2px solid #dbdbdb !important;
 }
 
+
+.send-notification-main{
+  /* background: red; */
+  width: 98.5%;
+  margin-top: 2rem;
+}
+
+.send-notification-sender-header{
+  background: white;
+  display: flex;
+  padding: 10px;
+  border: 1px solid #dbdbdb;
+}
+
+
+.send-notification-input-container{
+  display: flex;
+  width: 94%;
+  justify-content: flex-end;
+}
+
+.send-notification-dropdown{
+  width: 15%;
+}
+
+.send-notification-date{
+  width:15%;
+  margin-left:1rem;
+  text-align: center;
+  background: transparent;
+  border: 0;
+  border-left: 1px solid #dbdbdb;
+  border-radius: 0;
+}
+
+.send-to-text{
+  color: grey;
+}
+
+.send-to-text-container{
+  margin-left: 2rem;
+  width: 10%;
+  padding-top: 7px;
+}
+
+.send-notification-title-header{
+  padding: 10px 0;
+  background: white;
+  border: 1px solid #dbdbdb;
+  border-top: 0 ;
+}
+
+.send-notification-title-header input{
+  border: 0;
+  padding-left:44px;
+}
+
+.send-notification-content-body{
+  border: 1px solid #dbdbdb;
+  border-top: 0 ;
+  background: white;
+}
+
+.send-notification-content-body textarea{
+  border:0;
+  border-radius: 0;
+  padding-left:44px;
+  padding-top: 2rem;
+}
+
+.send-notification-button-container{
+  text-align: right;
+  padding-right: 5rem;
+  margin-bottom: 2rem;
+}
+
+.send-notification-button{
+  width: 30%;
+  padding: 10px 0;
+  border-radius: 6px;
+  text-transform: uppercase;
+  background-image: linear-gradient( #36D1DC,#5B86E5);
+  color: white;
+  font-weight: bold;
+  margin-left: 1.5rem;
+}
+
+
+.send-notification-back-btn{
+  width: 30%;
+  padding: 10px 0;
+  border-radius: 6px;
+  text-transform: uppercase;
+  border: 2px solid #dbdbdb;
+}
+
+.send-mail-btn{
+  position: absolute;
+  width: 3.5%;
+  height: 6%;
+  border-radius: 3rem;
+  padding: 10px;
+  right: 1rem;
+  bottom: 3rem;
+  background-image: linear-gradient( #36D1DC,#5B86E5);
+}
+
 @media screen and (min-width: 1600px) {
   .send-voucher-btn{
     width: 13%;

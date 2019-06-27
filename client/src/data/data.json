@@ -112,5 +112,41 @@
             "title": "Business Name",
             "width": "25%"
         }
-    ]
+    ],
+    "tHeadPushTable": [
+        
+            {
+                "id": 1,
+                "title": "From",
+                "width": "20%"
+            },
+            {
+                "id": 2,
+                "title": "Title",
+                "width": "60%"
+            },
+            {
+                "id": 3,
+                "title": "Date",
+                "width": "20%"
+            }
+        
+    ],
+    "tBodyPushTable": [
+        {
+           "name": "Ahmad Kalai",
+           "title": "Hey!",
+           "date": "19th June 2019"
+        },
+        {
+            "name": "Ahmad Kalai",
+            "title": "Hey!",
+            "date": "19th June 2019"
+         },    
+         {
+            "name": "Ahmad Kalai",
+            "title": "Hey!",
+            "date": "19th June 2019"
+         }        
+]
 }

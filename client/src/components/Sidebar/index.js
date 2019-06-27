@@ -42,6 +42,11 @@ export default class index extends Component {
               Business
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/pushnotification" className="remove-hover">
+              Push Notification
+            </NavLink>
+          </li>
         </ul>
       </div>
     );

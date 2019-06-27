@@ -1,14 +1,60 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { url } from "../../../config";
 
 export default class index extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
+
+  inputEmail(e) {
+    this.setState({ email: e.target.value });
+    console.log("Email:", this.state.email);
+  }
+
+  inputPassword(e) {
+    this.setState({ password: e.target.value });
+    console.log("Password:", this.state.password);
+  }
+
   /**
     |--------------------------------------------------
     | navigates user to login page
     |--------------------------------------------------
     */
   register = () => {
-    this.props.history.push("/login");
+    fetch(`${url}/api/admin`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+      })
+    })
+      .then(res => res.json())
+
+      .then(data => {
+        console.log("Data", data);
+        console.log("Data", data.success);
+        if (data.success === true) {
+          console.log("Registration status: ", data.success);
+          alert(data.message);
+
+          if (data.success === true) {
+            this.props.history.push("/login");
+          }
+        }
+      })
+
+      .catch(err => console.log(err));
   };
 
   /**
@@ -26,29 +72,18 @@ export default class index extends Component {
         <h2 className="login-title">Register</h2>
 
         <input
+          value={this.state.email}
+          onChange={this.inputEmail.bind(this)}
           type="email"
           className="form-control login-input"
           placeholder="Enter email"
         />
         <input
+          value={this.state.password}
+          onChange={this.inputPassword.bind(this)}
           type="password"
           className="form-control login-input"
           placeholder="Enter password"
-        />
-        <input
-          type="name"
-          className="form-control login-input"
-          placeholder="Enter name"
-        />
-        <input
-          type="username"
-          className="form-control login-input"
-          placeholder="Enter username"
-        />
-        <input
-          type="text"
-          className="form-control login-input"
-          placeholder="Enter D.O.B"
         />
 
         <button className="login-btn" onClick={() => this.register()}>
