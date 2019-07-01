@@ -71,7 +71,7 @@ class index extends Component {
     return (
       <BrowserRouter>
         <div className="wrapper">
-          <div className="menu-sidebar">
+          <div className="menu-sidebar hide-small-mobile">
             <Sidebar />
           </div>
           <div className="navbar">
@@ -81,7 +81,7 @@ class index extends Component {
                 alt="volet-logo"
               />
             </div>
-            <div className="navbar-content">
+            <div className="navbar-content hide-small-mobile">
               <div className="notify">
                 <button className="notify-btn" onClick={() => this.notify()}>
                   <img
@@ -153,7 +153,7 @@ class index extends Component {
             ) : null}
           </div>
 
-          <div className="main-content">
+          <div className="main-content hide-small-mobile">
             <Switch>
               <Redirect exact from="/login" to="/dashboard" />
               <Route path="/dashboard" component={Dashboard} />
@@ -175,6 +175,11 @@ class index extends Component {
               <Route path="/feedback" component={Feedback} />
             </Switch>
           </div>
+        </div>
+
+        <div className="show-only-mobile d-block d-sm-none d-none d-sm-block d-md-none">
+          <p>Please use a Tablet/Desktop</p>
+          <p>to access the Admin Panel</p>
         </div>
       </BrowserRouter>
     );

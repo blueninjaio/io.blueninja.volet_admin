@@ -19,7 +19,7 @@ export class index extends Component {
   render() {
     return (
       <div className="dashboard-container">
-        <div className="dashboard-header">
+        <div className="dashboard-header pn-header-container">
           <h3 className="table-page-title">Notification</h3>
           <div className="filter-users-container">
             <select className="form-control filter-pages">

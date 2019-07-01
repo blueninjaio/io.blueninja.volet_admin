@@ -29,6 +29,7 @@ export class index extends Component {
             >
               {this.props.head.map(x => (
                 <th
+                  className="table-head-data-mobile"
                   key={x.id}
                   style={{ width: x.width, textAlign: "center", border: 0 }}
                 >
@@ -53,7 +54,11 @@ export class index extends Component {
                 }}
               >
                 {Object.values(x).map((y, i) => (
-                  <td key={i} style={{ width: this.props.head[i].width }}>
+                  <td
+                    key={i}
+                    style={{ width: this.props.head[i].width }}
+                    className="table-data-mobile"
+                  >
                     {y}
                   </td>
                 ))}

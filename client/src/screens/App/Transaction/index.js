@@ -24,10 +24,6 @@ export default class index extends Component {
     console.log(state);
 
     this.setState({ approveDecline: state });
-    // let arr = this.state.sendData;
-    // let send = this.state.sendState;
-    // this.setState({ sendData: arr });
-    // this.setState({ sendState: send });
   };
 
   render() {

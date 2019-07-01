@@ -1,0 +1,241 @@
+@media (max-width: 991.98px) {
+    .graph-container{
+        height: 100%;
+    }
+    .graph-container-2{
+        height: 100%;
+    }
+
+    .table-data-mobile:nth-child(5){
+        display: none !important;
+    }
+    .table-data-mobile:nth-child(6){
+        display: none !important;
+    }
+    .table-data-mobile:nth-child(7){
+        display: none !important;
+    }
+    .table-data-mobile:nth-child(8){
+        display: none !important;
+    }
+
+    .user-table {
+        margin-left: 1.5rem !important;
+        width: 91% !important;
+        font-size: 10px !important;
+    }
+
+    .table-head-data-mobile:nth-child(5){
+        display: none !important;
+    }
+
+    .table-head-data-mobile:nth-child(6){
+        display: none !important;
+    }
+    .table-head-data-mobile:nth-child(7){
+        display: none !important;
+    }
+    .table-head-data-mobile:nth-child(8){
+        display: none !important;
+    }
+    .fixed-table-head{
+        
+        top: 15.1rem !important;
+        width: 58.4% !important;
+        left: 18.7rem !important;
+        font-size: 11px !important;
+    }
+
+    .filter-pages{
+        height: 22%;
+        width: 19%;
+        position: absolute;
+        right: 9rem;
+        margin-top: -2px;
+        background: rgb(247,247,247);
+    }
+
+    input[type="checkbox"].switch + div > div{
+        float: left;
+        width: 17px;
+        height: 18px;
+        margin-top: 1px;
+        margin-left: 1px;
+    }
+
+    .switch-container{
+        position: absolute;
+        top: 1.2rem;
+        left: 4.5rem;
+    }
+
+    .user-toggle-text{
+        margin-right: 3.5rem
+    }
+    input[type="checkbox"].switch + div{
+        width: 39px !important;
+        height: 21px !important;
+    }
+
+    .mobile-container{
+        padding-top: 13rem !important;
+    }
+
+    .voucher-container{
+        width: 97% !important;
+        height: 100% !important;
+    }
+
+    .voucher-desc{
+        padding-top: 1rem;
+        padding-left: 2rem;
+        padding-bottom: 1rem;
+        font-size: 10px;
+    }
+
+    .voucher-desc span:first-child{
+        margin-top: 10px;
+    }
+
+    .voucher-btn-container{
+        width: 25%;
+        text-align: center;
+        display: inline-grid;
+        padding-top: 2rem;
+    }
+
+    .send-voucher-btn{
+        width: 50%;
+        padding: 0px 0;
+        /* background: lightgreen; */
+        border: 0;
+        height: 37%;
+        margin: 0 auto;
+        background-image: linear-gradient( #36D1DC,#5B86E5);
+        color: white;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .static-container{
+        width: 97.4%;
+    }
+
+    .business-request-tabs-container button{
+        width: 17%;
+        padding: 10px 0;
+        background: transparent;
+        border: 0;
+        text-transform: uppercase;
+        margin-right: 2rem;
+        font-size: 12px;
+    }
+
+    .bR-mobile-container{
+        padding-top: 6.5rem !important;
+    }
+
+    .sidebar-list li{
+        font-size:15px !important;
+    }
+
+    .pn-header-container{
+        width: 80%;
+    position: fixed;
+    top: 4.7rem;
+    height: 10rem;
+    background: #fcfcfc;
+    /* background: red; */
+    padding-top: 2rem;
+    }
+
+    .view-business-container{
+        height: 59% !important;
+    }
+
+    .exit-btn-view-business{
+        width: 9%;
+    height: 24px;
+    float: right;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    background: transparent;
+    border: 0;
+    }
+
+    .business-profile-container{
+        display: flex;
+        /* background: red; */
+        height: 3rem;
+        margin-top: 1rem;
+        padding-left: 3rem;
+        margin-bottom: 1rem;
+    }
+    .business-profile-container img{
+        width: 17%;
+        border-radius: 6rem;
+        margin-right: 3rem;
+    }
+
+    .business-profile-container span{
+        margin-top: 10px;
+        font-size: 16px;
+    
+    }
+
+    .business-email-container{
+        padding-left: 3rem;
+        padding-top: 1rem;
+        font-size: 14px;
+    }
+
+    .view-business-tabs button{
+        font-size: 15px;
+        background: transparent;
+        border: 0;
+    }
+
+    .view-business-tabs{
+        padding-left: 3rem;
+    }
+
+    .field-container{
+        font-size: 12px;
+    }
+
+    .main-field-container{
+        padding-left: 3.2rem;
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        overflow: scroll;
+        max-height: 12.9rem;
+    }
+ }
+
+
+ @media (max-width: 575.98px) {
+     .hide-small-mobile{
+         display: none;
+     }
+     .logo{
+        width: 21.8rem;
+     }
+
+     .show-only-mobile{
+        margin-top: 9rem;
+        text-align: center;
+     }
+  }
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .hide-small-mobile{
+        display: none;
+    }
+    .logo{
+        width: 21.8rem;
+     }
+     .show-only-mobile{
+        margin-top: 9rem;
+        text-align: center;
+     }
+ }

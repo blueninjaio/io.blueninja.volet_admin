@@ -17,18 +17,36 @@ export default class index extends Component {
     };
   }
 
+  /**
+  |--------------------------------------------------
+  | gets all data
+  |--------------------------------------------------
+  */
   componentDidMount() {
     this.getStatic();
   }
 
+  /**
+  |--------------------------------------------------
+  | sets state for the faq string
+  |--------------------------------------------------
+  */
   inputFAQ(e) {
     this.setState({ faq: e.target.value });
   }
-
+  /**
+  |--------------------------------------------------
+  | sets state for the policy string
+  |--------------------------------------------------
+  */
   inputPolicy(e) {
     this.setState({ policy: e.target.value });
   }
-
+  /**
+  |--------------------------------------------------
+  | gets data from api
+  |--------------------------------------------------
+  */
   getStatic = () => {
     fetch(`${url}/api/static`, {
       method: "GET",
@@ -51,6 +69,11 @@ export default class index extends Component {
       .catch(err => console.log(err));
   };
 
+  /**
+  |--------------------------------------------------
+  | submits policy state/string to the api
+  |--------------------------------------------------
+  */
   submitPolicy = () => {
     fetch(`${url}/api/static/policies`, {
       method: "POST",
@@ -74,7 +97,11 @@ export default class index extends Component {
 
       .catch(err => console.log(err));
   };
-
+  /**
+  |--------------------------------------------------
+  | submits faq state/string to the api
+  |--------------------------------------------------
+  */
   submitFAQ = () => {
     fetch(`${url}/api/static/faq`, {
       method: "POST",

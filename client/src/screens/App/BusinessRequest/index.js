@@ -24,10 +24,6 @@ export default class index extends Component {
     console.log(state);
 
     this.setState({ approveDecline: state });
-    // let arr = this.state.sendData;
-    // let send = this.state.sendState;
-    // this.setState({ sendData: arr });
-    // this.setState({ sendState: send });
   };
 
   render() {
@@ -77,7 +73,10 @@ export default class index extends Component {
             Decline
           </button>
         </div>
-        <div className="container-fluid" style={{ paddingTop: "5.2rem" }}>
+        <div
+          className="container-fluid bR-mobile-container"
+          style={{ paddingTop: "5.2rem" }}
+        >
           {this.state.pendingTab === true ? (
             <Table
               head={data.tHeadPendingBusinessTable}

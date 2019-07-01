@@ -138,7 +138,10 @@ export class index extends Component {
           </div>
         </div>
 
-        <div className="container-fluid" style={{ paddingTop: "14.5rem" }}>
+        <div
+          className="container-fluid mobile-container"
+          style={{ paddingTop: "14.5rem" }}
+        >
           <Table
             head={data.tHeadUsers}
             body={this.state.users}
