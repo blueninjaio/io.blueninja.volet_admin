@@ -196,22 +196,32 @@
         "date": "19th June 2019"
     }
 ],
+"tBodyButton":[
+    {
+        "id": 1,
+        "name": "Approve"
+    },
+    {
+        "id": 2,
+        "name": "Decline"
+    }
+],
 
 "tHeadApprovedBusinessTable": [
     {
         "id": 1,
         "title": "Merchant Name",
-        "width": "25%"
+        "width": "16.6%"
     },
     {
         "id": 2,
         "title": "Business Name",
-        "width": "25%"
+        "width": "16.6%"
     },
     {
         "id": 3,
         "title": "Status",
-        "width": "25%"
+        "width": "16.6%"
     },
     {
         "id": 4,
@@ -249,17 +259,17 @@
     {
         "id": 1,
         "title": "Merchant Name",
-        "width": "25%"
+        "width": "16.6%"
     },
     {
         "id": 2,
         "title": "Business Name",
-        "width": "25%"
+        "width": "16.6%"
     },
     {
         "id": 3,
         "title": "Status",
-        "width": "25%"
+        "width": "16.6%"
     },
     {
         "id": 4,

@@ -23,7 +23,7 @@ export default class index extends Component {
   passedFromChild = (i, state) => {
     console.log(state);
 
-    this.setState({ approveDecline: state });
+    // this.setState({ approveDecline: state });
   };
 
   render() {
@@ -81,6 +81,7 @@ export default class index extends Component {
             <Table
               head={data.tHeadPendingBusinessTable}
               body={data.tBodyPendingBusinessTable}
+              button={data.tBodyButton}
               method={this.passedFromChild}
             />
           ) : null}
@@ -88,6 +89,7 @@ export default class index extends Component {
             <Table
               head={data.tHeadApprovedBusinessTable}
               body={data.tBodyApprovedBusinessTable}
+              button={data.tBodyButton}
               method={this.passedFromChild}
             />
           ) : null}
@@ -95,6 +97,7 @@ export default class index extends Component {
             <Table
               head={data.tHeadDeclineBusinessTable}
               body={data.tBodyDeclineBusinessTable}
+              button={data.tBodyButton}
               method={this.passedFromChild}
             />
           ) : null}

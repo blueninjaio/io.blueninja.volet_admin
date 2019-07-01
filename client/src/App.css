@@ -924,7 +924,7 @@ input[type="checkbox"].user-agent:checked + div > div {
   background: transparent;
   border: 0;
   text-transform: uppercase;
-  margin-right: 1rem;
+  margin-right: 2rem;
   font-size: 15px;
 }
 
@@ -967,6 +967,19 @@ input[type="checkbox"].user-agent:checked + div > div {
   background: lightgreen;
   color: black;
 }
+
+.businessRequestApprove{
+  color: green;
+  font-weight: bold;
+}
+
+
+.businessRequestDecline{
+  color: red;
+  font-weight: bold;
+}
+
+
 
 @media screen and (min-width: 1600px) {
   .send-voucher-btn{
