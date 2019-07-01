@@ -43,8 +43,18 @@ export default class index extends Component {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/businessrequest" className="remove-hover">
+              Business Requests
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/pushnotification" className="remove-hover">
               Push Notification
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/feedback" className="remove-hover">
+              Feedback
             </NavLink>
           </li>
         </ul>

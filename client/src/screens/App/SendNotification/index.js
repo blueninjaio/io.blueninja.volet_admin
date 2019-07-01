@@ -43,7 +43,12 @@ export default class index extends Component {
                 style={{ resize: "none" }}
               />
               <div className="send-notification-button-container">
-                <button className="send-notification-back-btn">back</button>
+                <button
+                  className="send-notification-back-btn"
+                  onClick={() => this.props.history.push("/pushnotification")}
+                >
+                  back
+                </button>
                 <button className="send-notification-button">
                   send notification
                 </button>

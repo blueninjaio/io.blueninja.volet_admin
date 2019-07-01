@@ -12,8 +12,11 @@ import Static from "./Static";
 import Settings from "./Settings";
 import Transaction from "./Transaction";
 import Business from "./Business";
+import BusinessRequest from "./BusinessRequest";
 import SendNotifcation from "./SendNotification";
 import PushNotification from "./PushNotification";
+import Feedback from "./Feedback";
+
 import { logoutNow } from "../../actions/actions";
 import Sidebar from "../../components/Sidebar";
 
@@ -33,16 +36,23 @@ class index extends Component {
 
     this.state = {
       notify: false,
-      logout: false
+      logoutPop: false
     };
   }
+
+  logout = async () => {
+    await localStorage.removeItem("user_token");
+
+    await this.props.logoutNow();
+  };
 
   /**
   |--------------------------------------------------
   | Logout user and sets logout state to true
   |--------------------------------------------------
   */
-  logout = async () => {
+  logoutPop = async () => {
+    // await localStorage.removeItem("user_token");
     await this.setState({ notify: false });
     this.setState({ logout: !this.state.logout });
   };
@@ -83,7 +93,7 @@ class index extends Component {
               <div className="navbar-admin-name">
                 <button
                   className="admin-name-btn"
-                  onClick={() => this.logout()}
+                  onClick={() => this.logoutPop()}
                 >
                   <img
                     alt="header-profile-img"
@@ -130,10 +140,7 @@ class index extends Component {
             {this.state.logout ? (
               <div className="logout-dropdown">
                 <div className="notify-item">
-                  <button
-                    className="logout-btn"
-                    onClick={() => this.props.logoutNow()}
-                  >
+                  <button className="logout-btn" onClick={() => this.logout()}>
                     Logout
                   </button>
                 </div>
@@ -161,9 +168,11 @@ class index extends Component {
               <Route path="/viewmerchant" component={ViewMerchant} />
               <Route path="/static" component={Static} />
               <Route path="/business" component={Business} />
+              <Route path="/businessrequest" component={BusinessRequest} />
               <Route path="/settings" component={Settings} />
               <Route path="/pushnotification" component={PushNotification} />
               <Route path="/sendnotification" component={SendNotifcation} />
+              <Route path="/feedback" component={Feedback} />
             </Switch>
           </div>
         </div>

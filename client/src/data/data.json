@@ -148,5 +148,251 @@
             "title": "Hey!",
             "date": "19th June 2019"
          }        
+],
+"tHeadPendingBusinessTable": [
+    {
+        "id": 1,
+        "title": "Merchant Name",
+        "width": "25%"
+    },
+    {
+        "id": 2,
+        "title": "Business Name",
+        "width": "25%"
+    },
+    {
+        "id": 3,
+        "title": "Status",
+        "width": "25%"
+    },
+    {
+        "id": 4,
+        "title": "Date",
+        "width": "25%"
+    }
+
+],
+"tBodyPendingBusinessTable":[
+    {
+        "name": "James",
+        "bName": "Blueninja.IO",
+        "status": "Decline",
+        "date": "19th June 2019"
+    }
+],
+
+"tHeadApprovedBusinessTable": [
+    {
+        "id": 1,
+        "title": "Merchant Name",
+        "width": "25%"
+    },
+    {
+        "id": 2,
+        "title": "Business Name",
+        "width": "25%"
+    },
+    {
+        "id": 3,
+        "title": "Status",
+        "width": "25%"
+    },
+    {
+        "id": 4,
+        "title": "Date",
+        "width": "25%"
+    }
+
+],
+"tBodyApprovedBusinessTable":[
+    {
+        "name": "Black",
+        "bName": "Blueninja.IO",
+        "status": "Approved",
+        "date": "19th June 2019"
+    }
+],
+
+"tHeadDeclineBusinessTable": [
+    {
+        "id": 1,
+        "title": "Merchant Name",
+        "width": "25%"
+    },
+    {
+        "id": 2,
+        "title": "Business Name",
+        "width": "25%"
+    },
+    {
+        "id": 3,
+        "title": "Status",
+        "width": "25%"
+    },
+    {
+        "id": 4,
+        "title": "Date",
+        "width": "25%"
+    }
+
+],
+"tBodyDeclineBusinessTable":[
+    {
+        "name": "Kalai",
+        "bName": "Blueninja.IO",
+        "status": "Decline",
+        "date": "19th June 2019"
+    }
+],
+"tHeadFeedbackTable": [
+    {
+        "id": 1,
+        "title": "Name",
+        "width": "25%"
+    },
+    {
+        "id": 2,
+        "title": "Rating",
+        "width": "25%"
+    },
+    {
+        "id": 3,
+        "title": "Description",
+        "width": "25%"
+    },
+    {
+        "id": 4,
+        "title": "Date",
+        "width": "25%"
+    }
+
+],
+"tBodyFeedback":[
+    {
+        "name": "Kalai Chelvan",
+        "rating": "9/10",
+        "desc": "James and Jacob",
+        "date": "19th June 2019"
+    }
+],
+"tHeadUserTransaction": [
+    {
+        "id": 1,
+        "title": "From",
+        "width": "20%"
+    },
+    {
+        "id": 2,
+        "title": "To",
+        "width": "20%"
+    },
+    {
+        "id": 3,
+        "title": "Type",
+        "width": "20%"
+    },
+    {
+        "id": 4,
+        "title": "Amount",
+        "width": "20%"
+    },
+    {
+        "id": 5,
+        "title": "Date",
+        "width": "20%"
+    }
+],
+"tBodyUserTransaction":[
+    {
+        "from": "Kalai",
+        "to": "Blueninja.IO",
+        "type": "Decline",
+        "amount": "$2000",
+        "dat": "19th June 2019"
+    }
+],
+"tHeadUserAgentTransaction": [
+    {
+        "id": 1,
+        "title": "From",
+        "width": "20%"
+    },
+    {
+        "id": 2,
+        "title": "To",
+        "width": "20%"
+    },
+    {
+        "id": 3,
+        "title": "Type",
+        "width": "20%"
+    },
+    {
+        "id": 4,
+        "title": "Amount",
+        "width": "20%"
+    },
+    {
+        "id": 5,
+        "title": "Date",
+        "width": "20%"
+    }
+],
+"tBodyUserAgentTransaction":[
+    {
+        "from": "James",
+        "to": "Blueninja.IO",
+        "type": "Decline",
+        "amount": "$2000",
+        "date": "19th June 2019"
+    }
+],
+"tHeadMerchantTransaction": [
+    {
+        "id": 1,
+        "title": "From",
+        "width": "14.3%"
+    },
+    {
+        "id": 2,
+        "title": "To",
+        "width": "14.3%"
+    },
+    {
+        "id": 3,
+        "title": "Business",
+        "width": "14.3%"
+    },
+    {
+        "id": 4,
+        "title": "Business Type",
+        "width": "14.3%"
+    },
+    {
+        "id": 5,
+        "title": "Type",
+        "width": "14.3%"
+    },
+    {
+        "id": 6,
+        "title": "Amount",
+        "width": "14.3%"
+    },
+    {
+        "id": 7,
+        "title": "Date",
+        "width": "14.3%"
+    }
+],
+"tBodyMerchantTransaction":[
+    {
+        "from": "Wolf",
+        "to": "Blueninja.IO",
+        "business": "Decline",
+        "bType": "$2000",
+        "type": "wolf",
+        "amount": "2000",
+        "date": "19th June 2019"
+    }
 ]
 }

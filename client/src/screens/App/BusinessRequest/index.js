@@ -7,9 +7,9 @@ export default class index extends Component {
     super(props);
 
     this.state = {
-      userTab: true,
-      useragentTab: false,
-      merchantTab: false,
+      pendingTab: true,
+      approvedTab: false,
+      declineTab: false,
       approveDecline: false
     };
   }
@@ -40,62 +40,62 @@ export default class index extends Component {
           className="page-title business-request-title"
           style={{ marginLeft: "1rem" }}
         >
-          Transaction
+          Business Requests
         </h3>
         <div className="business-request-tabs-container">
           <button
             onClick={() =>
               this.setState({
-                userTab: true,
-                useragentTab: false,
-                merchantTab: false
+                pendingTab: true,
+                approvedTab: false,
+                declineTab: false
               })
             }
           >
-            User
+            Pending
           </button>
           <button
             onClick={() =>
               this.setState({
-                userTab: false,
-                useragentTab: true,
-                merchantTab: false
+                pendingTab: false,
+                approvedTab: true,
+                declineTab: false
               })
             }
           >
-            User Agents
+            Approved
           </button>
           <button
             onClick={() =>
               this.setState({
-                userTab: false,
-                useragentTab: false,
-                merchantTab: true
+                pendingTab: false,
+                approvedTab: false,
+                declineTab: true
               })
             }
           >
-            Merchant
+            Decline
           </button>
         </div>
         <div className="container-fluid" style={{ paddingTop: "5.2rem" }}>
-          {this.state.userTab === true ? (
+          {this.state.pendingTab === true ? (
             <Table
-              head={data.tHeadUserTransaction}
-              body={data.tBodyUserTransaction}
+              head={data.tHeadPendingBusinessTable}
+              body={data.tBodyPendingBusinessTable}
               method={this.passedFromChild}
             />
           ) : null}
-          {this.state.useragentTab === true ? (
+          {this.state.approvedTab === true ? (
             <Table
-              head={data.tHeadUserAgentTransaction}
-              body={data.tBodyUserAgentTransaction}
+              head={data.tHeadApprovedBusinessTable}
+              body={data.tBodyApprovedBusinessTable}
               method={this.passedFromChild}
             />
           ) : null}
-          {this.state.merchantTab === true ? (
+          {this.state.declineTab === true ? (
             <Table
-              head={data.tHeadMerchantTransaction}
-              body={data.tBodyMerchantTransaction}
+              head={data.tHeadDeclineBusinessTable}
+              body={data.tBodyDeclineBusinessTable}
               method={this.passedFromChild}
             />
           ) : null}
