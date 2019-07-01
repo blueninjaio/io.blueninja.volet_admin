@@ -153,22 +153,32 @@
     {
         "id": 1,
         "title": "Merchant Name",
-        "width": "25%"
+        "width": "16.6%"
     },
     {
         "id": 2,
         "title": "Business Name",
-        "width": "25%"
+        "width": "16.6%"
     },
     {
         "id": 3,
         "title": "Status",
-        "width": "25%"
+        "width": "16.6%"
     },
     {
         "id": 4,
         "title": "Date",
-        "width": "25%"
+        "width": "16.6%"
+    },
+    {
+        "id": 5,
+        "title": "Approved",
+        "width": "16.6%"
+    },
+    {
+        "id": 6,
+        "title": "Decline",
+        "width": "16.6%"
     }
 
 ],
@@ -177,6 +187,12 @@
         "name": "James",
         "bName": "Blueninja.IO",
         "status": "Decline",
+        "date": "19th June 2019"
+    },
+    {
+        "name": "Black",
+        "bName": "Blueninja.IO",
+        "status": "Approved",
         "date": "19th June 2019"
     }
 ],
@@ -200,11 +216,27 @@
     {
         "id": 4,
         "title": "Date",
-        "width": "25%"
+        "width": "16.6%"
+    },
+    {
+        "id": 5,
+        "title": "Approved",
+        "width": "16.6%"
+    },
+    {
+        "id": 6,
+        "title": "Decline",
+        "width": "16.6%"
     }
 
 ],
 "tBodyApprovedBusinessTable":[
+    {
+        "name": "Black",
+        "bName": "Blueninja.IO",
+        "status": "Approved",
+        "date": "19th June 2019"
+    },
     {
         "name": "Black",
         "bName": "Blueninja.IO",
@@ -232,7 +264,17 @@
     {
         "id": 4,
         "title": "Date",
-        "width": "25%"
+        "width": "16.6%"
+    },
+    {
+        "id": 5,
+        "title": "Approved",
+        "width": "16.6%"
+    },
+    {
+        "id": 6,
+        "title": "Decline",
+        "width": "16.6%"
     }
 
 ],
@@ -242,6 +284,7 @@
         "bName": "Blueninja.IO",
         "status": "Decline",
         "date": "19th June 2019"
+       
     }
 ],
 "tHeadFeedbackTable": [
