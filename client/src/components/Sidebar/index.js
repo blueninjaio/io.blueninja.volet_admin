@@ -13,6 +13,11 @@ export default class index extends Component {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/categories" className="remove-hover">
+              Categories
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/merchants" className="remove-hover">
               Merchants
             </NavLink>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
+import { url } from "../../config";
 
 export class index extends Component {
   constructor(props) {
@@ -13,8 +14,65 @@ export class index extends Component {
   }
 
   componentDidMount() {
-    console.log("Body:", this.props.body);
+    // console.log("IDs Received", this.props.id);
+    console.log("Pending Table Body", this.props.body);
   }
+
+  approveBusiness = i => {
+    let ids = this.props.id;
+    let chosen = ids[i];
+
+    console.log("Approved Chosen:", chosen);
+    fetch(`${url}/api/business/approve`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        _id: chosen
+      })
+    })
+      .then(res => res.json())
+
+      .then(data => {
+        if (data.success === true) {
+          window.location.reload();
+        } else {
+          alert(data.message);
+        }
+      })
+
+      .catch(err => console.log(err));
+  };
+
+  declineBusiness = i => {
+    let ids = this.props.id;
+    let chosen = ids[i];
+
+    console.log("Declined Chosen:", chosen);
+    fetch(`${url}/api/business/decline`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        _id: chosen
+      })
+    })
+      .then(res => res.json())
+
+      .then(data => {
+        if (data.success === true) {
+          window.location.reload();
+        } else {
+          alert(data.message);
+        }
+      })
+
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -63,17 +121,23 @@ export class index extends Component {
                   </td>
                 ))}
                 {this.props.button
-                  ? this.props.button.map((x, i) => (
+                  ? this.props.button.map((x, j) => (
                       <td
-                        style={{ width: this.props.head[i].width }}
+                        style={{ width: this.props.head[j].width }}
                         className="table-data-mobile"
                       >
                         {x.name === "Approve" ? (
-                          <button className="businessRequestApprove table-data-mobile">
+                          <button
+                            className="businessRequestApprove table-data-mobile"
+                            onClick={() => this.approveBusiness(i)}
+                          >
                             {x.name}
                           </button>
                         ) : (
-                          <button className="businessRequestDecline table-data-mobile">
+                          <button
+                            className="businessRequestDecline table-data-mobile"
+                            onClick={() => this.declineBusiness(i)}
+                          >
                             {x.name}
                           </button>
                         )}

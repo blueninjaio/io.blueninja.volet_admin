@@ -16,6 +16,7 @@ import BusinessRequest from "./BusinessRequest";
 import SendNotifcation from "./SendNotification";
 import PushNotification from "./PushNotification";
 import Feedback from "./Feedback";
+import Categories from "./Categories";
 
 import { logoutNow } from "../../actions/actions";
 import Sidebar from "../../components/Sidebar";
@@ -42,7 +43,6 @@ class index extends Component {
 
   logout = async () => {
     await localStorage.removeItem("user_token");
-
     await this.props.logoutNow();
   };
 
@@ -173,6 +173,7 @@ class index extends Component {
               <Route path="/pushnotification" component={PushNotification} />
               <Route path="/sendnotification" component={SendNotifcation} />
               <Route path="/feedback" component={Feedback} />
+              <Route path="/categories" component={Categories} />
             </Switch>
           </div>
         </div>

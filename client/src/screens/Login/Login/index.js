@@ -63,13 +63,42 @@ class index extends Component {
     |--------------------------------------------------
     */
   login = async () => {
-    this.props.getToken(this.state.email, this.state.password);
+    //this.props.getToken(this.state.email, this.state.password);
 
-    let token = localStorage.getItem("user_token");
-
-    if (token !== null) {
-      this._storeData(token);
+    //Fetch to login
+    //Return of fetch if successful will give token
+    //save token then this.props.logMeIn()
+    // return data.message
+    if (this.state.token !== null) {
+      this._storeData(this.state.token);
     }
+
+    fetch(`${url}/api/admin/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+      })
+    })
+      .then(res => res.json())
+
+      .then(data => {
+        if (data.success === true) {
+          alert(data.message);
+          let token = data.token;
+          localStorage.setItem("user_token", token);
+
+          if (token !== null) {
+            this.props.loginNow();
+          }
+        }
+      })
+
+      .catch(err => console.log(err));
   };
 
   render() {

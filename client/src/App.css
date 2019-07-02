@@ -9,10 +9,20 @@ body{
   font-family: "Poppins";
 }
 
+.user-dashboard-header{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  height: 10rem;
+  background: #fcfcfc;
+  padding-top: 1rem;
+  padding-left: 22rem;
+  z-index: 1;
+}
 
 
 .main-dashboard-container{
-  padding-left: 18.2rem;
+  padding-left: 1.2rem;
   padding-bottom: 3rem;
   padding-top: 2.5rem;
 }
@@ -86,12 +96,13 @@ body{
 }
 
 .menu-sidebar{
+  z-index: 100;
   background: white;
   position: fixed;
-  width: 275px;
+  width: 18%;
   left: 0;
   top: 0;
-  bottom: 0; 
+  bottom: 0;
   box-shadow: 0px 2px 4px 0px #dbdbdb;
 }
 
@@ -117,8 +128,8 @@ body{
   height: 75px;
   width: 100%;
   position: fixed;
-  z-index: 1;
-  padding:0;
+  z-index: 1000;
+  padding: 0;
 }
 
 
@@ -167,12 +178,16 @@ body{
 .main-content{
   padding-top: 75px;
   min-height: 100vh;
-  background:#fcfcfc;
+  background: #fcfcfc;
+  margin: 0;
+  width: 82%;
+  position: fixed;
+  right: 0;
 }
 
 .dashboard-container{
   
-  padding-left: 17.2rem;
+  /* padding-left: 17.2rem; */
   padding-bottom: 3rem;
 }
 
@@ -677,13 +692,15 @@ input[type="checkbox"].user-agent:checked + div > div {
 
 
 .dashboard-header{
-  width: 81%;
+  width: 82%;
   position: fixed;
-  top: 4.7rem;
+  /* left: 0; */
   height: 10rem;
   background: #fcfcfc;
-  /* background: red; */
   padding-top: 1rem;
+  /* padding-left: 16rem; */
+  z-index: 1;
+  right: 0;
 }
 
 .table-page-title{
@@ -692,6 +709,7 @@ input[type="checkbox"].user-agent:checked + div > div {
   font-size: 25px;
   color: rgb(64,64,64);
   /* font-weight: bold; */
+  z-index: 1000000;
 }
 
 .filter-users-container{
@@ -704,17 +722,45 @@ input[type="checkbox"].user-agent:checked + div > div {
   right: 0;
   top: 4.7rem;
   width: 45%;
-  z-index: 100;
+  z-index: 10000;
   /* height: 100%; */
 }
 
+.cat-popup-container{
+  background: #fcfcfc;
+    z-index: 1000000;
+    position: absolute;
+    width: 52%;
+    left: 16rem;
+    top: 13rem;
+    height: 35%;
+    border-radius: 8px;
+}
+
+
+
+
+
 .modal-opacity{
+  position: fixed;
+    top: 4.7rem;
+    right: 0;
+    bottom: 0;
+    left: 16rem;
+    z-index: 1040 !important;
+    background-color: #000;
+    opacity: .5;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.cat-modal-opacity{
   position: fixed;
   top: 4.7rem;
   right: 0;
   bottom: 0;
-  left: 17rem;
-  z-index: 1040;
+  left: 16rem;
+  z-index: 1040 !important;
   background-color: #000;
   opacity: .5;
   z-index: 1;
@@ -970,13 +1016,63 @@ input[type="checkbox"].user-agent:checked + div > div {
 
 .businessRequestApprove{
   color: green;
-  font-weight: bold;
+    background: transparent;
+    font-weight: bold;
+    border: 0;
 }
 
 
 .businessRequestDecline{
   color: red;
   font-weight: bold;
+  background: transparent;
+border: 0;
+}
+
+.cat-pop-title{
+  font-size: 20px;
+  margin-left: 4rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.cat-pop-input{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.cat-save-btn{
+  background: lightgreen;
+    width: 17%;
+    /* margin-left: 4rem; */
+    margin-top: 2rem;
+    float: right;
+    margin-right: 3.9rem;
+}
+
+.main-cat-page-title{
+  margin-left: 2rem;
+  margin-top: 3rem;
+}
+
+.add-cat-btn{
+  float: right;
+  position: relative;
+  top: -2rem;
+  right: 2rem;
+  width: 51px;
+  height: 3rem;
+  border-radius: 3rem;
+  text-align: center;
+}
+
+.add-cat-btn img{
+  z-index: 100000;
+  width: 42px;
+  margin: 0 auto;
+  margin-left: -9px;
+  margin-top: -3px;
+  height: 42px;
 }
 
 

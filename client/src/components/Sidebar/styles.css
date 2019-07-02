@@ -8,14 +8,16 @@
     text-align: center;
     padding-left: 0;
     margin-top: 4rem;
-  }
+    overflow: scroll;
+    max-height: 500px;
+}
   
   .sidebar-list li{
     font-size: 18px;
     margin-bottom: 1rem;
     padding: 11px 0;
     /* max-height: 5rem; */
-    overflow: scroll;
+    /* overflow: scroll; */
   }
 
   

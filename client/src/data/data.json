@@ -152,33 +152,38 @@
 "tHeadPendingBusinessTable": [
     {
         "id": 1,
-        "title": "Merchant Name",
-        "width": "16.6%"
+        "title": "First Name",
+        "width": "14.3%"
+    },
+    {
+        "id": 1,
+        "title": "Last Name",
+        "width": "14.3%"
     },
     {
         "id": 2,
         "title": "Business Name",
-        "width": "16.6%"
+        "width": "14.3%"
     },
     {
         "id": 3,
         "title": "Status",
-        "width": "16.6%"
+        "width": "14.3%"
     },
     {
         "id": 4,
         "title": "Date",
-        "width": "16.6%"
+        "width": "14.3%"
     },
     {
         "id": 5,
         "title": "Approved",
-        "width": "16.6%"
+        "width": "14.3%"
     },
     {
         "id": 6,
         "title": "Decline",
-        "width": "16.6%"
+        "width": "14.3%"
     }
 
 ],
@@ -210,33 +215,28 @@
 "tHeadApprovedBusinessTable": [
     {
         "id": 1,
-        "title": "Merchant Name",
-        "width": "16.6%"
+        "title": "First Name",
+        "width": "20%"
+    },
+    {
+        "id": 1,
+        "title": "Last Name",
+        "width": "20%"
     },
     {
         "id": 2,
         "title": "Business Name",
-        "width": "16.6%"
+        "width": "20%"
     },
     {
         "id": 3,
         "title": "Status",
-        "width": "16.6%"
+        "width": "20%"
     },
     {
         "id": 4,
         "title": "Date",
-        "width": "16.6%"
-    },
-    {
-        "id": 5,
-        "title": "Approved",
-        "width": "16.6%"
-    },
-    {
-        "id": 6,
-        "title": "Decline",
-        "width": "16.6%"
+        "width": "20%"
     }
 
 ],
@@ -258,34 +258,30 @@
 "tHeadDeclineBusinessTable": [
     {
         "id": 1,
-        "title": "Merchant Name",
-        "width": "16.6%"
+        "title": "First Name",
+        "width": "20%"
+    },
+    {
+        "id": 1,
+        "title": "Last Name",
+        "width": "20%"
     },
     {
         "id": 2,
         "title": "Business Name",
-        "width": "16.6%"
+        "width": "20%"
     },
     {
         "id": 3,
         "title": "Status",
-        "width": "16.6%"
+        "width": "20%"
     },
     {
         "id": 4,
         "title": "Date",
-        "width": "16.6%"
-    },
-    {
-        "id": 5,
-        "title": "Approved",
-        "width": "16.6%"
-    },
-    {
-        "id": 6,
-        "title": "Decline",
-        "width": "16.6%"
+        "width": "20%"
     }
+    
 
 ],
 "tBodyDeclineBusinessTable":[
@@ -446,6 +442,27 @@
         "type": "wolf",
         "amount": "2000",
         "date": "19th June 2019"
+    }
+], 
+"tHeadCatTable": [
+   
+    {
+        "id": 2,
+        "title": "Title",
+        "width": "33.3%"
+    },
+    {
+        "id": 3,
+        "title": "Date Created",
+        "width": "33.3%"
+    }
+],
+"tBodyCatTable":[
+    {
+
+        "title": "Blueninja.IO",
+        "dateCreated": "14 October 2019 "
+       
     }
 ]
 }

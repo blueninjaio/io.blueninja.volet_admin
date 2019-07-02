@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Login from "./Login/index";
-import { loginNow } from "../actions/actions";
+import { loginNow, logoutNow } from "../actions/actions";
 import App from "./App/index";
 import { connect } from "react-redux";
 import { url } from "../config";
@@ -15,15 +15,11 @@ class index extends Component {
   }
 
   async componentDidMount() {
-    //Check if there is a token
-    //If there is a token then verify that it is valid
-    //If token is valid then login directly
-    //If not valid token then remove token from local storage
     let receivedToken = localStorage.getItem("user_token");
     this.setState({ token: receivedToken });
-
+    console.log(receivedToken);
     try {
-      await localStorage.setItem("user_token", receivedToken);
+      // await localStorage.setItem("user_token", receivedToken);
 
       if (receivedToken !== null) {
         fetch(`${url}/api/admin/me`, {
@@ -37,6 +33,7 @@ class index extends Component {
           .then(res => res.json())
 
           .then(data => {
+            console.log("Fetching");
             if (data.success === true) {
               console.log("Verification data: ", data.user);
               alert(data.message);
@@ -45,6 +42,8 @@ class index extends Component {
           })
 
           .catch(err => console.log(err));
+      } else if (receivedToken === null) {
+        return <Login />;
       }
     } catch (error) {
       console.log(error, "this is an error");
@@ -75,5 +74,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  loginNow
+  { loginNow, logoutNow }
 )(index);

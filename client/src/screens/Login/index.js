@@ -40,6 +40,7 @@ export default class index extends Component {
               <Redirect exact from="/pushnotification" to="/login" />
               <Redirect exact from="/feedback" to="/login" />
               <Redirect exact from="/transaction" to="/login" />
+              <Redirect exact from="/category" to="/login" />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/forgotpassword" component={ForgotPassword} />
