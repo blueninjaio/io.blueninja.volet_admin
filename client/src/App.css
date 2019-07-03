@@ -1075,7 +1075,58 @@ border: 0;
   height: 42px;
 }
 
+.business-search-container{
+  display: flex;
+  margin-top:2rem;
+}
 
+.business-search-one{
+  width: 70%;
+  display: flex;
+  padding-left: 2rem;
+}
+
+.business-select-1{
+  width: 27%;
+  margin-right: 2rem;
+}
+
+.business-select-2{
+  width: 37% !important;
+  float: right;
+  margin-right: 2rem;
+}
+
+.business-search-one input{
+  width: 30%;
+  margin-right: 2rem;
+}
+
+
+.business-search-two{
+  width: 50%;
+}
+
+.search-business-btn{
+  background: white;
+  border: 1px solid #dbdbdb;
+}
+
+.users-search-container{
+  width: 50%;
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+}
+
+.reset-btn-business{
+  position: relative;
+  right: -9rem;
+  top: 1px;
+  width: 23%;
+  padding: 6px 0;
+  border: 1px solid #dbdbdb;
+  border-radius: 6px;
+}
 
 @media screen and (min-width: 1600px) {
   .send-voucher-btn{

@@ -11,6 +11,7 @@ export class index extends Component {
       isChecked: false,
       filterUsers: "all",
       users: [],
+      queryArray: [],
       sendState: false,
       sendData: null
     };
@@ -106,6 +107,21 @@ export class index extends Component {
     }
   };
 
+  updateSearch = async e => {
+    let search = e.target.value;
+
+    let queryArray = this.state.users;
+
+    let newArray = [];
+
+    queryArray.map(x => {
+      if (x.f_name.includes(search) || x.l_name.includes(search)) {
+        newArray.push(x);
+      }
+    });
+
+    this.setState({ queryArray: newArray });
+  };
   /**
   |--------------------------------------------------
   | renders users page
@@ -116,7 +132,7 @@ export class index extends Component {
       <div className="dashboard-container">
         <div className="dashboard-header">
           <h3 className="table-page-title">Users</h3>
-          <div className="filter-users-container">
+          {/* <div className="filter-users-container">
             <div className="user-toggle">
               <span className="user-toggle-text">Users</span>
               <div className="switch-container">
@@ -135,6 +151,12 @@ export class index extends Component {
               <option value="gmail">Gmail</option>
               <option value="fb">Facebook</option>
             </select>
+          </div> */}
+          <div className="users-search-container">
+            <input
+              className="form-control"
+              onChange={e => this.updateSearch(e)}
+            />
           </div>
         </div>
 
@@ -142,11 +164,19 @@ export class index extends Component {
           className="container-fluid mobile-container"
           style={{ paddingTop: "14.5rem" }}
         >
-          <Table
-            head={data.tHeadUsers}
-            body={this.state.users}
-            method={this.passedFromChild}
-          />
+          {this.state.queryArray.length >= 1 ? (
+            <Table
+              head={data.tHeadUsers}
+              body={this.state.queryArray}
+              method={this.passedFromChild}
+            />
+          ) : (
+            <Table
+              head={data.tHeadUsers}
+              body={this.state.users}
+              method={this.passedFromChild}
+            />
+          )}
         </div>
       </div>
     );

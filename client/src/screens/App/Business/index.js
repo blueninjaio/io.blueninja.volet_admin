@@ -13,9 +13,15 @@ export class index extends Component {
       business: [],
       businesData: [],
       selectedData: [],
+      typeOfBusiness: [],
+      tempArr: [],
       rowSelected: false,
       businessSelected: true,
-      billingSelected: false
+      billingSelected: false,
+      searchValue: "",
+      selectOption: "",
+      searchBusiness: "",
+      queryArray: []
     };
   }
 
@@ -26,6 +32,7 @@ export class index extends Component {
   */
   componentDidMount() {
     this.fetchAllBusiness();
+    this.fetchAllBusinessCat();
   }
 
   /**
@@ -41,6 +48,35 @@ export class index extends Component {
     arr.push(this.state.businessData[i]);
     this.setState({ rowSelected: state });
     console.log("Details saved", this.state.selectedData);
+  };
+
+  fetchAllBusinessCat = () => {
+    fetch(`${url}/api/category`, {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          console.log(data.categories);
+          this.setState({ typeOfBusiness: data.categories });
+        }
+      })
+      .catch(err => {
+        console.log("Error for merchants page", err);
+
+        alert(
+          "Error connecting to server",
+
+          [{ text: "OK", onClick: () => null }],
+          { cancelable: false }
+        );
+      });
   };
 
   /**
@@ -64,10 +100,11 @@ export class index extends Component {
           let business = [];
           console.log("Business: ", data.businesses);
           data.businesses.map(x => {
+            console.log("Businessess Type", this.state.searchBusiness);
             let merchant = {
               f_name: x.f_name,
               l_name: x.l_name,
-              business_category: x.business_category,
+              business_category: x.type_of_business,
               company_name: x.company_name
             };
             business.push(merchant);
@@ -86,6 +123,64 @@ export class index extends Component {
           { cancelable: false }
         );
       });
+  };
+
+  merchantSearch = async search => {
+    let queryArray = this.state.business;
+    let newArray = [];
+    queryArray.map(x => {
+      if (
+        x.f_name.includes(search) ||
+        x.l_name.includes(search) ||
+        (x.f_name + " " + x.l_name).includes(search)
+      ) {
+        newArray.push(x);
+      }
+    });
+
+    this.setState({ queryArray: newArray });
+  };
+
+  businessSearch = async search => {
+    let queryArray = this.state.business;
+    let newArray = [];
+    queryArray.map(x => {
+      if (x.company_name.includes(search)) {
+        newArray.push(x);
+      }
+    });
+
+    this.setState({ queryArray: newArray });
+  };
+
+  updateSearch = async (search, option) => {
+    if (option === "merchant") {
+      this.merchantSearch(search, option);
+    } else if (option === "business") {
+      this.businessSearch(search, option);
+    }
+  };
+
+  reset = () => {
+    this.setState({ queryArray: [] });
+  };
+
+  changeBusinessType = async e => {
+    let search = e.target.value;
+
+    let queryArray = this.state.business;
+
+    let newArray = [];
+
+    queryArray.map(x => {
+      if (x.business_category.includes(search)) {
+        newArray.push(x);
+      }
+      console.log(x.business_category.includes(search));
+      console.log(x.business_category);
+    });
+
+    this.setState({ queryArray: newArray });
   };
 
   /**
@@ -113,15 +208,69 @@ export class index extends Component {
         ) : null}
         <div className="dashboard-header">
           <h3 className="table-page-title">Business</h3>
+          <div className="business-search-container">
+            <div className="business-search-one">
+              <input
+                className="form-control"
+                value={this.state.searchValue}
+                onChange={e => this.setState({ searchValue: e.target.value })}
+              />
+              <select
+                value={this.state.selectOption}
+                class="browser-default custom-select business-select-1"
+                onChange={e => this.setState({ selectOption: e.target.value })}
+              >
+                <option>Select</option>
+                <option value="merchant">Merchant Name</option>
+                <option value="business">Business Name</option>
+              </select>
+              <button
+                className="btn search-business-btn"
+                onClick={() =>
+                  this.updateSearch(
+                    this.state.searchValue,
+                    this.state.selectOption
+                  )
+                }
+              >
+                Search
+              </button>
+            </div>
+            <div className="business-search-two">
+              <button
+                className="reset-btn-business"
+                onClick={() => this.reset()}
+              >
+                Reset
+              </button>
+              <select
+                class="browser-default custom-select business-select-2"
+                onChange={e => this.changeBusinessType(e)}
+              >
+                {this.state.typeOfBusiness.map(x => (
+                  <option value={x.title}>{x.title}</option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
 
         <div className="container-fluid" style={{ paddingTop: "13rem" }}>
-          <Table
-            head={data.tHeadMerchantBusiness}
-            body={this.state.business}
-            data={this.state.businessData}
-            method={this.passedFromChild}
-          />
+          {this.state.queryArray.length >= 1 ? (
+            <Table
+              head={data.tHeadMerchantBusiness}
+              body={this.state.queryArray}
+              data={this.state.businessData}
+              method={this.passedFromChild}
+            />
+          ) : (
+            <Table
+              head={data.tHeadMerchantBusiness}
+              body={this.state.business}
+              data={this.state.businessData}
+              method={this.passedFromChild}
+            />
+          )}
         </div>
 
         {this.state.rowSelected === true ? (
