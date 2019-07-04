@@ -17,6 +17,7 @@ import SendNotifcation from "./SendNotification";
 import PushNotification from "./PushNotification";
 import Feedback from "./Feedback";
 import Categories from "./Categories";
+import AgentRequests from "./AgentRequests";
 
 import { logoutNow } from "../../actions/actions";
 import Sidebar from "../../components/Sidebar";
@@ -174,6 +175,7 @@ class index extends Component {
               <Route path="/sendnotification" component={SendNotifcation} />
               <Route path="/feedback" component={Feedback} />
               <Route path="/categories" component={Categories} />
+              <Route path="/agentrequests" component={AgentRequests} />
             </Switch>
           </div>
         </div>

@@ -3,49 +3,49 @@
         {
             "id": 1,
             "title": "First Name",
-            "width": "11.1%"
+            "width": "11%"
         },
         {
             "id": 2,
             "title": "Last Name",
-            "width": "11.1%"
+            "width": "11%"
         },
         {
             "id": 3,
-            "title": "Email",
-            "width": "11.1%"
-        },
-        {
-            "id": 4,
-            "title": "Contact",
-            "width": "11.1%"
-        },
-        {
-            "id": 5,
-            "title": "Facebook ID",
-            "width": "11.1%"
-        },
-        {
-            "id": 6,
-            "title": "Google ID",
-            "width": "11.1%"
-        },
-        {
-            "id": 7,
-            "title": "Credits",
-            "width": "11.1%"
+            "title": "Type",
+            "width": "11%"
             
         },
         {
+            "id": 4,
+            "title": "Email",
+            "width": "11%"
+        },
+        {
+            "id": 5,
+            "title": "Contact",
+            "width": "11%"
+        },
+        {
+            "id": 6,
+            "title": "Facebook ID",
+            "width": "11%"
+        },
+        {
+            "id": 7,
+            "title": "Google ID",
+            "width": "11%"
+        },
+        {
             "id": 8,
-            "title": "Registered Date",
-            "width": "11.1%"
+            "title": "Credits",
+            "width": "11%"
             
         },
         {
             "id": 9,
-            "title": "Type",
-            "width": "11.1%"
+            "title": "Registered Date",
+            "width": "11%"
             
         }
     ],
@@ -497,6 +497,50 @@
         "id": 5,
         "title": "Expiry",
         "width": "20%"
+    }
+],
+"tHeadARequestPendingTable": [
+    {
+        "id": 1,
+        "title": "User",
+        "width": "20%"
+    },
+    {
+        "id": 2,
+        "title": "Date Created",
+        "width": "20%"
+    },
+    {
+        "id": 3,
+        "title": "Status",
+        "width": "20%"
+    },
+    {
+        "id": 4,
+        "title": "Approved",
+        "width": "20%"
+    },
+    {
+        "id": 5,
+        "title": "Declined",
+        "width": "20%"
+    }
+],
+"tHeadARequestTable": [
+    {
+        "id": 1,
+        "title": "User",
+        "width": "33.3%"
+    },
+    {
+        "id": 2,
+        "title": "Date Created",
+        "width": "33.3%"
+    },
+    {
+        "id": 3,
+        "title": "Status",
+        "width": "33.3%"
     }
 ]
 }

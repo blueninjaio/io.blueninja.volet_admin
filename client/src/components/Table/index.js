@@ -15,69 +15,126 @@ export class index extends Component {
 
   /**
   |--------------------------------------------------
-  | approve business requests 
+  | approve business requests and agent requests
   |--------------------------------------------------
   */
-  approveBusiness = i => {
-    let ids = this.props.id;
-    let chosen = ids[i];
+  approve = i => {
+    if (this.props.model === "business") {
+      let ids = this.props.id;
+      let chosen = ids[i];
 
-    console.log("Approved Chosen:", chosen);
-    fetch(`${url}/api/business/approve`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        _id: chosen
+      console.log("Approved Chosen:", chosen);
+      fetch(`${url}/api/business/approve`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          _id: chosen
+        })
       })
-    })
-      .then(res => res.json())
+        .then(res => res.json())
 
-      .then(data => {
-        if (data.success === true) {
-          window.location.reload();
-        } else {
-          alert(data.message);
-        }
+        .then(data => {
+          if (data.success === true) {
+            window.location.reload();
+          } else {
+            alert(data.message);
+          }
+        })
+
+        .catch(err => console.log(err));
+    } else if (this.props.model === "agent") {
+      let ids = this.props.id;
+      let chosen = ids[i];
+
+      console.log("Approved Chosen:", chosen);
+      fetch(`${url}/api/agents/approve`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          user_id: chosen
+        })
       })
+        .then(res => res.json())
 
-      .catch(err => console.log(err));
+        .then(data => {
+          console.log(data);
+          if (data.success === true) {
+            window.location.reload();
+          } else {
+            alert(data.message);
+          }
+        })
+
+        .catch(err => console.log(err));
+    }
   };
 
   /**
   |--------------------------------------------------
-  | decline business requests 
+  | decline business requests and agent requests
   |--------------------------------------------------
   */
 
-  declineBusiness = i => {
-    let ids = this.props.id;
-    let chosen = ids[i];
+  decline = i => {
+    if (this.props.model === "business") {
+      let ids = this.props.id;
+      let chosen = ids[i];
 
-    console.log("Declined Chosen:", chosen);
-    fetch(`${url}/api/business/decline`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        _id: chosen
+      console.log("Approved Chosen:", chosen);
+      fetch(`${url}/api/business/decline`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          _id: chosen
+        })
       })
-    })
-      .then(res => res.json())
+        .then(res => res.json())
 
-      .then(data => {
-        if (data.success === true) {
-          window.location.reload();
-        } else {
-          alert(data.message);
-        }
+        .then(data => {
+          if (data.success === true) {
+            window.location.reload();
+          } else {
+            alert(data.message);
+          }
+        })
+
+        .catch(err => console.log(err));
+    } else if (this.props.model === "agent") {
+      let ids = this.props.id;
+      let chosen = ids[i];
+
+      console.log("Approved Chosen:", chosen);
+      fetch(`${url}/api/agents/decline`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          _id: chosen
+        })
       })
+        .then(res => res.json())
 
-      .catch(err => console.log(err));
+        .then(data => {
+          if (data.success === true) {
+            window.location.reload();
+          } else {
+            alert(data.message);
+          }
+        })
+
+        .catch(err => console.log(err));
+    }
   };
 
   render() {
@@ -137,14 +194,14 @@ export class index extends Component {
                         {x.name === "Approve" ? (
                           <button
                             className="businessRequestApprove table-data-mobile"
-                            onClick={() => this.approveBusiness(i)}
+                            onClick={() => this.approve(i)}
                           >
                             {x.name}
                           </button>
                         ) : (
                           <button
                             className="businessRequestDecline table-data-mobile"
-                            onClick={() => this.declineBusiness(i)}
+                            onClick={() => this.decline(i)}
                           >
                             {x.name}
                           </button>

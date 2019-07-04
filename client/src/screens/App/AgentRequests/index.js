@@ -35,7 +35,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   fetchBusiness = async () => {
-    fetch(`${url}/api/business`, {
+    fetch(`${url}/api/agents`, {
       method: "GET",
       mode: "cors",
       headers: {
@@ -46,8 +46,9 @@ export default class index extends Component {
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         if (data.success) {
-          let business = data.businesses;
+          let business = data.agent;
           let approved = [];
           let decline = [];
           let pending = [];
@@ -66,13 +67,11 @@ export default class index extends Component {
 
           pending.map(x => {
             let pend = {
-              f_name: x.f_name,
-              l_name: x.l_name,
-              company_name: x.company_name,
-              isPending: "is Pending",
-              dateCreated: x.dateCreated
+              user_id: x.user_id,
+              dateCreated: x.dateCreated,
+              isPending: "is Pending"
             };
-            this.state.ids.push(x._id);
+            this.state.ids.push(x.user_id);
 
             pendingReceived.push(pend);
           });
@@ -82,10 +81,8 @@ export default class index extends Component {
           let approveReceived = [];
           approved.map(x => {
             let approve = {
-              f_name: x.f_name,
-              l_name: x.l_name,
-              company_name: x.company_name,
-              isApproved: "is Approved",
+              user_id: x.user_id,
+              isPending: "is Approved",
               dateCreated: x.dateCreated
             };
             approveReceived.push(approve);
@@ -96,10 +93,8 @@ export default class index extends Component {
           let declineReceived = [];
           decline.map(x => {
             let decline = {
-              f_name: x.f_name,
-              l_name: x.l_name,
-              company_name: x.company_name,
-              isDeclined: "is Declined",
+              user_id: x.user_id,
+              isPending: "is Declined",
               dateCreated: x.dateCreated
             };
             declineReceived.push(decline);
@@ -140,7 +135,7 @@ export default class index extends Component {
           className="page-title business-request-title"
           style={{ marginLeft: "1rem" }}
         >
-          Business Requests
+          Agent Requests
         </h3>
         <div className="business-request-tabs-container">
           <button
@@ -183,24 +178,24 @@ export default class index extends Component {
         >
           {this.state.pendingTab === true ? (
             <Table
-              head={data.tHeadPendingBusinessTable}
+              head={data.tHeadARequestPendingTable}
               body={this.state.pending}
               button={data.tBodyButton}
               method={this.passedFromChild}
               id={this.state.ids}
-              model={"business"}
+              model={"agent"}
             />
           ) : null}
           {this.state.approvedTab === true ? (
             <Table
-              head={data.tHeadApprovedBusinessTable}
+              head={data.tHeadARequestTable}
               body={this.state.approved}
               method={this.passedFromChild}
             />
           ) : null}
           {this.state.declineTab === true ? (
             <Table
-              head={data.tHeadDeclineBusinessTable}
+              head={data.tHeadARequestTable}
               body={this.state.decline}
               method={this.passedFromChild}
             />

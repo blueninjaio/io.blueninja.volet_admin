@@ -64,6 +64,7 @@ export class index extends Component {
             let user = {
               f_name: x.f_name,
               l_name: x.l_name,
+              user_type: x.user_type,
               email: x.email,
               contact: x.contact,
               facebook_id: x.facebook_id,
@@ -131,26 +132,7 @@ export class index extends Component {
       <div className="dashboard-container">
         <div className="dashboard-header">
           <h3 className="table-page-title">Users</h3>
-          {/* <div className="filter-users-container">
-            <div className="user-toggle">
-              <span className="user-toggle-text">Users</span>
-              <div className="switch-container">
-                <label>
-                  <input ref="switch" className="switch" type="checkbox" />
-                  <div>
-                    <div />
-                  </div>
-                </label>
-              </div>
-              <span>Agents</span>
-            </div>
-            <select className="form-control filter-pages">
-              <option value="all">All</option>
-              <option value="email">Email</option>
-              <option value="gmail">Gmail</option>
-              <option value="fb">Facebook</option>
-            </select>
-          </div> */}
+
           <div className="users-search-container">
             <input
               className="form-control"
