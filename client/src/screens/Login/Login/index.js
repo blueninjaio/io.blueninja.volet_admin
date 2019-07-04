@@ -18,12 +18,10 @@ class index extends Component {
 
   inputEmail(e) {
     this.setState({ email: e.target.value });
-    console.log("Email:", this.state.email);
   }
 
   inputPassword(e) {
     this.setState({ password: e.target.value });
-    console.log("Password:", this.state.password);
   }
 
   _storeData = async receivedToken => {
@@ -44,7 +42,6 @@ class index extends Component {
 
           .then(data => {
             if (data.success === true) {
-              console.log("Verification data: ", data.user);
               alert(data.message);
               this.props.loginNow();
             }
@@ -63,12 +60,6 @@ class index extends Component {
     |--------------------------------------------------
     */
   login = async () => {
-    //this.props.getToken(this.state.email, this.state.password);
-
-    //Fetch to login
-    //Return of fetch if successful will give token
-    //save token then this.props.logMeIn()
-    // return data.message
     if (this.state.token !== null) {
       this._storeData(this.state.token);
     }

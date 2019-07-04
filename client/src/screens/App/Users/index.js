@@ -74,7 +74,6 @@ export class index extends Component {
             users.push(user);
           });
 
-          console.log("Final Users:", users);
           this.setState({ users });
         }
       })
@@ -157,6 +156,13 @@ export class index extends Component {
               className="form-control"
               onChange={e => this.updateSearch(e)}
             />
+            <div className="users-dropdown-container">
+              <select className="form-control">
+                <option>All</option>
+                <option>Users</option>
+                <option>User Agent</option>
+              </select>
+            </div>
           </div>
         </div>
 

@@ -1,6 +1,120 @@
 import React, { Component } from "react";
+import Table from "../../../components/Table";
+import data from "../../../data/data.json";
+import { url } from "../../../config";
 
 export default class index extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: "",
+      desc: "",
+      amount: "",
+      quantity: "",
+      expiry: "",
+      addVoucher: false,
+      vouchers: []
+    };
+  }
+
+  /**
+  |--------------------------------------------------
+  | on page load run the getVouchers function
+  |--------------------------------------------------
+  */
+  componentDidMount() {
+    this.getVouchers();
+  }
+
+  /**
+  |--------------------------------------------------
+  | gets the state of the table row that has been clicked
+  |--------------------------------------------------
+  */
+  passedFromChild = (i, state) => {
+    console.log(i);
+  };
+
+  /**
+  |--------------------------------------------------
+  | add a voucher
+  |--------------------------------------------------
+  */
+  addVoucher = () => {
+    this.setState({ addVoucher: false });
+
+    fetch(`${url}/api/vouchers`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        description: this.state.desc,
+        amount: parseInt(this.state.amount),
+        quantity: parseInt(this.state.quantity),
+        expiry: this.state.expiry
+      })
+    })
+      .then(res => res.json())
+
+      .then(data => {
+        if (data.success === true) {
+          alert(data.message);
+          window.location.reload();
+        }
+      })
+
+      .catch(err => console.log(err));
+  };
+
+  /**
+  |--------------------------------------------------
+  | get all voucher info and display it
+  |--------------------------------------------------
+  */
+  getVouchers = () => {
+    fetch(`${url}/api/vouchers`, {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          let vouchers = [];
+          data.vouchers.map(x => {
+            let user = {
+              name: x.name,
+              description: x.description,
+              amount: x.amount,
+              quantity: x.quantity,
+              expiry: x.expiry
+            };
+            vouchers.push(user);
+          });
+
+          this.setState({ vouchers });
+        }
+      })
+      .catch(err => {
+        console.log("Error for users page", err);
+
+        alert(
+          "Error connecting to server",
+
+          [{ text: "OK", onClick: () => null }],
+          { cancelable: false }
+        );
+      });
+  };
+
   /**
   |--------------------------------------------------
   | navigates to view voucher page
@@ -9,131 +123,79 @@ export default class index extends Component {
   viewVoucher = () => {
     this.props.history.push("/viewvoucher");
   };
+
   render() {
     return (
-      <div className="main-dashboard-container">
-        <h3 className="page-title">Vouchers</h3>
+      <div className="dashboard-container">
+        {this.state.addVoucher === true ? (
+          <div className="cat-modal-opacity" />
+        ) : null}
+        <h3 className="page-title voucher-main-title">Vouchers</h3>
         <button
           type="button"
           className="btn btn-primary add-voucher-btn"
-          data-toggle="modal"
-          data-target="#exampleModal"
+          onClick={() => this.setState({ addVoucher: true })}
         >
           <img
             src="https://png.pngtree.com/svg/20161118/6fc980719c.svg"
             alt="add-modal-icon"
           />
         </button>
-        {/* Modal */}
-        <div
-          className="modal fade"
-          id="exampleModal"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
-                  Modal title
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">...</div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Save changes
-                </button>
-              </div>
+
+        {this.state.addVoucher === true ? (
+          <div className="voucher-popup-container">
+            <div>
+              <h3 className="cat-pop-title">Category Title</h3>
             </div>
-          </div>
-        </div>
-        <div className="container-fluid">
-          <div className="voucher-container">
-            <div className="voucher-img">
-              <img
-                alt="voucher-img"
-                src="https://i.kinja-img.com/gawker-media/image/upload/s--vHt6tbFa--/c_scale,f_auto,fl_progressive,q_80,w_800/xjmx1csashjww8j8jwyh.jpg"
+            <div>
+              <input
+                className="form-control voucher-pop-input"
+                value={this.state.name}
+                placeholder="Name"
+                onChange={e => this.setState({ name: e.target.value })}
               />
-            </div>
-            <div className="voucher-desc">
-              <span>Title</span>
-              <span>Description</span>
-              <span>Validity</span>
-              <span>Quantity</span>
-            </div>
-            <div className="voucher-btn-container">
-              <button
-                className="send-voucher-btn"
-                onClick={() => this.viewVoucher()}
-              >
-                View
-              </button>
-              <button className="send-voucher-btn">Send</button>
-            </div>
-          </div>
-          <div className="voucher-container">
-            <div className="voucher-img">
-              <img
-                alt="voucher-img-2"
-                src="https://www.rd.com/wp-content/uploads/2018/04/9-Foods-You-Should-Never-Eat-Before-Bed-760x506.jpg"
+              <input
+                className="form-control voucher-pop-input"
+                value={this.state.desc}
+                placeholder="Description"
+                onChange={e => this.setState({ desc: e.target.value })}
               />
-            </div>
-            <div className="voucher-desc">
-              <span>Title</span>
-              <span>Description</span>
-              <span>Validity</span>
-              <span>Quantity</span>
-            </div>
-            <div className="voucher-btn-container">
-              <button
-                className="send-voucher-btn"
-                onClick={() => this.viewVoucher()}
-              >
-                View
-              </button>
-              <button className="send-voucher-btn">Send</button>
-            </div>
-          </div>
-          <div className="voucher-container">
-            <div className="voucher-img">
-              <img
-                alt="voucher-img-3"
-                src="https://amp.insider.com/images/5ad792ffbd967146008b45d9-750-562.jpg"
+              <input
+                className="form-control voucher-pop-input"
+                value={this.state.amount}
+                placeholder="Amount"
+                type="number"
+                onChange={e => this.setState({ amount: e.target.value })}
               />
-            </div>
-            <div className="voucher-desc">
-              <span>Title</span>
-              <span>Description</span>
-              <span>Validity</span>
-              <span>Quantity</span>
-            </div>
-            <div className="voucher-btn-container">
+              <input
+                className="form-control voucher-pop-input"
+                value={this.state.quantity}
+                placeholder="Quantity"
+                type="number"
+                onChange={e => this.setState({ quantity: e.target.value })}
+              />
+              <input
+                className="form-control voucher-pop-input"
+                value={this.state.expiry}
+                type="date"
+                placeholder="Expiry"
+                onChange={e => this.setState({ expiry: e.target.value })}
+              />
               <button
-                className="send-voucher-btn"
-                onClick={() => this.viewVoucher()}
+                className="btn cat-save-btn"
+                onClick={() => this.addVoucher()}
               >
-                View
+                Save
               </button>
-              <button className="send-voucher-btn">Send</button>
             </div>
           </div>
+        ) : null}
+        <div className="container-fluid" style={{ paddingTop: "7.5rem" }}>
+          <Table
+            head={data.tHeadVoucherTable}
+            body={this.state.vouchers}
+            method={this.passedFromChild}
+          />
         </div>
       </div>
     );

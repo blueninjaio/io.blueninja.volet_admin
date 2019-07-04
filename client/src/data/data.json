@@ -3,32 +3,32 @@
         {
             "id": 1,
             "title": "First Name",
-            "width": "12.3%"
+            "width": "11.1%"
         },
         {
             "id": 2,
             "title": "Last Name",
-            "width": "12.1%"
+            "width": "11.1%"
         },
         {
             "id": 3,
             "title": "Email",
-            "width": "13.5%"
+            "width": "11.1%"
         },
         {
             "id": 4,
             "title": "Contact",
-            "width": "13.2%"
+            "width": "11.1%"
         },
         {
             "id": 5,
             "title": "Facebook ID",
-            "width": "12.4%"
+            "width": "11.1%"
         },
         {
             "id": 6,
             "title": "Google ID",
-            "width": "12.7%"
+            "width": "11.1%"
         },
         {
             "id": 7,
@@ -39,7 +39,13 @@
         {
             "id": 8,
             "title": "Registered Date",
-            "width": "12.5%"
+            "width": "11.1%"
+            
+        },
+        {
+            "id": 9,
+            "title": "Type",
+            "width": "11.1%"
             
         }
     ],
@@ -117,12 +123,12 @@
         
             {
                 "id": 1,
-                "title": "From",
+                "title": "Title",
                 "width": "20%"
             },
             {
                 "id": 2,
-                "title": "Title",
+                "title": "Description",
                 "width": "60%"
             },
             {
@@ -156,32 +162,32 @@
         "width": "14.3%"
     },
     {
-        "id": 1,
+        "id": 2,
         "title": "Last Name",
         "width": "14.3%"
     },
     {
-        "id": 2,
+        "id": 3,
         "title": "Business Name",
         "width": "14.3%"
     },
     {
-        "id": 3,
+        "id": 4,
         "title": "Status",
         "width": "14.3%"
     },
     {
-        "id": 4,
+        "id": 5,
         "title": "Date",
         "width": "14.3%"
     },
     {
-        "id": 5,
+        "id": 6,
         "title": "Approved",
         "width": "14.3%"
     },
     {
-        "id": 6,
+        "id": 7,
         "title": "Decline",
         "width": "14.3%"
     }
@@ -219,22 +225,22 @@
         "width": "20%"
     },
     {
-        "id": 1,
+        "id": 2,
         "title": "Last Name",
         "width": "20%"
     },
     {
-        "id": 2,
+        "id": 3,
         "title": "Business Name",
         "width": "20%"
     },
     {
-        "id": 3,
+        "id": 4,
         "title": "Status",
         "width": "20%"
     },
     {
-        "id": 4,
+        "id": 5,
         "title": "Date",
         "width": "20%"
     }
@@ -262,22 +268,22 @@
         "width": "20%"
     },
     {
-        "id": 1,
+        "id": 2,
         "title": "Last Name",
         "width": "20%"
     },
     {
-        "id": 2,
+        "id": 3,
         "title": "Business Name",
         "width": "20%"
     },
     {
-        "id": 3,
+        "id": 4,
         "title": "Status",
         "width": "20%"
     },
     {
-        "id": 4,
+        "id": 5,
         "title": "Date",
         "width": "20%"
     }
@@ -302,12 +308,12 @@
     {
         "id": 2,
         "title": "Rating",
-        "width": "25%"
+        "width": "10%"
     },
     {
         "id": 3,
         "title": "Description",
-        "width": "25%"
+        "width": "40%"
     },
     {
         "id": 4,
@@ -463,6 +469,34 @@
         "title": "Blueninja.IO",
         "dateCreated": "14 October 2019 "
        
+    }
+],
+"tHeadVoucherTable": [
+   
+    {
+        "id": 1,
+        "title": "Name",
+        "width": "20%"
+    },
+    {
+        "id": 2,
+        "title": "Description",
+        "width": "20%"
+    },
+    {
+        "id": 3,
+        "title": "Amount",
+        "width": "20%"
+    },
+    {
+        "id": 4,
+        "title": "Quantity",
+        "width": "20%"
+    },
+    {
+        "id": 5,
+        "title": "Expiry",
+        "width": "20%"
     }
 ]
 }

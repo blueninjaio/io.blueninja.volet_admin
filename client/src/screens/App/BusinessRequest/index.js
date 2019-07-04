@@ -20,10 +20,20 @@ export default class index extends Component {
     };
   }
 
+  /**
+  |--------------------------------------------------
+  | on load get all business request data
+  |--------------------------------------------------
+  */
   componentDidMount() {
     this.fetchBusiness();
   }
 
+  /**
+  |--------------------------------------------------
+  | fetches all business request data from api
+  |--------------------------------------------------
+  */
   fetchBusiness = async () => {
     fetch(`${url}/api/business`, {
       method: "GET",
@@ -36,7 +46,6 @@ export default class index extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         if (data.success) {
           let business = data.businesses;
           let approved = [];
@@ -53,14 +62,8 @@ export default class index extends Component {
               : console.log("No Status")
           );
 
-          console.log("Decline array", decline);
-
-          // this.setState({ approved });
-          // this.setState({ decline });
-          // this.setState({ pending });
-
           let pendingReceived = [];
-          // let ids = [];
+
           pending.map(x => {
             let pend = {
               f_name: x.f_name,
@@ -74,12 +77,7 @@ export default class index extends Component {
             pendingReceived.push(pend);
           });
 
-          // this.setState({ ids });
-
-          console.log("IDS", this.state.ids);
-
           this.setState({ pending: pendingReceived });
-          console.log("Pending array", pending);
 
           let approveReceived = [];
           approved.map(x => {
@@ -94,7 +92,6 @@ export default class index extends Component {
           });
 
           this.setState({ approved: approveReceived });
-          console.log("Approved array", approved);
 
           let declineReceived = [];
           decline.map(x => {
@@ -109,10 +106,6 @@ export default class index extends Component {
           });
 
           this.setState({ decline: declineReceived });
-          console.log("Decline array", decline);
-
-          // console.log("Final Merchants: ", business);
-          // this.setState({ business, businessData: data.businesses });
         }
       })
       .catch(err => {
@@ -137,8 +130,6 @@ export default class index extends Component {
   */
   passedFromChild = (i, state) => {
     console.log(state);
-
-    // this.setState({ approveDecline: state });
   };
 
   render() {

@@ -68,7 +68,7 @@ export class index extends Component {
             };
             merchants.push(merchant);
           });
-          console.log("Final Merchants: ", merchants);
+
           this.setState({ merchants });
         }
       })

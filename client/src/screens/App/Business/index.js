@@ -18,6 +18,9 @@ export class index extends Component {
       rowSelected: false,
       businessSelected: true,
       billingSelected: false,
+      storeSelected: false,
+      featuredItems: false,
+      openingTimes: false,
       searchValue: "",
       selectOption: "",
       searchBusiness: "",
@@ -43,13 +46,16 @@ export class index extends Component {
   */
   passedFromChild = (i, state) => {
     let arr = this.state.selectedData;
-    console.log("Passed:", this.state.businessData[i]);
 
     arr.push(this.state.businessData[i]);
     this.setState({ rowSelected: state });
-    console.log("Details saved", this.state.selectedData);
   };
 
+  /**
+  |--------------------------------------------------
+  | fetches all busines categories
+  |--------------------------------------------------
+  */
   fetchAllBusinessCat = () => {
     fetch(`${url}/api/category`, {
       method: "GET",
@@ -63,7 +69,6 @@ export class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          console.log(data.categories);
           this.setState({ typeOfBusiness: data.categories });
         }
       })
@@ -98,9 +103,8 @@ export class index extends Component {
       .then(data => {
         if (data.success) {
           let business = [];
-          console.log("Business: ", data.businesses);
+
           data.businesses.map(x => {
-            console.log("Businessess Type", this.state.searchBusiness);
             let merchant = {
               f_name: x.f_name,
               l_name: x.l_name,
@@ -109,7 +113,7 @@ export class index extends Component {
             };
             business.push(merchant);
           });
-          console.log("Final Merchants: ", business);
+
           this.setState({ business, businessData: data.businesses });
         }
       })
@@ -125,6 +129,11 @@ export class index extends Component {
       });
   };
 
+  /**
+  |--------------------------------------------------
+  | search function for merchant name
+  |--------------------------------------------------
+  */
   merchantSearch = async search => {
     let queryArray = this.state.business;
     let newArray = [];
@@ -141,6 +150,11 @@ export class index extends Component {
     this.setState({ queryArray: newArray });
   };
 
+  /**
+  |--------------------------------------------------
+  | search function for business name
+  |--------------------------------------------------
+  */
   businessSearch = async search => {
     let queryArray = this.state.business;
     let newArray = [];
@@ -153,6 +167,11 @@ export class index extends Component {
     this.setState({ queryArray: newArray });
   };
 
+  /**
+  |--------------------------------------------------
+  | search function to filter whether it is merchant or business
+  |--------------------------------------------------
+  */
   updateSearch = async (search, option) => {
     if (option === "merchant") {
       this.merchantSearch(search, option);
@@ -161,10 +180,20 @@ export class index extends Component {
     }
   };
 
+  /**
+  |--------------------------------------------------
+  | resets the whole array and searched results
+  |--------------------------------------------------
+  */
   reset = () => {
     this.setState({ queryArray: [] });
   };
 
+  /**
+  |--------------------------------------------------
+  | change business category and display on table
+  |--------------------------------------------------
+  */
   changeBusinessType = async e => {
     let search = e.target.value;
 
@@ -217,7 +246,7 @@ export class index extends Component {
               />
               <select
                 value={this.state.selectOption}
-                class="browser-default custom-select business-select-1"
+                className="browser-default custom-select business-select-1"
                 onChange={e => this.setState({ selectOption: e.target.value })}
               >
                 <option>Select</option>
@@ -244,11 +273,13 @@ export class index extends Component {
                 Reset
               </button>
               <select
-                class="browser-default custom-select business-select-2"
+                className="browser-default custom-select business-select-2"
                 onChange={e => this.changeBusinessType(e)}
               >
-                {this.state.typeOfBusiness.map(x => (
-                  <option value={x.title}>{x.title}</option>
+                {this.state.typeOfBusiness.map((x, i) => (
+                  <option value={x.title} key={i}>
+                    {x.title}
+                  </option>
                 ))}
               </select>
             </div>
@@ -318,7 +349,10 @@ export class index extends Component {
                       onClick={() =>
                         this.setState({
                           businessSelected: true,
-                          billingSelected: false
+                          billingSelected: false,
+                          openingTimes: false,
+                          storeSelected: false,
+                          featuredItems: false
                         })
                       }
                     >
@@ -330,7 +364,10 @@ export class index extends Component {
                       onClick={() =>
                         this.setState({
                           businessSelected: true,
-                          billingSelected: false
+                          billingSelected: false,
+                          openingTimes: false,
+                          storeSelected: false,
+                          featuredItems: false
                         })
                       }
                     >
@@ -343,7 +380,10 @@ export class index extends Component {
                       onClick={() =>
                         this.setState({
                           businessSelected: false,
-                          billingSelected: true
+                          billingSelected: true,
+                          openingTimes: false,
+                          storeSelected: false,
+                          featuredItems: false
                         })
                       }
                     >
@@ -355,11 +395,104 @@ export class index extends Component {
                       onClick={() =>
                         this.setState({
                           businessSelected: false,
-                          billingSelected: true
+                          billingSelected: true,
+                          openingTimes: false,
+                          storeSelected: false,
+                          featuredItems: false
                         })
                       }
                     >
                       Billing
+                    </button>
+                  )}
+                  {this.state.storeSelected === false ? (
+                    <button
+                      onClick={() =>
+                        this.setState({
+                          businessSelected: false,
+                          billingSelected: false,
+                          openingTimes: false,
+                          storeSelected: true,
+                          featuredItems: false
+                        })
+                      }
+                    >
+                      Store
+                    </button>
+                  ) : (
+                    <button
+                      className="view-business-tab-active"
+                      onClick={() =>
+                        this.setState({
+                          businessSelected: false,
+                          billingSelected: false,
+                          openingTimes: false,
+                          storeSelected: true,
+                          featuredItems: false
+                        })
+                      }
+                    >
+                      Store
+                    </button>
+                  )}
+                  {this.state.featuredItems === false ? (
+                    <button
+                      onClick={() =>
+                        this.setState({
+                          businessSelected: false,
+                          billingSelected: false,
+                          openingTimes: false,
+                          storeSelected: false,
+                          featuredItems: true
+                        })
+                      }
+                    >
+                      Featured Items
+                    </button>
+                  ) : (
+                    <button
+                      className="view-business-tab-active"
+                      onClick={() =>
+                        this.setState({
+                          businessSelected: false,
+                          billingSelected: false,
+                          openingTimes: false,
+                          storeSelected: false,
+                          featuredItems: true
+                        })
+                      }
+                    >
+                      Featured Items
+                    </button>
+                  )}
+                  {this.state.openingTimes === false ? (
+                    <button
+                      onClick={() =>
+                        this.setState({
+                          businessSelected: false,
+                          billingSelected: false,
+                          openingTimes: true,
+                          storeSelected: false,
+                          featuredItems: false
+                        })
+                      }
+                    >
+                      Opening Times
+                    </button>
+                  ) : (
+                    <button
+                      className="view-business-tab-active"
+                      onClick={() =>
+                        this.setState({
+                          businessSelected: false,
+                          billingSelected: false,
+                          openingTimes: true,
+                          storeSelected: false,
+                          featuredItems: false
+                        })
+                      }
+                    >
+                      Opening Times
                     </button>
                   )}
                 </div>
@@ -437,6 +570,100 @@ export class index extends Component {
                     <div className="field-container">
                       <span>Country: </span>
                       <span className="email-span">{x.country} </span>
+                    </div>
+                  </div>
+                ) : null}
+                {this.state.storeSelected === true ? (
+                  <div className="main-field-container">
+                    <div className="field-container">
+                      <span>Logo: </span>
+                      <span className="email-span">Logo</span>
+                    </div>
+                    <div className="field-container">
+                      <span>Name: </span>
+                      <span className="email-span">James Padding </span>
+                    </div>
+                    <div className="field-container">
+                      <span>No: </span>
+                      <span className="email-span">123456 </span>
+                    </div>
+                    <div className="field-container">
+                      <span>Description: </span>
+                      <span className="email-span">Description</span>
+                    </div>
+                  </div>
+                ) : null}
+
+                {this.state.featuredItems === true ? (
+                  <div className="main-field-container">
+                    <div className="featured-item-field-container">
+                      <div className="featured-item-img-container">
+                        <img src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                      </div>
+                      <div className="featured-item-desc-container">
+                        <span>Krusty Krab</span>
+                        <p>Description</p>
+                      </div>
+                      <div className="featured-item-price-container">
+                        <span>$10</span>
+                      </div>
+                    </div>
+                    <div className="featured-item-field-container">
+                      <div className="featured-item-img-container">
+                        <img src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                      </div>
+                      <div className="featured-item-desc-container">
+                        <span>Krusty Krab</span>
+                        <p>Description</p>
+                      </div>
+                      <div className="featured-item-price-container">
+                        <span>$10</span>
+                      </div>
+                    </div>
+                    <div className="featured-item-field-container">
+                      <div className="featured-item-img-container">
+                        <img src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                      </div>
+                      <div className="featured-item-desc-container">
+                        <span>Krusty Krab</span>
+                        <p>Description</p>
+                      </div>
+                      <div className="featured-item-price-container">
+                        <span>$10</span>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+
+                {this.state.openingTimes === true ? (
+                  <div className="main-field-container">
+                    <div className="field-container">
+                      <span>Sun: </span>
+                      <span className="email-span">Logo</span>
+                    </div>
+                    <div className="field-container">
+                      <span>Sat: </span>
+                      <span className="email-span">James Padding </span>
+                    </div>
+                    <div className="field-container">
+                      <span>Fri: </span>
+                      <span className="email-span">123456 </span>
+                    </div>
+                    <div className="field-container">
+                      <span>Thurs: </span>
+                      <span className="email-span">Description</span>
+                    </div>
+                    <div className="field-container">
+                      <span>Wed: </span>
+                      <span className="email-span">James Padding </span>
+                    </div>
+                    <div className="field-container">
+                      <span>Tues: </span>
+                      <span className="email-span">123456 </span>
+                    </div>
+                    <div className="field-container">
+                      <span>Mon: </span>
+                      <span className="email-span">Description</span>
                     </div>
                   </div>
                 ) : null}

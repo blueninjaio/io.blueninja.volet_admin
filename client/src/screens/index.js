@@ -17,10 +17,8 @@ class index extends Component {
   async componentDidMount() {
     let receivedToken = localStorage.getItem("user_token");
     this.setState({ token: receivedToken });
-    console.log(receivedToken);
-    try {
-      // await localStorage.setItem("user_token", receivedToken);
 
+    try {
       if (receivedToken !== null) {
         fetch(`${url}/api/admin/me`, {
           method: "GET",
@@ -33,9 +31,7 @@ class index extends Component {
           .then(res => res.json())
 
           .then(data => {
-            console.log("Fetching");
             if (data.success === true) {
-              console.log("Verification data: ", data.user);
               alert(data.message);
               this.props.loginNow();
             }

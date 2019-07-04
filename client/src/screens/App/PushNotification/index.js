@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
-// import { url } from "../../../config";
+import { url } from "../../../config";
 
 export class index extends Component {
   constructor(props) {
@@ -10,11 +10,72 @@ export class index extends Component {
     this.state = {
       isChecked: false,
       filterUsers: "all",
-      merchants: [],
+      notification: [],
       sendState: false,
       sendData: null
     };
   }
+
+  /**
+  |--------------------------------------------------
+  | on page loads runs the getPush() function
+  |--------------------------------------------------
+  */
+  componentDidMount() {
+    this.getPush();
+  }
+
+  /**
+  |--------------------------------------------------
+  | gets the row clicked and the state of the table row
+  |--------------------------------------------------
+  */
+  passedFromChild = (i, state) => {
+    console.log(i);
+  };
+
+  /**
+  |--------------------------------------------------
+  | gets all push notification from api
+  |--------------------------------------------------
+  */
+  getPush = () => {
+    fetch(`${url}/api/push`, {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          let notification = [];
+          data.push.map(x => {
+            let user = {
+              title: x.title,
+              description: x.description,
+              createdAt: x.createdAt
+            };
+            notification.push(user);
+          });
+
+          this.setState({ notification });
+        }
+      })
+      .catch(err => {
+        console.log("Error for users page", err);
+
+        alert(
+          "Error connecting to server",
+
+          [{ text: "OK", onClick: () => null }],
+          { cancelable: false }
+        );
+      });
+  };
 
   render() {
     return (
@@ -34,7 +95,7 @@ export class index extends Component {
         <div className="container-fluid" style={{ paddingTop: "13rem" }}>
           <Table
             head={data.tHeadPushTable}
-            body={data.tBodyPushTable}
+            body={this.state.notification}
             method={this.passedFromChild}
           />
           <button

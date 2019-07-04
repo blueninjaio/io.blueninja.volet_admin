@@ -14,10 +14,20 @@ export default class index extends Component {
     };
   }
 
+  /**
+  |--------------------------------------------------
+  | on load page fetches all categories information
+  |--------------------------------------------------
+  */
   componentDidMount() {
     this.fetchCategories();
   }
 
+  /**
+  |--------------------------------------------------
+  | fetches all category data from api
+  |--------------------------------------------------
+  */
   fetchCategories = () => {
     fetch(`${url}/api/category`, {
       method: "GET",
@@ -40,7 +50,6 @@ export default class index extends Component {
             categories.push(cat);
           });
           this.setState({ categories });
-          console.log("Categories: ", this.state.categories);
         }
       })
       .catch(err => {
@@ -55,10 +64,20 @@ export default class index extends Component {
       });
   };
 
+  /**
+  |--------------------------------------------------
+  | method to use the state from the table and the row that is clicked
+  |--------------------------------------------------
+  */
   passedFromChild = (i, state) => {
     console.log(i);
   };
 
+  /**
+  |--------------------------------------------------
+  | add a new category
+  |--------------------------------------------------
+  */
   addCategory = async () => {
     await this.setState({ popup: false });
 
@@ -77,7 +96,7 @@ export default class index extends Component {
       .then(data => {
         if (data.success === true) {
           alert(data.message);
-          //   window.location.reload();
+          window.location.reload();
         }
       })
 

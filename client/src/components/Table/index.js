@@ -13,11 +13,11 @@ export class index extends Component {
     };
   }
 
-  componentDidMount() {
-    // console.log("IDs Received", this.props.id);
-    console.log("Pending Table Body", this.props.body);
-  }
-
+  /**
+  |--------------------------------------------------
+  | approve business requests 
+  |--------------------------------------------------
+  */
   approveBusiness = i => {
     let ids = this.props.id;
     let chosen = ids[i];
@@ -45,6 +45,12 @@ export class index extends Component {
 
       .catch(err => console.log(err));
   };
+
+  /**
+  |--------------------------------------------------
+  | decline business requests 
+  |--------------------------------------------------
+  */
 
   declineBusiness = i => {
     let ids = this.props.id;
@@ -114,7 +120,9 @@ export class index extends Component {
                 {Object.values(x).map((y, i) => (
                   <td
                     key={i}
-                    style={{ width: this.props.head[i].width }}
+                    style={{
+                      width: this.props.head[i].width
+                    }}
                     className="table-data-mobile"
                   >
                     {y}
