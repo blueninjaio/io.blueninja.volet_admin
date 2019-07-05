@@ -32,7 +32,7 @@ class index extends Component {
 
           .then(data => {
             if (data.success === true) {
-              alert(data.message);
+              // alert(data.message);
               this.props.loginNow();
             }
           })

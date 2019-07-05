@@ -24,7 +24,8 @@ export class index extends Component {
       searchValue: "",
       selectOption: "",
       searchBusiness: "",
-      queryArray: []
+      queryArray: [],
+      approved: []
     };
   }
 
@@ -103,18 +104,33 @@ export class index extends Component {
       .then(data => {
         if (data.success) {
           let business = [];
+          let approved = [];
+          let approveReceived = [];
 
           data.businesses.map(x => {
-            let merchant = {
+            x.isApproved
+              ? approved.push(x)
+              : // let merchant = {
+                //   f_name: x.f_name,
+                //   l_name: x.l_name,
+                //   business_category: x.type_of_business,
+                //   company_name: x.company_name
+                // };
+                // business.push(x);
+                console.log("No Status");
+          });
+
+          approved.map(x => {
+            let approve = {
               f_name: x.f_name,
               l_name: x.l_name,
               business_category: x.type_of_business,
               company_name: x.company_name
             };
-            business.push(merchant);
+            approveReceived.push(approve);
           });
 
-          this.setState({ business, businessData: data.businesses });
+          this.setState({ approved: approveReceived });
         }
       })
       .catch(err => {
@@ -297,7 +313,7 @@ export class index extends Component {
           ) : (
             <Table
               head={data.tHeadMerchantBusiness}
-              body={this.state.business}
+              body={this.state.approved}
               data={this.state.businessData}
               method={this.passedFromChild}
             />
