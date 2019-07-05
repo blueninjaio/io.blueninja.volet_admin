@@ -109,6 +109,7 @@ export class index extends Component {
 
         .catch(err => console.log(err));
     } else if (this.props.model === "agent") {
+      console.log("Hello");
       let ids = this.props.id;
       let chosen = ids[i];
 
@@ -120,7 +121,7 @@ export class index extends Component {
           Accept: "application/json"
         },
         body: JSON.stringify({
-          _id: chosen
+          user_id: chosen
         })
       })
         .then(res => res.json())
