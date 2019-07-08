@@ -119,8 +119,7 @@ export class index extends Component {
             let approve = {
               company_name: x.company_name,
               business_category: x.type_of_business,
-              f_name: x.f_name,
-              l_name: x.l_name
+              merchant_name: x.f_name + " " + x.l_name
             };
             approveReceived.push(approve);
           });
