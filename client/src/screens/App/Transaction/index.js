@@ -39,39 +39,85 @@ export default class index extends Component {
           Transaction
         </h3>
         <div className="business-request-tabs-container">
-          <button
-            onClick={() =>
-              this.setState({
-                userTab: true,
-                useragentTab: false,
-                merchantTab: false
-              })
-            }
-          >
-            User
-          </button>
-          <button
-            onClick={() =>
-              this.setState({
-                userTab: false,
-                useragentTab: true,
-                merchantTab: false
-              })
-            }
-          >
-            User Agents
-          </button>
-          <button
-            onClick={() =>
-              this.setState({
-                userTab: false,
-                useragentTab: false,
-                merchantTab: true
-              })
-            }
-          >
-            Merchant
-          </button>
+          {this.state.userTab === false ? (
+            <button
+              onClick={() =>
+                this.setState({
+                  userTab: true,
+                  useragentTab: false,
+                  merchantTab: false
+                })
+              }
+            >
+              User
+            </button>
+          ) : (
+            <button
+              className="business-request-tabs-container-active"
+              onClick={() =>
+                this.setState({
+                  userTab: true,
+                  useragentTab: false,
+                  merchantTab: false
+                })
+              }
+            >
+              User
+            </button>
+          )}
+
+          {this.state.useragentTab === false ? (
+            <button
+              onClick={() =>
+                this.setState({
+                  userTab: false,
+                  useragentTab: true,
+                  merchantTab: false
+                })
+              }
+            >
+              User Agents
+            </button>
+          ) : (
+            <button
+              className="business-request-tabs-container-active"
+              onClick={() =>
+                this.setState({
+                  userTab: false,
+                  useragentTab: true,
+                  merchantTab: false
+                })
+              }
+            >
+              User Agents
+            </button>
+          )}
+          {this.state.merchantTab === false ? (
+            <button
+              onClick={() =>
+                this.setState({
+                  userTab: false,
+                  useragentTab: false,
+                  merchantTab: true
+                })
+              }
+            >
+              Merchant
+            </button>
+          ) : (
+            <button
+              className="business-request-tabs-container-active"
+              onClick={() =>
+                this.setState({
+                  userTab: false,
+                  useragentTab: false,
+                  merchantTab: true
+                })
+              }
+            >
+              Merchant
+            </button>
+          )}
         </div>
         <div className="container-fluid" style={{ paddingTop: "5.2rem" }}>
           {this.state.userTab === true ? (
