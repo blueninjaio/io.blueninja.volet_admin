@@ -31,17 +31,10 @@ export class index extends Component {
   |--------------------------------------------------
   */
   passedFromChild = (i, state) => {
-    console.log(this.state.approvedSelected[i]);
-
     let arr = this.state.approved;
 
     arr.push(this.state.approvedSelected[i]);
-    // let arr = this.state.sendData;
-    // let send = this.state.sendState;
-    // this.setState({ sendData: arr });
-    // this.setState({ sendState: send });
-    // console.log(this.state.sendData);
-    // console.log(this.state.sendState);
+
     this.setState({ rowSelected: state });
   };
 
