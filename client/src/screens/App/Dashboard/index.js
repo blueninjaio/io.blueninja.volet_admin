@@ -22,6 +22,11 @@ export default class index extends Component {
     };
   }
 
+  /**
+  |--------------------------------------------------
+  | run all the functions below on page load
+  |--------------------------------------------------
+  */
   componentDidMount() {
     this.fetchAllBusiness();
     this.fetchAllUsers();
@@ -30,6 +35,11 @@ export default class index extends Component {
     this.fetchBusinessRequest();
   }
 
+  /**
+  |--------------------------------------------------
+  | fetches all the pending agent requests from the api
+  |--------------------------------------------------
+  */
   fetchAgents = async () => {
     fetch(`${url}/api/agents`, {
       method: "GET",
@@ -43,8 +53,6 @@ export default class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          // console.log("User Agent Stuff:");
-          // console.log(data.agent);
           if (data.agent.length >= 1) {
             let business = data.agent;
             let pending = [];
@@ -69,6 +77,11 @@ export default class index extends Component {
       });
   };
 
+  /**
+  |--------------------------------------------------
+  | fetches all the pending business request from the api
+  |--------------------------------------------------
+  */
   fetchBusinessRequest = async () => {
     fetch(`${url}/api/business`, {
       method: "GET",
@@ -106,6 +119,11 @@ export default class index extends Component {
       });
   };
 
+  /**
+  |--------------------------------------------------
+  | fetches the most recent feedback from the api
+  |--------------------------------------------------
+  */
   fetchAllFeedback = () => {
     fetch(`${url}/api/feedbacks`, {
       method: "GET",
@@ -148,6 +166,11 @@ export default class index extends Component {
       });
   };
 
+  /**
+  |--------------------------------------------------
+  | fetches all the business types from the api
+  |--------------------------------------------------
+  */
   fetchAllBusiness = () => {
     fetch(`${url}/api/category`, {
       method: "GET",
@@ -171,13 +194,12 @@ export default class index extends Component {
                 x: x.title,
                 y: 10
               };
-              // console.log(x.type_of_business);
+
               stats.push(statistics);
               this.setState({ stats });
             });
 
             this.setState({ business, businessData: data.businesses });
-            // console.log(this.state.business);
           }
         }
       })
@@ -193,6 +215,11 @@ export default class index extends Component {
       });
   };
 
+  /**
+  |--------------------------------------------------
+  | fetches all the users from the api
+  |--------------------------------------------------
+  */
   fetchAllUsers = () => {
     fetch(`${url}/api/users`, {
       method: "GET",
