@@ -100,22 +100,22 @@
     "tHeadMerchantBusiness": [
         {
             "id": 1,
-            "title": "First Name", 
+            "title": "Business Name", 
             "width": "25%"
         },
         {
             "id": 2,
-            "title": "Last Name",
+            "title": "Business Type",
             "width": "25%"
         }, 
         {
             "id": 3,
-            "title": "Business Type",
+            "title": "First Name",
             "width": "25%"
         },
         {
             "id": 4,
-            "title": "Business Name",
+            "title": "Last Name",
             "width": "25%"
         }
     ],

@@ -149,7 +149,7 @@ export default class index extends Component {
   };
 
   fetchAllBusiness = () => {
-    fetch(`${url}/api/business`, {
+    fetch(`${url}/api/category`, {
       method: "GET",
       mode: "cors",
       headers: {
@@ -161,15 +161,17 @@ export default class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          if (data.businesses.length >= 1) {
+          if (data.categories.length >= 1) {
             let business = [];
             let stats = [];
 
-            data.businesses.map(x => {
+            data.categories.map(x => {
+              console.log(x);
               let statistics = {
-                x: x.type_of_business,
-                y: x.company_name
+                x: x.title,
+                y: 10
               };
+              // console.log(x.type_of_business);
               stats.push(statistics);
               this.setState({ stats });
             });
@@ -240,17 +242,22 @@ export default class index extends Component {
               <p>Business Types</p>
               <VictoryChart
                 theme={VictoryTheme.material}
-                width={700}
+                padding={{ left: 122, bottom: 122 }}
+                width={670}
                 height={300}
+                domainPadding={100}
+                style={{
+                  parent: {
+                    padding: 20,
+                    height: 300
+                  }
+                }}
               >
                 <VictoryBar
                   horizontal
-                  cornerRadius={10}
+                  cornerRadius={7}
                   data={this.state.stats}
                   style={{
-                    label: {
-                      fontSize: 16
-                    },
                     data: {
                       fill: ({ y }) =>
                         y > 18 ? "rgb(95,153,252)" : "rgb(12,96,250)"

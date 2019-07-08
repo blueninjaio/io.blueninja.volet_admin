@@ -117,10 +117,10 @@ export class index extends Component {
 
           approved.map(x => {
             let approve = {
-              f_name: x.f_name,
-              l_name: x.l_name,
+              company_name: x.company_name,
               business_category: x.type_of_business,
-              company_name: x.company_name
+              f_name: x.f_name,
+              l_name: x.l_name
             };
             approveReceived.push(approve);
           });
