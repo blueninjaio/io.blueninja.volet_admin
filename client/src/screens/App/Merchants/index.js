@@ -12,7 +12,15 @@ export class index extends Component {
       filterUsers: "all",
       merchants: [],
       sendState: false,
-      sendData: null
+      sendData: null,
+      rowSelected: false,
+      businessSelected: true,
+      billingSelected: false,
+      openingTimes: false,
+      storeSelected: false,
+      featuredItems: false,
+      approvedSelected: [],
+      approved: []
     };
   }
 
@@ -23,11 +31,18 @@ export class index extends Component {
   |--------------------------------------------------
   */
   passedFromChild = (i, state) => {
-    let arr = this.state.sendData;
-    let send = this.state.sendState;
+    console.log(this.state.approvedSelected[i]);
 
-    this.setState({ sendData: arr });
-    this.setState({ sendState: send });
+    let arr = this.state.approved;
+
+    arr.push(this.state.approvedSelected[i]);
+    // let arr = this.state.sendData;
+    // let send = this.state.sendState;
+    // this.setState({ sendData: arr });
+    // this.setState({ sendState: send });
+    // console.log(this.state.sendData);
+    // console.log(this.state.sendState);
+    this.setState({ rowSelected: state });
   };
 
   /**
@@ -57,6 +72,7 @@ export class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
+          this.setState({ approvedSelected: data.merchants });
           let merchants = [];
           data.merchants.map(x => {
             let merchant = {
@@ -104,6 +120,12 @@ export class index extends Component {
   render() {
     return (
       <div className="dashboard-container">
+        {this.state.rowSelected === true ? (
+          <div
+            className="modal-opacity"
+            onClick={() => this.setState({ rowSelected: false })}
+          />
+        ) : null}
         <div className="dashboard-header">
           <h3 className="table-page-title">Merchants</h3>
         </div>
@@ -115,6 +137,90 @@ export class index extends Component {
             method={this.passedFromChild}
           />
         </div>
+
+        {this.state.rowSelected === true ? (
+          <div>
+            {this.state.approved.map((x, i) => (
+              <div className="view-business-container" key={i}>
+                <button
+                  className="exit-btn-view-business"
+                  onClick={() => this.setState({ rowSelected: false })}
+                >
+                  <img
+                    alt="selected-user-x-icon"
+                    src="https://img.pngio.com/index-of-v2-imgs-x-png-black-and-white-256_256.png"
+                  />
+                </button>
+                <div className="business-profile-container">
+                  <img
+                    alt="selected-user-profile-icon"
+                    src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTQ3NjM5MzQyOTU5OTYxNDc2/lil_wayne_photo_by_ray_tamarra_getty_images_entertainment_getty_56680625.jpg"
+                  />
+                  <span>
+                    {x.f_name} {x.l_name}
+                  </span>
+                </div>
+                <div className="business-email-container">
+                  <span>Email: </span>
+                  <span className="email-span">{x.email} </span>
+                </div>
+                <div className="business-email-container">
+                  <span>Identification: </span>
+                  <span className="email-span">{x.identification} </span>
+                </div>
+                <div className="business-email-container">
+                  <span>Contact: </span>
+                  <span className="email-span">{x.contact} </span>
+                </div>
+                <div className="business-email-container">
+                  <span>Legal Name: </span>
+                  <span className="email-span">{x.legal_name} </span>
+                </div>
+                <div className="border-view-business" />
+                <div className="view-business-tabs">
+                  {this.state.businessSelected === false ? (
+                    <button
+                      onClick={() =>
+                        this.setState({
+                          businessSelected: true,
+                          billingSelected: false,
+                          openingTimes: false,
+                          storeSelected: false,
+                          featuredItems: false
+                        })
+                      }
+                    >
+                      Business
+                    </button>
+                  ) : (
+                    <button
+                      className="view-business-tab-active"
+                      onClick={() =>
+                        this.setState({
+                          businessSelected: true,
+                          billingSelected: false,
+                          openingTimes: false,
+                          storeSelected: false,
+                          featuredItems: false
+                        })
+                      }
+                    >
+                      Business
+                    </button>
+                  )}
+                </div>
+
+                {this.state.businessSelected === true ? (
+                  <div className="main-field-container">
+                    <ul>
+                      <li>hello</li>
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
     );
   }

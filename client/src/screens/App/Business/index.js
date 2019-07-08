@@ -25,7 +25,8 @@ export class index extends Component {
       selectOption: "",
       searchBusiness: "",
       queryArray: [],
-      approved: []
+      approved: [],
+      approvedSelected: []
     };
   }
 
@@ -46,9 +47,8 @@ export class index extends Component {
   |--------------------------------------------------
   */
   passedFromChild = (i, state) => {
-    let arr = this.state.selectedData;
+    console.log("approved array", this.state.approvedSelected[i]);
 
-    arr.push(this.state.businessData[i]);
     this.setState({ rowSelected: state });
   };
 
@@ -103,21 +103,16 @@ export class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
+          console.log(data);
           let business = [];
           let approved = [];
           let approveReceived = [];
 
           data.businesses.map(x => {
-            x.isApproved
-              ? approved.push(x)
-              : // let merchant = {
-                //   f_name: x.f_name,
-                //   l_name: x.l_name,
-                //   business_category: x.type_of_business,
-                //   company_name: x.company_name
-                // };
-                // business.push(x);
-                console.log("No Status");
+            if (x.isApproved) {
+              approved.push(x);
+              this.setState({ approvedSelected: approved });
+            }
           });
 
           approved.map(x => {
@@ -322,7 +317,7 @@ export class index extends Component {
 
         {this.state.rowSelected === true ? (
           <div>
-            {this.state.selectedData.map((x, i) => (
+            {this.state.approvedSelected.map((x, i) => (
               <div className="view-business-container" key={i}>
                 <button
                   className="exit-btn-view-business"

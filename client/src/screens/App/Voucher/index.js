@@ -146,6 +146,12 @@ export default class index extends Component {
           <div className="voucher-popup-container">
             <div>
               <h3 className="cat-pop-title">Category Title</h3>
+              <button
+                className="categoryXBtn"
+                onClick={() => this.setState({ addVoucher: false })}
+              >
+                <img src="https://image.flaticon.com/icons/png/512/458/458595.png" />
+              </button>
             </div>
             <div>
               <input

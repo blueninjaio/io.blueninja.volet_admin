@@ -358,7 +358,10 @@ export default class index extends Component {
                 </thead>
                 <tbody>
                   {this.state.feedback.map((x, i) => (
-                    <tr key={i}>
+                    <tr
+                      key={i}
+                      onClick={() => this.props.history.push("/feedback")}
+                    >
                       <td>{x._id}</td>
                       <td>{x.rating}</td>
                       <td>{x.description}</td>
@@ -384,7 +387,10 @@ export default class index extends Component {
                 </thead>
                 <tbody>
                   {this.state.pending.map((x, i) => (
-                    <tr key={i}>
+                    <tr
+                      key={i}
+                      onClick={() => this.props.history.push("/agentrequests")}
+                    >
                       <td>{x._id}</td>
                       <td>{x.dateCreated}</td>
                       <td>{x.idPending ? "is Pending" : null}</td>
@@ -412,7 +418,12 @@ export default class index extends Component {
                 </thead>
                 <tbody>
                   {this.state.pendingbusiness.map((x, i) => (
-                    <tr key={i}>
+                    <tr
+                      key={i}
+                      onClick={() =>
+                        this.props.history.push("/businessrequest")
+                      }
+                    >
                       <td>{x._id}</td>
                       <td>{x.dateCreated}</td>
                       <td>{x.idPending ? "is Pending" : null}</td>
