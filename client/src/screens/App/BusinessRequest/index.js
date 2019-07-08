@@ -143,39 +143,84 @@ export default class index extends Component {
           Business Requests
         </h3>
         <div className="business-request-tabs-container">
-          <button
-            onClick={() =>
-              this.setState({
-                pendingTab: true,
-                approvedTab: false,
-                declineTab: false
-              })
-            }
-          >
-            Pending
-          </button>
-          <button
-            onClick={() =>
-              this.setState({
-                pendingTab: false,
-                approvedTab: true,
-                declineTab: false
-              })
-            }
-          >
-            Approved
-          </button>
-          <button
-            onClick={() =>
-              this.setState({
-                pendingTab: false,
-                approvedTab: false,
-                declineTab: true
-              })
-            }
-          >
-            Decline
-          </button>
+          {this.state.pendingTab === true ? (
+            <button
+              className="business-request-tabs-container-active"
+              onClick={() =>
+                this.setState({
+                  pendingTab: true,
+                  approvedTab: false,
+                  declineTab: false
+                })
+              }
+            >
+              Pending
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                this.setState({
+                  pendingTab: true,
+                  approvedTab: false,
+                  declineTab: false
+                })
+              }
+            >
+              Pending
+            </button>
+          )}
+          {this.state.approvedTab === true ? (
+            <button
+              className="business-request-tabs-container-active"
+              onClick={() =>
+                this.setState({
+                  pendingTab: false,
+                  approvedTab: true,
+                  declineTab: false
+                })
+              }
+            >
+              Approved
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                this.setState({
+                  pendingTab: false,
+                  approvedTab: true,
+                  declineTab: false
+                })
+              }
+            >
+              Approved
+            </button>
+          )}
+          {this.state.declineTab === true ? (
+            <button
+              className="business-request-tabs-container-active"
+              onClick={() =>
+                this.setState({
+                  pendingTab: false,
+                  approvedTab: false,
+                  declineTab: true
+                })
+              }
+            >
+              Decline
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                this.setState({
+                  pendingTab: false,
+                  approvedTab: false,
+                  declineTab: true
+                })
+              }
+            >
+              Decline
+            </button>
+          )}
         </div>
         <div
           className="container-fluid bR-mobile-container"
