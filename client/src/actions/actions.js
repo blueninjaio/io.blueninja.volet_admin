@@ -1,4 +1,4 @@
-import { LOGIN, GET_TOKEN, VERIFY_TOKEN } from "./actionTypes.js";
+import { LOGIN, GET_TOKEN } from "./actionTypes.js";
 import { url } from "../config";
 /**
 |--------------------------------------------------

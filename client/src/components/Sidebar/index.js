@@ -13,8 +13,8 @@ export default class index extends Component {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/categories" className="remove-hover">
-              Categories
+            <NavLink to="/users" className="remove-hover">
+              Users
             </NavLink>
           </li>
           <li>
@@ -23,33 +23,13 @@ export default class index extends Component {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/users" className="remove-hover">
-              Users
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/vouchers" className="remove-hover">
-              Vouchers
+            <NavLink to="/business" className="remove-hover">
+              Businesses
             </NavLink>
           </li>
           <li>
             <NavLink to="/transaction" className="remove-hover">
-              Transaction
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/static" className="remove-hover">
-              Static Pages
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/business" className="remove-hover">
-              Business
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/businessrequest" className="remove-hover">
-              Business Requests
+              Transactions
             </NavLink>
           </li>
           <li>
@@ -58,13 +38,33 @@ export default class index extends Component {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/pushnotification" className="remove-hover">
-              Push Notification
+            <NavLink to="/businessrequest" className="remove-hover">
+              Business Requests
             </NavLink>
           </li>
           <li>
             <NavLink to="/feedback" className="remove-hover">
               Feedback
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/pushnotification" className="remove-hover">
+              Push Notification
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/businessTypes" className="remove-hover">
+              Business Types
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/vouchers" className="remove-hover">
+              Vouchers
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/static" className="remove-hover">
+              Static Pages
             </NavLink>
           </li>
         </ul>

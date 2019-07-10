@@ -60,6 +60,7 @@ export default class index extends Component {
               dateCreated: x.dateCreated
             };
             feedback.push(user);
+            return feedback
           });
 
           this.setState({ feedback });

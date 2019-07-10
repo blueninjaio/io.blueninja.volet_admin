@@ -16,7 +16,7 @@ import BusinessRequest from "./BusinessRequest";
 import SendNotifcation from "./SendNotification";
 import PushNotification from "./PushNotification";
 import Feedback from "./Feedback";
-import Categories from "./Categories";
+import BusinessTypes from "./BusinessTypes";
 import AgentRequests from "./AgentRequests";
 
 import { logoutNow } from "../../actions/actions";
@@ -180,7 +180,7 @@ class index extends Component {
               <Route path="/pushnotification" component={PushNotification} />
               <Route path="/sendnotification" component={SendNotifcation} />
               <Route path="/feedback" component={Feedback} />
-              <Route path="/categories" component={Categories} />
+              <Route path="/businessTypes" component={BusinessTypes} />
               <Route path="/agentrequests" component={AgentRequests} />
             </Switch>
           </div>

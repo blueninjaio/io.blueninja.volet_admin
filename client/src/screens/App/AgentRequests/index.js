@@ -46,7 +46,6 @@ export default class index extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         if (data.success) {
           let business = data.agent;
           let approved = [];
@@ -60,7 +59,7 @@ export default class index extends Component {
               ? approved.push(x)
               : x.isDeclined
               ? decline.push(x)
-              : console.log("No Status")
+              : null
           );
 
           let pendingReceived = [];
@@ -74,6 +73,7 @@ export default class index extends Component {
             this.state.ids.push(x.user_id);
 
             pendingReceived.push(pend);
+            return pendingReceived
           });
 
           this.setState({ pending: pendingReceived });
@@ -86,6 +86,7 @@ export default class index extends Component {
               dateCreated: x.dateCreated
             };
             approveReceived.push(approve);
+            return approveReceived
           });
 
           this.setState({ approved: approveReceived });
@@ -98,14 +99,13 @@ export default class index extends Component {
               dateCreated: x.dateCreated
             };
             declineReceived.push(decline);
+            return declineReceived
           });
 
           this.setState({ decline: declineReceived });
         }
       })
       .catch(err => {
-        console.log("Error for business page", err);
-
         alert(
           "Error connecting to server",
 
@@ -122,7 +122,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   passedFromChild = (i, state) => {
-    console.log(state);
+    // console.log(state);
   };
 
   render() {

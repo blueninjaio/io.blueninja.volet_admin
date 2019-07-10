@@ -60,6 +60,7 @@ export class index extends Component {
               createdAt: x.createdAt
             };
             notification.push(user);
+            return notification
           });
 
           this.setState({ notification });
@@ -103,6 +104,7 @@ export class index extends Component {
             onClick={() => this.props.history.push("/sendnotification")}
           >
             <img
+              alt='img'
               src="https://image.flaticon.com/icons/png/512/131/131155.png"
               style={{ height: "100%", width: "100%" }}
             />

@@ -76,6 +76,7 @@ export class index extends Component {
               dateCreated: x.dateCreated
             };
             merchants.push(merchant);
+            return merchants
           });
 
           this.setState({ merchants });

@@ -47,7 +47,7 @@ export class index extends Component {
   |--------------------------------------------------
   */
   passedFromChild = (i, state) => {
-    console.log("approved array", this.state.approvedSelected[i]);
+    // console.log("approved array", this.state.approvedSelected[i]);
 
     this.setState({ rowSelected: state });
   };
@@ -74,8 +74,6 @@ export class index extends Component {
         }
       })
       .catch(err => {
-        console.log("Error for merchants page", err);
-
         alert(
           "Error connecting to server",
 
@@ -103,8 +101,6 @@ export class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          console.log(data);
-          let business = [];
           let approved = [];
           let approveReceived = [];
 
@@ -113,6 +109,8 @@ export class index extends Component {
               approved.push(x);
               this.setState({ approvedSelected: approved });
             }
+
+            return approved
           });
 
           approved.map(x => {
@@ -122,14 +120,14 @@ export class index extends Component {
               merchant_name: x.f_name + " " + x.l_name
             };
             approveReceived.push(approve);
+
+            return approveReceived
           });
 
           this.setState({ approved: approveReceived });
         }
       })
       .catch(err => {
-        console.log("Error for business page", err);
-
         alert(
           "Error connecting to server",
 
@@ -155,6 +153,8 @@ export class index extends Component {
       ) {
         newArray.push(x);
       }
+
+      return newArray
     });
 
     this.setState({ queryArray: newArray });
@@ -172,6 +172,7 @@ export class index extends Component {
       if (x.company_name.includes(search)) {
         newArray.push(x);
       }
+      return newArray
     });
 
     this.setState({ queryArray: newArray });
@@ -215,8 +216,7 @@ export class index extends Component {
       if (x.business_category.includes(search)) {
         newArray.push(x);
       }
-      console.log(x.business_category.includes(search));
-      console.log(x.business_category);
+      return newArray
     });
 
     this.setState({ queryArray: newArray });
@@ -229,9 +229,7 @@ export class index extends Component {
   */
   toggle = async () => {
     await this.setState({ isChecked: !this.state.isChecked });
-    console.log(this.state.isChecked);
     if (!this.state.isChecked) {
-      console.log("Users Page");
     } else if (this.state.isChecked) {
       setTimeout(() => {
         this.props.history.push("/useragent");
@@ -608,7 +606,7 @@ export class index extends Component {
                   <div className="main-field-container">
                     <div className="featured-item-field-container">
                       <div className="featured-item-img-container">
-                        <img src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                        <img alt="img" src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
                       </div>
                       <div className="featured-item-desc-container">
                         <span>Krusty Krab</span>
@@ -620,7 +618,7 @@ export class index extends Component {
                     </div>
                     <div className="featured-item-field-container">
                       <div className="featured-item-img-container">
-                        <img src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                        <img alt="img" src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
                       </div>
                       <div className="featured-item-desc-container">
                         <span>Krusty Krab</span>
@@ -632,7 +630,7 @@ export class index extends Component {
                     </div>
                     <div className="featured-item-field-container">
                       <div className="featured-item-img-container">
-                        <img src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                        <img alt="img" src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
                       </div>
                       <div className="featured-item-desc-container">
                         <span>Krusty Krab</span>

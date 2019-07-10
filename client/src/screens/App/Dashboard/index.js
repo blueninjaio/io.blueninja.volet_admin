@@ -57,23 +57,19 @@ export default class index extends Component {
             let business = data.agent;
             let pending = [];
             business.map(x =>
-              x.isPending ? pending.push(x) : console.log("No Status")
+              x.isPending ? pending.push(x) : null
             );
-            console.log(pending);
-
             this.setState({ pending });
           }
         }
       })
       .catch(err => {
-        console.log("Error for dashboard page", err);
+        alert(
+          "Error connecting to server",
 
-        // alert(
-        //   "Error connecting to server",
-
-        //   [{ text: "OK", onClick: () => null }],
-        //   { cancelable: false }
-        // );
+          [{ text: "OK", onClick: () => null }],
+          { cancelable: false }
+        );
       });
   };
 
@@ -95,27 +91,26 @@ export default class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          if (data.agent.length >= 1) {
-            let business = data.agent;
-            let pendingbusiness = [];
-            business.map(x =>
-              x.isPending ? pendingbusiness.push(x) : console.log("No Status")
-            );
-            console.log(pendingbusiness);
-
-            this.setState({ pendingbusiness });
+          if(data.businesses){
+            if (data.businesses.length >= 1) {
+              let business = data.businesses;
+              let pendingbusiness = [];
+              business.map(x =>
+                x.isPending ? pendingbusiness.push(x) : null
+              );
+  
+              this.setState({ pendingbusiness });
+            }
           }
         }
       })
       .catch(err => {
-        console.log("Error for dashboard page", err);
+        alert(
+          "Error connecting to server",
 
-        // alert(
-        //   "Error connecting to server",
-
-        //   [{ text: "OK", onClick: () => null }],
-        //   { cancelable: false }
-        // );
+          [{ text: "OK", onClick: () => null }],
+          { cancelable: false }
+        );
       });
   };
 
@@ -147,16 +142,15 @@ export default class index extends Component {
                 dateCreated: x.dateCreated
               };
               feedback.push(user);
+
+              return feedback
             });
 
             this.setState({ feedback });
-            console.log(this.state.feedback);
           }
         }
       })
       .catch(err => {
-        console.log("Error for users page", err);
-
         alert(
           "Error connecting to server",
 
@@ -189,7 +183,6 @@ export default class index extends Component {
             let stats = [];
 
             data.categories.map(x => {
-              console.log(x);
               let statistics = {
                 x: x.title,
                 y: 10
@@ -197,6 +190,7 @@ export default class index extends Component {
 
               stats.push(statistics);
               this.setState({ stats });
+              return stats
             });
 
             this.setState({ business, businessData: data.businesses });
@@ -204,8 +198,6 @@ export default class index extends Component {
         }
       })
       .catch(err => {
-        console.log("Error for business page", err);
-
         alert(
           "Error connecting to server",
 
@@ -241,6 +233,7 @@ export default class index extends Component {
                 y: data.users.length
               };
               users.push(user);
+              return users
             });
 
             this.setState({ users });
@@ -248,8 +241,6 @@ export default class index extends Component {
         }
       })
       .catch(err => {
-        console.log("Error for users page", err);
-
         alert(
           "Error connecting to server",
 

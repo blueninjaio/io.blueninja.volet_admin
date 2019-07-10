@@ -73,6 +73,7 @@ export class index extends Component {
               dateCreated: x.dateCreated
             };
             users.push(user);
+            return users
           });
 
           this.setState({ users });
@@ -118,6 +119,7 @@ export class index extends Component {
       if (x.f_name.includes(search) || x.l_name.includes(search)) {
         newArray.push(x);
       }
+      return newArray
     });
 
     this.setState({ queryArray: newArray });

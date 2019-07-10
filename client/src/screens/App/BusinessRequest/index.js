@@ -75,6 +75,7 @@ export default class index extends Component {
             this.state.ids.push(x._id);
 
             pendingReceived.push(pend);
+            return pendingReceived
           });
 
           this.setState({ pending: pendingReceived });
@@ -89,6 +90,7 @@ export default class index extends Component {
               dateCreated: x.dateCreated
             };
             approveReceived.push(approve);
+            return approveReceived
           });
 
           this.setState({ approved: approveReceived });
@@ -103,6 +105,7 @@ export default class index extends Component {
               dateCreated: x.dateCreated
             };
             declineReceived.push(decline);
+            return declineReceived
           });
 
           this.setState({ decline: declineReceived });

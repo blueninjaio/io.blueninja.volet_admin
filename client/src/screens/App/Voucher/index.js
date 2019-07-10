@@ -98,6 +98,7 @@ export default class index extends Component {
               expiry: x.expiry
             };
             vouchers.push(user);
+            return vouchers
           });
 
           this.setState({ vouchers });
@@ -150,7 +151,7 @@ export default class index extends Component {
                 className="categoryXBtn"
                 onClick={() => this.setState({ addVoucher: false })}
               >
-                <img src="https://image.flaticon.com/icons/png/512/458/458595.png" />
+                <img alt="img" src="https://image.flaticon.com/icons/png/512/458/458595.png" />
               </button>
             </div>
             <div>

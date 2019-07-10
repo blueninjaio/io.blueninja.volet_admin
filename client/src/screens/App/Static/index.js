@@ -58,8 +58,10 @@ export default class index extends Component {
       .then(res => res.json())
 
       .then(data => {
-        this.setState({ receivedFAQ: data.static[0].faq });
-        this.setState({ receivedPolicy: data.static[0].policies });
+        if(data.static.length >= 1){
+          this.setState({ receivedFAQ: data.static[0].faq })
+          this.setState({ receivedPolicy: data.static[0].policies });
+        }
       })
 
       .catch(err => console.log(err));
