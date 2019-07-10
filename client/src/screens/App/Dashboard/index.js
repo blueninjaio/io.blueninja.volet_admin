@@ -56,16 +56,14 @@ export default class index extends Component {
           if (data.agent.length >= 1) {
             let business = data.agent;
             let pending = [];
-            business.map(x =>
-              x.isPending ? pending.push(x) : null
-            );
+            business.map(x => (x.isPending ? pending.push(x) : null));
             this.setState({ pending });
           }
         }
       })
       .catch(err => {
         alert(
-          "Error connecting to server",
+          "Error connecting to server, fetching all agents in the dashboad page",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }
@@ -91,14 +89,12 @@ export default class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          if(data.businesses){
+          if (data.businesses) {
             if (data.businesses.length >= 1) {
               let business = data.businesses;
               let pendingbusiness = [];
-              business.map(x =>
-                x.isPending ? pendingbusiness.push(x) : null
-              );
-  
+              business.map(x => (x.isPending ? pendingbusiness.push(x) : null));
+
               this.setState({ pendingbusiness });
             }
           }
@@ -143,7 +139,7 @@ export default class index extends Component {
               };
               feedback.push(user);
 
-              return feedback
+              return feedback;
             });
 
             this.setState({ feedback });
@@ -152,7 +148,7 @@ export default class index extends Component {
       })
       .catch(err => {
         alert(
-          "Error connecting to server",
+          "Error connecting to server, fetching the latest feedback on the dashboard page",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }
@@ -190,7 +186,7 @@ export default class index extends Component {
 
               stats.push(statistics);
               this.setState({ stats });
-              return stats
+              return stats;
             });
 
             this.setState({ business, businessData: data.businesses });
@@ -199,7 +195,7 @@ export default class index extends Component {
       })
       .catch(err => {
         alert(
-          "Error connecting to server",
+          "Error connecting to server, fetching all the business information on the dashboard page",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }
@@ -233,7 +229,7 @@ export default class index extends Component {
                 y: data.users.length
               };
               users.push(user);
-              return users
+              return users;
             });
 
             this.setState({ users });
@@ -242,7 +238,7 @@ export default class index extends Component {
       })
       .catch(err => {
         alert(
-          "Error connecting to server",
+          "Error connecting to server, fetching all users from the dashboard page",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }

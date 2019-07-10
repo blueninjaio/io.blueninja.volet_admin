@@ -76,7 +76,7 @@ export class index extends Component {
               dateCreated: x.dateCreated
             };
             merchants.push(merchant);
-            return merchants
+            return merchants;
           });
 
           this.setState({ merchants });
@@ -86,7 +86,7 @@ export class index extends Component {
         console.log("Error for merchants page", err);
 
         alert(
-          "Error connecting to server",
+          "Error connecting to server, fetching all the merchants from the merchants page",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }

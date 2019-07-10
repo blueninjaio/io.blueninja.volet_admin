@@ -73,7 +73,7 @@ export default class index extends Component {
             this.state.ids.push(x.user_id);
 
             pendingReceived.push(pend);
-            return pendingReceived
+            return pendingReceived;
           });
 
           this.setState({ pending: pendingReceived });
@@ -86,7 +86,7 @@ export default class index extends Component {
               dateCreated: x.dateCreated
             };
             approveReceived.push(approve);
-            return approveReceived
+            return approveReceived;
           });
 
           this.setState({ approved: approveReceived });
@@ -99,7 +99,7 @@ export default class index extends Component {
               dateCreated: x.dateCreated
             };
             declineReceived.push(decline);
-            return declineReceived
+            return declineReceived;
           });
 
           this.setState({ decline: declineReceived });
@@ -107,7 +107,7 @@ export default class index extends Component {
       })
       .catch(err => {
         alert(
-          "Error connecting to server",
+          "Error connecting to server from the agent request page",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }

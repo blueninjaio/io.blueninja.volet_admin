@@ -38,7 +38,12 @@ export default class index extends Component {
         }
       })
 
-      .catch(err => console.log(err));
+      .catch(err =>
+        console.log(
+          "Error for the sending notification function at the sending notification page",
+          err
+        )
+      );
   };
 
   render() {

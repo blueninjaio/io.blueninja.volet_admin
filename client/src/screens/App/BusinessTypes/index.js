@@ -48,16 +48,19 @@ export default class index extends Component {
               date: x.dateCreated
             };
             categories.push(cat);
-            return categories
+            return categories;
           });
           this.setState({ categories });
         }
       })
       .catch(err => {
-        console.log("Error for users page", err);
+        console.log(
+          "Error for business page, for fetching business types",
+          err
+        );
 
         alert(
-          "Error connecting to server",
+          "Error for business page, for fetching business types",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }

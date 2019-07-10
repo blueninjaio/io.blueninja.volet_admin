@@ -16,6 +16,17 @@
   height: 100%;
 }
 
+.power-btn-navbar{
+  width: 2%;
+  height: 40%;
+  position: absolute;
+  right: 14rem;
+  top: 26px;
+  background: transparent;
+  border: 0;
+  z-index: 10000000;
+}
+
 
 
 body{

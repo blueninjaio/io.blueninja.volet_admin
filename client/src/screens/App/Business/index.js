@@ -75,7 +75,7 @@ export class index extends Component {
       })
       .catch(err => {
         alert(
-          "Error connecting to server",
+          "Error connecting to server from fetching the businessCategory",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }
@@ -110,7 +110,7 @@ export class index extends Component {
               this.setState({ approvedSelected: approved });
             }
 
-            return approved
+            return approved;
           });
 
           approved.map(x => {
@@ -121,7 +121,7 @@ export class index extends Component {
             };
             approveReceived.push(approve);
 
-            return approveReceived
+            return approveReceived;
           });
 
           this.setState({ approved: approveReceived });
@@ -129,7 +129,7 @@ export class index extends Component {
       })
       .catch(err => {
         alert(
-          "Error connecting to server",
+          "Error connecting to server from the business page, fetchAllBusiness",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }
@@ -154,7 +154,7 @@ export class index extends Component {
         newArray.push(x);
       }
 
-      return newArray
+      return newArray;
     });
 
     this.setState({ queryArray: newArray });
@@ -172,7 +172,7 @@ export class index extends Component {
       if (x.company_name.includes(search)) {
         newArray.push(x);
       }
-      return newArray
+      return newArray;
     });
 
     this.setState({ queryArray: newArray });
@@ -216,7 +216,7 @@ export class index extends Component {
       if (x.business_category.includes(search)) {
         newArray.push(x);
       }
-      return newArray
+      return newArray;
     });
 
     this.setState({ queryArray: newArray });
@@ -606,7 +606,10 @@ export class index extends Component {
                   <div className="main-field-container">
                     <div className="featured-item-field-container">
                       <div className="featured-item-img-container">
-                        <img alt="img" src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                        <img
+                          alt="img"
+                          src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848"
+                        />
                       </div>
                       <div className="featured-item-desc-container">
                         <span>Krusty Krab</span>
@@ -618,7 +621,10 @@ export class index extends Component {
                     </div>
                     <div className="featured-item-field-container">
                       <div className="featured-item-img-container">
-                        <img alt="img" src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                        <img
+                          alt="img"
+                          src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848"
+                        />
                       </div>
                       <div className="featured-item-desc-container">
                         <span>Krusty Krab</span>
@@ -630,7 +636,10 @@ export class index extends Component {
                     </div>
                     <div className="featured-item-field-container">
                       <div className="featured-item-img-container">
-                        <img alt="img" src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                        <img
+                          alt="img"
+                          src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848"
+                        />
                       </div>
                       <div className="featured-item-desc-container">
                         <span>Krusty Krab</span>
