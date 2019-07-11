@@ -64,8 +64,9 @@ export default class index extends Component {
 
           let pendingReceived = [];
 
-          pending.map(x => {
+          pending.map((x, i) => {
             let pend = {
+              no: i,
               f_name: x.f_name,
               l_name: x.l_name,
               company_name: x.company_name,
@@ -81,8 +82,9 @@ export default class index extends Component {
           this.setState({ pending: pendingReceived });
 
           let approveReceived = [];
-          approved.map(x => {
+          approved.map((x, i) => {
             let approve = {
+              no: i,
               f_name: x.f_name,
               l_name: x.l_name,
               company_name: x.company_name,
@@ -96,8 +98,9 @@ export default class index extends Component {
           this.setState({ approved: approveReceived });
 
           let declineReceived = [];
-          decline.map(x => {
+          decline.map((x, i) => {
             let decline = {
+              no: i,
               f_name: x.f_name,
               l_name: x.l_name,
               company_name: x.company_name,

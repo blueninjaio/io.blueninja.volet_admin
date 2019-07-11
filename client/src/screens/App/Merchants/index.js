@@ -67,8 +67,9 @@ export class index extends Component {
         if (data.success) {
           this.setState({ approvedSelected: data.merchants });
           let merchants = [];
-          data.merchants.map(x => {
+          data.merchants.map((x, i) => {
             let merchant = {
+              no: i,
               f_name: x.f_name,
               l_name: x.l_name,
               email: x.email,

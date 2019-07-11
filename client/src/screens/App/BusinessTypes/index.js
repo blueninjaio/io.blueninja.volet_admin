@@ -42,8 +42,9 @@ export default class index extends Component {
       .then(data => {
         if (data.success) {
           let categories = [];
-          data.categories.map(x => {
+          data.categories.map((x, i) => {
             let cat = {
+              no: i,
               title: x.title,
               date: x.dateCreated
             };

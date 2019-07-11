@@ -113,8 +113,9 @@ export class index extends Component {
             return approved;
           });
 
-          approved.map(x => {
+          approved.map((x, i) => {
             let approve = {
+              no: i,
               company_name: x.company_name,
               business_category: x.type_of_business,
               merchant_name: x.f_name + " " + x.l_name

@@ -110,7 +110,7 @@ class index extends Component {
               <div className="navbar-admin-name">
                 <button
                   className="admin-name-btn"
-                  onClick={() => this.logoutPop()}
+                  // onClick={() => this.logoutPop()}
                 >
                   <span>{this.state.email}</span>
                 </button>
@@ -151,7 +151,10 @@ class index extends Component {
             ) : null} */}
 
             {this.state.logout ? (
-              <div className="logout-dropdown">
+              <div
+                className="logout-dropdown"
+                onMouseLeave={() => this.setState({ logout: false })}
+              >
                 <div className="notify-item">
                   <button className="logout-btn" onClick={() => this.logout()}>
                     Logout

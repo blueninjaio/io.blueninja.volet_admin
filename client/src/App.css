@@ -20,7 +20,7 @@
   width: 2%;
   height: 40%;
   position: absolute;
-  right: 14rem;
+  right: 2rem;
   top: 26px;
   background: transparent;
   border: 0;
@@ -190,9 +190,9 @@ body{
 }
 
 .admin-name-btn{
-  margin-left:1rem;
+  margin-left: -2rem;
   background: transparent;
-  border:0;
+  border: 0;
   color: white;
   font-weight: bold;
   display: flex;

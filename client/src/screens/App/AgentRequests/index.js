@@ -31,6 +31,35 @@ export default class index extends Component {
 
   /**
   |--------------------------------------------------
+  | converting user id
+  |--------------------------------------------------
+  */
+
+  inActionConvertUserID = id => {
+    fetch(`${url}/api/admin/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        user_id: id
+      })
+    })
+      .then(res => res.json())
+
+      .then(data => {
+        if (data.success === true) {
+          console.log(data);
+          console.log("Successfully Converted The User ID");
+        }
+      })
+
+      .catch(err => console.log(err));
+  };
+
+  /**
+  |--------------------------------------------------
   | fetches all business request data from api
   |--------------------------------------------------
   */
@@ -64,8 +93,12 @@ export default class index extends Component {
 
           let pendingReceived = [];
 
-          pending.map(x => {
+          pending.map((x, i) => {
+            if (x.user_id !== null) {
+              this.inActionConvertUserID(x.user_id);
+            }
             let pend = {
+              no: i,
               user_id: x.user_id,
               dateCreated: x.dateCreated,
               isPending: "is Pending"
@@ -79,8 +112,9 @@ export default class index extends Component {
           this.setState({ pending: pendingReceived });
 
           let approveReceived = [];
-          approved.map(x => {
+          approved.map((x, i) => {
             let approve = {
+              no: i,
               user_id: x.user_id,
               isPending: "is Approved",
               dateCreated: x.dateCreated
@@ -92,8 +126,9 @@ export default class index extends Component {
           this.setState({ approved: approveReceived });
 
           let declineReceived = [];
-          decline.map(x => {
+          decline.map((x, i) => {
             let decline = {
+              no: i,
               user_id: x.user_id,
               isPending: "is Declined",
               dateCreated: x.dateCreated

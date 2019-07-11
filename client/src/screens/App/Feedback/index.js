@@ -52,8 +52,9 @@ export default class index extends Component {
       .then(data => {
         if (data.success) {
           let feedback = [];
-          data.feedbacks.map(x => {
+          data.feedbacks.map((x, i) => {
             let user = {
+              no: i,
               _id: x._id,
               rating: x.rating,
               description: x.description,

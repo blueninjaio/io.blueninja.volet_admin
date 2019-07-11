@@ -3,10 +3,29 @@ import "./styles.css";
 import { NavLink } from "react-router-dom";
 
 export default class index extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      arrowIndicator: false
+    };
+  }
+
+  onActionScrollSidebar = () => {
+    this.setState({ arrowIndicator: true });
+    if (this.refs.sidebar.scrollTop === 0) {
+      this.setState({ arrowIndicator: false });
+    }
+  };
+
   render() {
     return (
       <div className="sidebar-content-container">
-        <ul className="sidebar-list">
+        <ul
+          className="sidebar-list"
+          ref="sidebar"
+          onScroll={() => this.onActionScrollSidebar()}
+        >
           <li>
             <NavLink to="/dashboard" className="remove-hover">
               Dashboard
@@ -68,6 +87,12 @@ export default class index extends Component {
             </NavLink>
           </li>
         </ul>
+        {this.state.arrowIndicator === false ? (
+          <img
+            className="sidebar-arrow-img"
+            src="https://i0.wp.com/meritocracy.is/blog/wp-content/uploads/2019/01/grey-down-arrow-icon-png-1.png?fit=385%2C233&ssl=1"
+          />
+        ) : null}
       </div>
     );
   }

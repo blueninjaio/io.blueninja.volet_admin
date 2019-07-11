@@ -53,8 +53,9 @@ export class index extends Component {
       .then(data => {
         if (data.success) {
           let notification = [];
-          data.push.map(x => {
+          data.push.map((x, i) => {
             let user = {
+              no: i,
               title: x.title,
               description: x.description,
               createdAt: x.createdAt
