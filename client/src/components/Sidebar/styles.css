@@ -25,6 +25,11 @@
   margin-top: 7rem;
 }
 
+.remove-hover.activeLink{
+  color: rgb(98,155,249);
+  font-weight: bold;
+}
+
 
   
   .sidebar-list li{
@@ -42,7 +47,7 @@
 
   .remove-hover:hover{
     text-decoration: none;
-    color: darkblue;
+    color: rgb(98,155,249);
   }
 
   .sidebar-arrow-img{

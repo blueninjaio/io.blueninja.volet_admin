@@ -27,62 +27,110 @@ export default class index extends Component {
           onScroll={() => this.onActionScrollSidebar()}
         >
           <li>
-            <NavLink to="/dashboard" className="remove-hover">
+            <NavLink
+              to="/dashboard"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Dashboard
             </NavLink>
           </li>
           <li>
-            <NavLink to="/users" className="remove-hover">
+            <NavLink
+              to="/users"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Users
             </NavLink>
           </li>
           <li>
-            <NavLink to="/merchants" className="remove-hover">
+            <NavLink
+              to="/merchants"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Merchants
             </NavLink>
           </li>
           <li>
-            <NavLink to="/business" className="remove-hover">
+            <NavLink
+              to="/business"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Businesses
             </NavLink>
           </li>
           <li>
-            <NavLink to="/transaction" className="remove-hover">
+            <NavLink
+              to="/transaction"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Transactions
             </NavLink>
           </li>
           <li>
-            <NavLink to="/agentrequests" className="remove-hover">
+            <NavLink
+              to="/agentrequests"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Agent Requests
             </NavLink>
           </li>
           <li>
-            <NavLink to="/businessrequest" className="remove-hover">
+            <NavLink
+              to="/businessrequest"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Business Requests
             </NavLink>
           </li>
           <li>
-            <NavLink to="/feedback" className="remove-hover">
+            <NavLink
+              to="/feedback"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Feedback
             </NavLink>
           </li>
           <li>
-            <NavLink to="/pushnotification" className="remove-hover">
+            <NavLink
+              to="/pushnotification"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Push Notification
             </NavLink>
           </li>
           <li>
-            <NavLink to="/businessTypes" className="remove-hover">
+            <NavLink
+              to="/businessTypes"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Business Types
             </NavLink>
           </li>
           <li>
-            <NavLink to="/vouchers" className="remove-hover">
+            <NavLink
+              to="/vouchers"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Vouchers
             </NavLink>
           </li>
           <li>
-            <NavLink to="/static" className="remove-hover">
+            <NavLink
+              to="/static"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
               Static Pages
             </NavLink>
           </li>

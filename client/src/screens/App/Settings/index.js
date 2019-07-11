@@ -147,16 +147,7 @@ export default class index extends Component {
                 >
                   Change Email
                 </button>
-                <button
-                  className="btn btn-link collapse-view-btn move-btn"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#collapseOne-1"
-                  aria-expanded="true"
-                  aria-controls="collapseOne-1"
-                >
-                  Edit
-                </button>
+
                 <button
                   className="btn btn-link collapse-view-btn"
                   type="button"
@@ -178,6 +169,16 @@ export default class index extends Component {
             >
               <div className="card-body" style={{ paddingLeft: "2.1rem" }}>
                 Current Email: james@gmail.com
+                <button
+                  className="btn btn-link collapse-view-btn move-btn settings-email-btn"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseOne-1"
+                  aria-expanded="true"
+                  aria-controls="collapseOne-1"
+                >
+                  Edit
+                </button>
               </div>
             </div>
             <div
@@ -228,17 +229,7 @@ export default class index extends Component {
                   aria-expanded="true"
                   aria-controls="collapseOne-1"
                 >
-                  Edit
-                </button>
-                <button
-                  className="btn btn-link collapse-view-btn"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#collapseTwo"
-                  aria-expanded="true"
-                  aria-controls="collapseOne-1"
-                >
-                  View
+                  Change Password
                 </button>
               </h5>
             </div>
@@ -265,10 +256,24 @@ export default class index extends Component {
                   className="form-control static-input"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
+                  placeholder="Enter old password"
+                />
+                <input
+                  type="email"
+                  className="form-control static-input"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
                   placeholder="Enter new password"
                 />
+                <input
+                  type="email"
+                  className="form-control static-input"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter confirm new password"
+                />
                 <button onClick={() => this.submitPolicy()}>
-                  Enter New Password
+                  Confirm New Password
                 </button>
               </div>
             </div>
@@ -292,7 +297,7 @@ export default class index extends Component {
                 >
                   Forgot Password
                 </button>
-                <button
+                {/* <button
                   className="btn btn-link collapse-view-btn move-btn"
                   type="button"
                   data-toggle="collapse"
@@ -301,7 +306,7 @@ export default class index extends Component {
                   aria-controls="collapseOne-1"
                 >
                   Edit
-                </button>
+                </button> */}
                 <button
                   className="btn btn-link collapse-view-btn"
                   type="button"
@@ -310,7 +315,7 @@ export default class index extends Component {
                   aria-expanded="true"
                   aria-controls="collapseOne-1"
                 >
-                  View
+                  Send Email
                 </button>
               </h5>
             </div>
@@ -321,8 +326,17 @@ export default class index extends Component {
               aria-labelledby="headingOne"
               data-parent="#accordionExample"
             >
-              <div className="card-body" style={{ paddingLeft: "2.1rem" }}>
-                <span>Forgot Password: currentemail@gmail.com</span>
+              <div
+                className="card-body"
+                style={{ paddingLeft: "2.1rem", display: "inline-grid" }}
+              >
+                <span>Your Email is: currentemail@gmail.com</span>
+                <button
+                  onClick={() => this.submitPolicy()}
+                  style={{ marginTop: "1rem" }}
+                >
+                  Send me the email
+                </button>
               </div>
             </div>
             <div

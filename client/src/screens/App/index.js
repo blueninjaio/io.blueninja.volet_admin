@@ -18,7 +18,8 @@ import PushNotification from "./PushNotification";
 import Feedback from "./Feedback";
 import BusinessTypes from "./BusinessTypes";
 import AgentRequests from "./AgentRequests";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { logoutNow } from "../../actions/actions";
 import Sidebar from "../../components/Sidebar";
 
@@ -92,10 +93,12 @@ class index extends Component {
               className="power-btn-navbar"
               onClick={() => this.logoutPop()}
             >
-              <img
+              {/* <img
                 src="https://images.vexels.com/media/users/3/131799/isolated/preview/58f48ca730925348c9fb03c19b862bc7-power-button-icon-by-vexels.png"
                 style={{ width: "100%", height: "100%" }}
-              />
+              /> */}
+
+              <FontAwesomeIcon icon={faPowerOff} style={{ color: "white" }} />
             </button>
             <div className="navbar-content hide-small-mobile">
               {/* <div className="notify">
@@ -172,7 +175,10 @@ class index extends Component {
           <div className="main-content hide-small-mobile">
             <Switch>
               <Redirect exact from="/login" to="/dashboard" />
-              <Route path="/dashboard" component={Dashboard} />
+              <Route
+                path="/dashboard"
+                component={() => <Dashboard drop={this.state.logoutPop} />}
+              />
               <Route path="/users" component={Users} />
               <Route path="/merchants" component={Merchants} />
               <Route path="/useragent" component={UserAgent} />

@@ -79,9 +79,8 @@ class index extends Component {
 
       .then(data => {
         console.log("Login Data: ");
-        // console.log(data.token);
+
         if (data.success === true) {
-          // console.log("error");
           alert(data.message);
           let token = data.token;
           let email = data.user.email;

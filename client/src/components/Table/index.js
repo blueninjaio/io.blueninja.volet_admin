@@ -63,8 +63,8 @@ export class index extends Component {
         .then(res => res.json())
 
         .then(data => {
-          console.log(data);
           if (data.success === true) {
+            // console.log(data);
             window.location.reload();
           } else {
             alert(data.message);
