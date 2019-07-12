@@ -38,6 +38,7 @@ export class index extends Component {
 
         .then(data => {
           if (data.success === true) {
+            alert(data.message);
             window.location.reload();
           } else {
             alert(data.message);
@@ -64,7 +65,7 @@ export class index extends Component {
 
         .then(data => {
           if (data.success === true) {
-            // console.log(data);
+            alert(data.message);
             window.location.reload();
           } else {
             alert(data.message);
@@ -101,6 +102,7 @@ export class index extends Component {
 
         .then(data => {
           if (data.success === true) {
+            alert(data.message);
             window.location.reload();
           } else {
             alert(data.message);
@@ -128,6 +130,7 @@ export class index extends Component {
 
         .then(data => {
           if (data.success === true) {
+            alert(data.message);
             window.location.reload();
           } else {
             alert(data.message);
