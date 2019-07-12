@@ -26,8 +26,10 @@
 }
 
 .remove-hover.activeLink{
-  color: rgb(98,155,249);
   font-weight: bold;
+  background: -webkit-linear-gradient(#36D1DC,#5B86E5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 
@@ -108,4 +110,7 @@
    left:4.9rem;
    bottom:-1rem;
   }
+
+
+
   }

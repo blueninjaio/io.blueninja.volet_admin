@@ -233,7 +233,7 @@ export default class index extends Component {
         </div>
         <div
           className="container-fluid bR-mobile-container"
-          style={{ paddingTop: "5.2rem" }}
+          style={{ paddingTop: "6.7rem" }}
         >
           {this.state.pendingTab === true ? (
             <Table

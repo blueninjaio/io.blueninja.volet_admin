@@ -106,6 +106,7 @@ export class index extends Component {
 
           data.businesses.map(x => {
             if (x.isApproved) {
+              console.log(x);
               approved.push(x);
               this.setState({ approvedSelected: approved });
             }
@@ -592,15 +593,15 @@ export class index extends Component {
                     </div>
                     <div className="field-container">
                       <span>Name: </span>
-                      <span className="email-span">James Padding </span>
+                      <span className="email-span">{x.store_name} </span>
                     </div>
                     <div className="field-container">
                       <span>No: </span>
-                      <span className="email-span">123456 </span>
+                      <span className="email-span">{x.store_number} </span>
                     </div>
                     <div className="field-container">
                       <span>Description: </span>
-                      <span className="email-span">Description</span>
+                      <span className="email-span">{x.store_description}</span>
                     </div>
                   </div>
                 ) : null}
@@ -657,33 +658,157 @@ export class index extends Component {
 
                 {this.state.openingTimes === true ? (
                   <div className="main-field-container">
-                    <div className="field-container">
-                      <span>Sun: </span>
-                      <span className="email-span">Logo</span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Sun: </span>
+                      </div>
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.sunday.start}
+                        </span>
+                        <span className="email-span">End: {x.sunday.end}</span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Sat: </span>
-                      <span className="email-span">James Padding </span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Sat: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.saturday.start}
+                        </span>
+                        <span className="email-span">
+                          End: {x.saturday.end}
+                        </span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Fri: </span>
-                      <span className="email-span">123456 </span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Fri: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.friday.start}
+                        </span>
+                        <span className="email-span">End: {x.friday.end}</span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Thurs: </span>
-                      <span className="email-span">Description</span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Thurs: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.thursday.start}
+                        </span>
+                        <span className="email-span">
+                          End: {x.thursday.end}
+                        </span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Wed: </span>
-                      <span className="email-span">James Padding </span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Wed: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.wednesday.start}
+                        </span>
+                        <span className="email-span">
+                          End: {x.wednesday.end}
+                        </span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Tues: </span>
-                      <span className="email-span">123456 </span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Tues: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.tuesday.start}
+                        </span>
+                        <span className="email-span">End: {x.tuesday.end}</span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Mon: </span>
-                      <span className="email-span">Description</span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Mon: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.monday.start}
+                        </span>
+                        <span className="email-span">End: {x.monday.end}</span>
+                      </div>
                     </div>
                   </div>
                 ) : null}

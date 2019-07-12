@@ -196,7 +196,7 @@ body{
 }
 
 .admin-name-btn{
-  margin-left: -2rem;
+  margin-left: -5rem;
   background: transparent;
   border: 0;
   color: white;
@@ -1232,6 +1232,11 @@ border: 0;
   margin-left: 2rem;
 }
 
+.container-fluid.bR-mobile-container{
+  padding-top: 6.7rem ;
+}
+
+
 @media screen and (min-width: 1600px) {
   .send-voucher-btn{
     width: 13%;
@@ -1265,5 +1270,13 @@ border: 0;
 
   .graph-container-2{
     height: 49rem;
+  }
+
+  .business-profile-container img{
+    width: 9%;
+  }
+
+  .container-fluid.bR-mobile-container{
+    padding-top: 5.2rem !important;
   }
 }

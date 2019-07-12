@@ -180,7 +180,7 @@ export default class index extends Component {
               data-parent="#accordionExample"
             >
               <div className="card-body" style={{ paddingLeft: "2.1rem" }}>
-                Current Email: james@gmail.com
+                Current Email: {this.state.email}
                 <button
                   className="btn btn-link collapse-view-btn move-btn settings-email-btn"
                   type="button"

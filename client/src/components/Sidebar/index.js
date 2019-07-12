@@ -29,7 +29,7 @@ export default class index extends Component {
           <li>
             <NavLink
               to="/dashboard"
-              className="remove-hover"
+              className="remove-hover "
               activeClassName="activeLink"
             >
               Dashboard

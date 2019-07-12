@@ -10,8 +10,8 @@ class index extends Component {
     super(props);
 
     this.state = {
-      email: "admin@admin.com",
-      password: "admin12345",
+      email: "",
+      password: "",
       token: ""
     };
   }
