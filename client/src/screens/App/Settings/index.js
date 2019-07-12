@@ -10,10 +10,11 @@ export default class index extends Component {
     super(props);
 
     this.state = {
-      faq: "",
-      policy: "",
-      receivedFAQ: "",
-      receivedPolicy: ""
+      id: "",
+      email: "",
+      old: "",
+      new: "",
+      confirm: ""
     };
   }
 
@@ -23,7 +24,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   componentDidMount() {
-    this.getStatic();
+    this.onLoadGetID();
   }
 
   /**
@@ -31,56 +32,55 @@ export default class index extends Component {
   | sets state for the faq string
   |--------------------------------------------------
   */
-  inputFAQ(e) {
-    this.setState({ faq: e.target.value });
+  inputOldPassword(e) {
+    this.setState({ old: e.target.value });
   }
   /**
   |--------------------------------------------------
-  | sets state for the policy string
+  | sets state for the faq string
   |--------------------------------------------------
   */
-  inputPolicy(e) {
-    this.setState({ policy: e.target.value });
+  inputNewPassword(e) {
+    this.setState({ new: e.target.value });
   }
   /**
   |--------------------------------------------------
-  | gets data from api
+  | sets state for the faq string
   |--------------------------------------------------
   */
-  getStatic = () => {
-    fetch(`${url}/api/static`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+  inputConfirmPassword(e) {
+    this.setState({ confirm: e.target.value });
+  }
+  /**
+  |--------------------------------------------------
+  | sets state for the email string
+  |--------------------------------------------------
+  */
+  inputEmail(e) {
+    this.setState({ email: e.target.value });
+  }
 
-      .then(data => {
-        if (data.static.length >= 1) {
-          this.setState({ receivedFAQ: data.static[0].faq });
-          this.setState({ receivedPolicy: data.static[0].policies });
-        }
-      })
+  onLoadGetID = () => {
+    let id = localStorage.getItem("user_id");
+    let email = localStorage.getItem("user_email");
 
-      .catch(err => console.log(err));
+    this.setState({ id, email });
   };
-
   /**
   |--------------------------------------------------
-  | submits policy state/string to the api
+  | submits new change email to the api
   |--------------------------------------------------
   */
-  submitPolicy = () => {
-    fetch(`${url}/api/static/policies`, {
+  onActionChangeEmail = () => {
+    fetch(`${url}/api/admin/changeEmail`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
         Accept: "application/json"
       },
       body: JSON.stringify({
-        policy: this.state.policy
+        _id: this.state.id,
+        email: this.state.email
       })
     })
       .then(res => res.json())
@@ -89,39 +89,51 @@ export default class index extends Component {
         console.log(data);
         if (data.success === true) {
           alert(data.message);
+          window.location.reload();
           console.log(data.success);
         }
       })
 
       .catch(err => console.log(err));
   };
+
   /**
   |--------------------------------------------------
-  | submits faq state/string to the api
+  | submits new change password to the api
   |--------------------------------------------------
   */
-  submitFAQ = () => {
-    fetch(`${url}/api/static/faq`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        faq: this.state.faq
+  onActionChangePassword = () => {
+    console.log(this.state.new);
+    console.log(this.state.old);
+    console.log(this.state.email);
+    if (this.state.new === this.state.confirm) {
+      fetch(`${url}/api/admin/changePassword`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          old_password: this.state.old,
+          new_password: this.state.new,
+          email: this.state.email
+        })
       })
-    })
-      .then(res => res.json())
+        .then(res => res.json())
 
-      .then(data => {
-        console.log(data);
-        if (data.success === true) {
-          alert(data.message);
-          console.log(data.success);
-        }
-      })
+        .then(data => {
+          if (data.success === true) {
+            console.log(data);
+            alert(data.message);
+            window.location.reload();
+            console.log(data.success);
+          }
+        })
 
-      .catch(err => console.log(err));
+        .catch(err => console.log(err));
+    } else {
+      alert("Please enter the valid password");
+    }
   };
 
   render() {
@@ -189,15 +201,15 @@ export default class index extends Component {
             >
               <div className="card-body">
                 <textarea
-                  value={this.state.policy}
-                  onChange={this.inputPolicy.bind(this)}
+                  value={this.state.email}
+                  onChange={this.inputEmail.bind(this)}
                   className="form-control static-input"
                   id="exampleFormControlTextarea1"
                   rows="5"
                   style={{ resize: "none" }}
                   placeholder="Enter new email address"
                 />
-                <button onClick={() => this.submitPolicy()}>
+                <button onClick={() => this.onActionChangeEmail()}>
                   Enter New Email Address
                 </button>
               </div>
@@ -253,6 +265,8 @@ export default class index extends Component {
               <div className="card-body">
                 <input
                   type="email"
+                  value={this.state.old}
+                  onChange={this.inputOldPassword.bind(this)}
                   className="form-control static-input"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
@@ -260,6 +274,8 @@ export default class index extends Component {
                 />
                 <input
                   type="email"
+                  value={this.state.new}
+                  onChange={this.inputNewPassword.bind(this)}
                   className="form-control static-input"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
@@ -267,12 +283,14 @@ export default class index extends Component {
                 />
                 <input
                   type="email"
+                  value={this.state.confirm}
+                  onChange={this.inputConfirmPassword.bind(this)}
                   className="form-control static-input"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Enter confirm new password"
                 />
-                <button onClick={() => this.submitPolicy()}>
+                <button onClick={() => this.onActionChangePassword()}>
                   Confirm New Password
                 </button>
               </div>
@@ -348,7 +366,7 @@ export default class index extends Component {
               <div className="card-body">
                 <textarea
                   value={this.state.faq}
-                  onChange={this.inputFAQ.bind(this)}
+                  // onChange={this.inputFAQ.bind(this)}
                   className="form-control static-input"
                   id="exampleFormControlTextarea1"
                   rows="5"

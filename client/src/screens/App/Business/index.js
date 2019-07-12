@@ -144,9 +144,11 @@ export class index extends Component {
   |--------------------------------------------------
   */
   merchantSearch = async search => {
-    let queryArray = this.state.business;
+    let queryArray = this.state.approved;
+    // console.log(this.state.business);
     let newArray = [];
     queryArray.map(x => {
+      console.log(x);
       if (
         x.f_name.includes(search) ||
         x.l_name.includes(search) ||
@@ -167,7 +169,7 @@ export class index extends Component {
   |--------------------------------------------------
   */
   businessSearch = async search => {
-    let queryArray = this.state.business;
+    let queryArray = this.state.approved;
     let newArray = [];
     queryArray.map(x => {
       if (x.company_name.includes(search)) {

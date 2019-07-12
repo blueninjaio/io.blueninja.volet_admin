@@ -78,16 +78,17 @@ class index extends Component {
       .then(res => res.json())
 
       .then(data => {
-        console.log("Login Data: ");
-
         if (data.success === true) {
           alert(data.message);
+          console.log("Login Data: ", data.user);
           let token = data.token;
           let email = data.user.email;
+          let id = data.user._id;
           console.log("token", token);
           localStorage.setItem("user_token", token);
           localStorage.setItem("user_email", email);
-
+          localStorage.setItem("user_id", id);
+          // localStorage.setItem("user_id", id);
           if (token !== null) {
             this.props.loginNow();
           }
