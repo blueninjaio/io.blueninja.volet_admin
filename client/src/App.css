@@ -472,8 +472,8 @@ input[type="checkbox"].user-agent + div > div {
 }
 
 input[type="checkbox"].user-agent:checked + div > div {
-	-webkit-transform: translate3d(-1px, 0, 0);
-	transform: translate3d(20px, 0, 0);
+	-webkit-transform: translate3d(-1px, 0, 0) !important;
+	transform: translate3d(-1px, 0, 0);
 	background-color: #ffffff;
 }
 
@@ -481,12 +481,6 @@ input[type="checkbox"].bigswitch.user-agent + div > div {
 	width: 44px;
 	height: 44px;
 	margin-top: 1px;
-}
-
-
-input[type="checkbox"].user-agent:checked + div > div {
-	/* -webkit-transform: translate3d(46px, 0, 0); */
-	/* transform: translate3d(46px, 0, 0); */
 }
 
 
