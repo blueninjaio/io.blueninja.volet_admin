@@ -16,6 +16,8 @@ class index extends Component {
     };
   }
 
+  onActionValidateEmail = () => {};
+
   inputEmail(e) {
     this.setState({ email: e.target.value });
   }
@@ -60,42 +62,48 @@ class index extends Component {
     |--------------------------------------------------
     */
   login = async () => {
-    if (this.state.token !== null) {
-      this._storeData(this.state.token);
-    }
+    let email = this.state.email;
 
-    fetch(`${url}/api/admin/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
+    if (email.includes("@")) {
+      if (this.state.token !== null) {
+        this._storeData(this.state.token);
+      }
+
+      fetch(`${url}/api/admin/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password
+        })
       })
-    })
-      .then(res => res.json())
+        .then(res => res.json())
 
-      .then(data => {
-        if (data.success === true) {
-          alert(data.message);
-          console.log("Login Data: ", data.user);
-          let token = data.token;
-          let email = data.user.email;
-          let id = data.user._id;
-          console.log("token", token);
-          localStorage.setItem("user_token", token);
-          localStorage.setItem("user_email", email);
-          localStorage.setItem("user_id", id);
-          // localStorage.setItem("user_id", id);
-          if (token !== null) {
-            this.props.loginNow();
+        .then(data => {
+          if (data.success === true) {
+            alert(data.message);
+            console.log("Login Data: ", data.user);
+            let token = data.token;
+            let email = data.user.email;
+            let id = data.user._id;
+            console.log("token", token);
+            localStorage.setItem("user_token", token);
+            localStorage.setItem("user_email", email);
+            localStorage.setItem("user_id", id);
+            // localStorage.setItem("user_id", id);
+            if (token !== null) {
+              this.props.loginNow();
+            }
           }
-        }
-      })
+        })
 
-      .catch(err => console.log(err));
+        .catch(err => console.log(err));
+    } else {
+      alert("Please enter a valid email");
+    }
   };
 
   render() {
