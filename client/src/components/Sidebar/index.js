@@ -134,6 +134,33 @@ export default class index extends Component {
               Static Pages
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/banks"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
+              Banks
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/paymentmethods"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
+              Payment Methods
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/currency"
+              className="remove-hover"
+              activeClassName="activeLink"
+            >
+              Currency
+            </NavLink>
+          </li>
         </ul>
         {this.state.arrowIndicator === false ? (
           <img

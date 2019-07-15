@@ -18,6 +18,9 @@ import PushNotification from "./PushNotification";
 import Feedback from "./Feedback";
 import BusinessTypes from "./BusinessTypes";
 import AgentRequests from "./AgentRequests";
+import PaymentMethods from "./PaymentMethods";
+import Currency from "./Currency";
+import Banks from "./Banks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { logoutNow } from "../../actions/actions";
@@ -197,6 +200,9 @@ class index extends Component {
               <Route path="/feedback" component={Feedback} />
               <Route path="/businessTypes" component={BusinessTypes} />
               <Route path="/agentrequests" component={AgentRequests} />
+              <Route path="/banks" component={Banks} />
+              <Route path="/paymentmethods" component={PaymentMethods} />
+              <Route path="/currency" component={Currency} />
             </Switch>
           </div>
         </div>
