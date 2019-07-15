@@ -9,9 +9,18 @@ export class index extends Component {
     this.state = {
       w: "",
       bAccRow: false,
-      columns: []
+      columns: [],
+      toggle: false
     };
   }
+
+  onActionActivateToggle = () => {
+    this.setState({ toggle: true });
+  };
+
+  onActionDeactivateToggle = () => {
+    this.setState({ toggle: false });
+  };
 
   /**
   |--------------------------------------------------
@@ -209,6 +218,54 @@ export class index extends Component {
                           >
                             {x.name}
                           </button>
+                        )}
+                      </td>
+                    ))
+                  : null}
+                {this.props.toggle
+                  ? this.props.toggle.map((x, w) => (
+                      <td
+                        style={{ width: this.props.head[w].width }}
+                        className="table-data-mobile"
+                      >
+                        {this.state.toggle === true ? (
+                          <div className="user-toggle">
+                            {/* <span className="user-toggle-text">Users</span> */}
+                            <div className="switch-container">
+                              <label>
+                                <input
+                                  ref="switch"
+                                  onClick={() =>
+                                    this.onActionDeactivateToggle()
+                                  }
+                                  className="user-agent"
+                                  type="checkbox"
+                                />
+                                <div>
+                                  <div />
+                                </div>
+                              </label>
+                            </div>
+                            {/* <span>Agents</span> */}
+                          </div>
+                        ) : (
+                          <div className="user-toggle">
+                            {/* <span className="user-toggle-text">Users</span> */}
+                            <div className="switch-container">
+                              <label>
+                                <input
+                                  ref="switch"
+                                  onClick={() => this.onActionActivateToggle()}
+                                  className="user"
+                                  type="checkbox"
+                                />
+                                <div>
+                                  <div />
+                                </div>
+                              </label>
+                            </div>
+                            {/* <span>Agents</span> */}
+                          </div>
                         )}
                       </td>
                     ))

@@ -153,6 +153,7 @@ export default class index extends Component {
             head={data.tHeadCatTable}
             body={this.state.categories}
             method={this.passedFromChild}
+            toggle={data.tBodyToggle}
           />
         </div>
       </div>

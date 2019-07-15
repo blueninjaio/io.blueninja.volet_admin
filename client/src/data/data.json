@@ -237,6 +237,12 @@
         "name": "Decline"
     }
 ],
+"tBodyToggle":[
+    {
+        "id": 1,
+        "name": "Toggle"
+    }
+],
 
 "tHeadApprovedBusinessTable": [
     {
@@ -489,18 +495,24 @@
     {
         "id": 1,
         "title": "No",
-        "width": "33.3%"
+        "width": "25%"
     },
     {
         "id": 2,
         "title": "Title",
-        "width": "33.3%"
+        "width": "25%"
     },
     {
         "id": 3,
         "title": "Date Created",
-        "width": "33.3%"
+        "width": "25%"
+    },
+    {
+        "id": 4,
+        "title": "Activate Business",
+        "width": "25%"
     }
+    
 ],
 "tBodyCatTable":[
     {
