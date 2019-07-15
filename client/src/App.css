@@ -282,11 +282,11 @@ body{
     
     left: 2rem;
     width: 18%; */
-        position: absolute;
-        top: 19.6rem;
-        display: flex;
-        left: 57rem;
-        width: 18%;
+    position: relative;
+    top: 1rem;
+    display: flex;
+    width: 18%;
+    left: 6.5rem;
 }
 
 .nav-link{

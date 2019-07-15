@@ -150,7 +150,7 @@ export default class index extends Component {
           style={{ paddingTop: "7.5rem" }}
         >
           <Table
-            head={data.tHeadCatTable}
+            head={data.tHeadCurrencyTable}
             body={this.state.categories}
             method={this.passedFromChild}
             toggle={data.tBodyToggle}
