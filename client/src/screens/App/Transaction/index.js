@@ -29,9 +29,6 @@ export default class index extends Component {
   render() {
     return (
       <div className="dashboard-container">
-        {/* {this.state.approveDecline === true ? (
-          <div className="modal-opacity" />
-        ) : null} */}
         <h3
           className="page-title business-request-title"
           style={{ marginLeft: "1rem" }}
@@ -141,14 +138,6 @@ export default class index extends Component {
               method={this.passedFromChild}
             />
           ) : null}
-          {/* {this.state.approveDecline === true ? (
-            <div className="approve-decline-container">
-              <button>Approve</button>
-              <button onClick={() => this.setState({ approveDecline: false })}>
-                Decline
-              </button>
-            </div>
-          ) : null} */}
         </div>
       </div>
     );

@@ -14,7 +14,10 @@ export default class index extends Component {
       quantity: "",
       expiry: "",
       addVoucher: false,
-      vouchers: []
+      vouchers: [],
+      rowSelected: false,
+      voucherDetails: [],
+      approved: []
     };
   }
 
@@ -33,7 +36,10 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   passedFromChild = (i, state) => {
-    console.log(i);
+    let arr = this.state.approved;
+    arr.push(this.state.voucherDetails[i]);
+
+    this.setState({ rowSelected: state });
   };
 
   /**
@@ -67,7 +73,9 @@ export default class index extends Component {
         }
       })
 
-      .catch(err => console.log(err));
+      .catch(err =>
+        console.log("adding a voucher function error on the voucher page", err)
+      );
   };
 
   /**
@@ -89,6 +97,8 @@ export default class index extends Component {
       .then(data => {
         if (data.success) {
           let vouchers = [];
+          let voucherDetails = [];
+
           data.vouchers.map(x => {
             let user = {
               name: x.name,
@@ -97,15 +107,26 @@ export default class index extends Component {
               quantity: x.quantity,
               expiry: x.expiry
             };
+
+            let voucherUser = {
+              voucher_name: x.name,
+              voucher_desc: x.description,
+              voucher_usage: x.usage
+            };
+
             vouchers.push(user);
-            return vouchers
+            voucherDetails.push(voucherUser);
+
+            this.setState({ voucherDetails });
+            console.log(this.state.voucherDetails);
+            return vouchers;
           });
 
           this.setState({ vouchers });
         }
       })
       .catch(err => {
-        console.log("Error for users page", err);
+        console.log("Error for vouchers  page", err);
 
         alert(
           "Error connecting to server",
@@ -151,7 +172,10 @@ export default class index extends Component {
                 className="categoryXBtn"
                 onClick={() => this.setState({ addVoucher: false })}
               >
-                <img alt="img" src="https://image.flaticon.com/icons/png/512/458/458595.png" />
+                <img
+                  alt="img"
+                  src="https://image.flaticon.com/icons/png/512/458/458595.png"
+                />
               </button>
             </div>
             <div>
@@ -204,6 +228,49 @@ export default class index extends Component {
             method={this.passedFromChild}
           />
         </div>
+        {this.state.rowSelected === true ? (
+          <div>
+            {this.state.approved.map((x, i) => (
+              <div className="view-business-container" key={i}>
+                <button
+                  className="exit-btn-view-business"
+                  onClick={() => this.setState({ rowSelected: false })}
+                >
+                  <img
+                    alt="selected-user-x-icon"
+                    src="https://img.pngio.com/index-of-v2-imgs-x-png-black-and-white-256_256.png"
+                  />
+                </button>
+
+                <div
+                  className="business-email-container"
+                  style={{ marginTop: "6rem" }}
+                >
+                  <span>Voucher Name: </span>
+                  <span className="email-span">{x.voucher_name} </span>
+                </div>
+                <div
+                  className="business-email-container"
+                  style={{ marginBottom: "1rem" }}
+                >
+                  <span>Voucher Description: </span>
+                  <span className="email-span">{x.voucher_desc} </span>
+                </div>
+                <span style={{ marginLeft: "4rem" }}>Usage</span>
+                <div className="business-email-container">
+                  <ul className="usage-container">
+                    {x.voucher_usage
+                      ? x.voucher_usage.map((y, index) => (
+                          <li key={index}> {y.user}</li>
+                        ))
+                      : null}
+                  </ul>
+                </div>
+                {/* <div className="border-view-business" /> */}
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
     );
   }

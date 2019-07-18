@@ -64,8 +64,9 @@ export default class index extends Component {
 
           let pendingReceived = [];
 
-          pending.map(x => {
+          pending.map((x, i) => {
             let pend = {
+              no: i,
               f_name: x.f_name,
               l_name: x.l_name,
               company_name: x.company_name,
@@ -75,14 +76,15 @@ export default class index extends Component {
             this.state.ids.push(x._id);
 
             pendingReceived.push(pend);
-            return pendingReceived
+            return pendingReceived;
           });
 
           this.setState({ pending: pendingReceived });
 
           let approveReceived = [];
-          approved.map(x => {
+          approved.map((x, i) => {
             let approve = {
+              no: i,
               f_name: x.f_name,
               l_name: x.l_name,
               company_name: x.company_name,
@@ -90,14 +92,15 @@ export default class index extends Component {
               dateCreated: x.dateCreated
             };
             approveReceived.push(approve);
-            return approveReceived
+            return approveReceived;
           });
 
           this.setState({ approved: approveReceived });
 
           let declineReceived = [];
-          decline.map(x => {
+          decline.map((x, i) => {
             let decline = {
+              no: i,
               f_name: x.f_name,
               l_name: x.l_name,
               company_name: x.company_name,
@@ -105,17 +108,20 @@ export default class index extends Component {
               dateCreated: x.dateCreated
             };
             declineReceived.push(decline);
-            return declineReceived
+            return declineReceived;
           });
 
           this.setState({ decline: declineReceived });
         }
       })
       .catch(err => {
-        console.log("Error for business page", err);
+        console.log(
+          "Error for fetching business from the business request page",
+          err
+        );
 
         alert(
-          "Error connecting to server",
+          "Error for fetching business from the business request page",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }
@@ -227,7 +233,7 @@ export default class index extends Component {
         </div>
         <div
           className="container-fluid bR-mobile-container"
-          style={{ paddingTop: "5.2rem" }}
+          style={{ paddingTop: "6.7rem" }}
         >
           {this.state.pendingTab === true ? (
             <Table

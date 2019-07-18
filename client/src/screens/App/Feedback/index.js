@@ -52,15 +52,16 @@ export default class index extends Component {
       .then(data => {
         if (data.success) {
           let feedback = [];
-          data.feedbacks.map(x => {
+          data.feedbacks.map((x, i) => {
             let user = {
+              no: i,
               _id: x._id,
               rating: x.rating,
               description: x.description,
               dateCreated: x.dateCreated
             };
             feedback.push(user);
-            return feedback
+            return feedback;
           });
 
           this.setState({ feedback });
@@ -70,7 +71,7 @@ export default class index extends Component {
         console.log("Error for users page", err);
 
         alert(
-          "Error connecting to server",
+          "Error connecting to server, getting all the feedback from the feedback page",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }

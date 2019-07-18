@@ -75,7 +75,7 @@ export class index extends Component {
       })
       .catch(err => {
         alert(
-          "Error connecting to server",
+          "Error connecting to server from fetching the businessCategory",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }
@@ -106,22 +106,24 @@ export class index extends Component {
 
           data.businesses.map(x => {
             if (x.isApproved) {
+              console.log(x);
               approved.push(x);
               this.setState({ approvedSelected: approved });
             }
 
-            return approved
+            return approved;
           });
 
-          approved.map(x => {
+          approved.map((x, i) => {
             let approve = {
+              no: i,
               company_name: x.company_name,
               business_category: x.type_of_business,
               merchant_name: x.f_name + " " + x.l_name
             };
             approveReceived.push(approve);
 
-            return approveReceived
+            return approveReceived;
           });
 
           this.setState({ approved: approveReceived });
@@ -129,7 +131,7 @@ export class index extends Component {
       })
       .catch(err => {
         alert(
-          "Error connecting to server",
+          "Error connecting to server from the business page, fetchAllBusiness",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }
@@ -143,9 +145,11 @@ export class index extends Component {
   |--------------------------------------------------
   */
   merchantSearch = async search => {
-    let queryArray = this.state.business;
+    let queryArray = this.state.approved;
+    // console.log(this.state.business);
     let newArray = [];
     queryArray.map(x => {
+      console.log(x);
       if (
         x.f_name.includes(search) ||
         x.l_name.includes(search) ||
@@ -154,7 +158,7 @@ export class index extends Component {
         newArray.push(x);
       }
 
-      return newArray
+      return newArray;
     });
 
     this.setState({ queryArray: newArray });
@@ -166,13 +170,13 @@ export class index extends Component {
   |--------------------------------------------------
   */
   businessSearch = async search => {
-    let queryArray = this.state.business;
+    let queryArray = this.state.approved;
     let newArray = [];
     queryArray.map(x => {
       if (x.company_name.includes(search)) {
         newArray.push(x);
       }
-      return newArray
+      return newArray;
     });
 
     this.setState({ queryArray: newArray });
@@ -216,7 +220,7 @@ export class index extends Component {
       if (x.business_category.includes(search)) {
         newArray.push(x);
       }
-      return newArray
+      return newArray;
     });
 
     this.setState({ queryArray: newArray });
@@ -589,15 +593,15 @@ export class index extends Component {
                     </div>
                     <div className="field-container">
                       <span>Name: </span>
-                      <span className="email-span">James Padding </span>
+                      <span className="email-span">{x.store_name} </span>
                     </div>
                     <div className="field-container">
                       <span>No: </span>
-                      <span className="email-span">123456 </span>
+                      <span className="email-span">{x.store_number} </span>
                     </div>
                     <div className="field-container">
                       <span>Description: </span>
-                      <span className="email-span">Description</span>
+                      <span className="email-span">{x.store_description}</span>
                     </div>
                   </div>
                 ) : null}
@@ -606,7 +610,10 @@ export class index extends Component {
                   <div className="main-field-container">
                     <div className="featured-item-field-container">
                       <div className="featured-item-img-container">
-                        <img alt="img" src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                        <img
+                          alt="img"
+                          src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848"
+                        />
                       </div>
                       <div className="featured-item-desc-container">
                         <span>Krusty Krab</span>
@@ -618,7 +625,10 @@ export class index extends Component {
                     </div>
                     <div className="featured-item-field-container">
                       <div className="featured-item-img-container">
-                        <img alt="img" src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                        <img
+                          alt="img"
+                          src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848"
+                        />
                       </div>
                       <div className="featured-item-desc-container">
                         <span>Krusty Krab</span>
@@ -630,7 +640,10 @@ export class index extends Component {
                     </div>
                     <div className="featured-item-field-container">
                       <div className="featured-item-img-container">
-                        <img alt="img" src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848" />
+                        <img
+                          alt="img"
+                          src="https://vignette.wikia.nocookie.net/insatiablenetflix/images/3/37/36160115_486814051774091_6550841096618901504_n.jpg/revision/latest?cb=20180811150848"
+                        />
                       </div>
                       <div className="featured-item-desc-container">
                         <span>Krusty Krab</span>
@@ -645,33 +658,157 @@ export class index extends Component {
 
                 {this.state.openingTimes === true ? (
                   <div className="main-field-container">
-                    <div className="field-container">
-                      <span>Sun: </span>
-                      <span className="email-span">Logo</span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Sun: </span>
+                      </div>
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.sunday.start}
+                        </span>
+                        <span className="email-span">End: {x.sunday.end}</span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Sat: </span>
-                      <span className="email-span">James Padding </span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Sat: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.saturday.start}
+                        </span>
+                        <span className="email-span">
+                          End: {x.saturday.end}
+                        </span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Fri: </span>
-                      <span className="email-span">123456 </span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Fri: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.friday.start}
+                        </span>
+                        <span className="email-span">End: {x.friday.end}</span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Thurs: </span>
-                      <span className="email-span">Description</span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Thurs: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.thursday.start}
+                        </span>
+                        <span className="email-span">
+                          End: {x.thursday.end}
+                        </span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Wed: </span>
-                      <span className="email-span">James Padding </span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Wed: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.wednesday.start}
+                        </span>
+                        <span className="email-span">
+                          End: {x.wednesday.end}
+                        </span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Tues: </span>
-                      <span className="email-span">123456 </span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Tues: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.tuesday.start}
+                        </span>
+                        <span className="email-span">End: {x.tuesday.end}</span>
+                      </div>
                     </div>
-                    <div className="field-container">
-                      <span>Mon: </span>
-                      <span className="email-span">Description</span>
+                    <div
+                      className="field-container"
+                      style={{ display: "flex" }}
+                    >
+                      <div style={{ width: "50%" }}>
+                        <span>Mon: </span>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-grid",
+                          width: "50%",
+                          textAlign: "right"
+                        }}
+                      >
+                        <span className="email-span">
+                          Start: {x.monday.start}
+                        </span>
+                        <span className="email-span">End: {x.monday.end}</span>
+                      </div>
                     </div>
                   </div>
                 ) : null}

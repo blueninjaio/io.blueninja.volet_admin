@@ -16,6 +16,23 @@
   height: 100%;
 }
 
+.power-btn-navbar{
+  width: 2%;
+  height: 40%;
+  position: absolute;
+  right: 2rem;
+  top: 29px;
+  background: transparent;
+  border: 0;
+  z-index: 10000000;
+}
+
+
+.settings-email-btn{
+  margin-right: -1px !important;
+  width: 6% !important;
+  margin-top: -7px !important;
+}
 
 
 body{
@@ -179,9 +196,9 @@ body{
 }
 
 .admin-name-btn{
-  margin-left:1rem;
+  margin-left: -5rem;
   background: transparent;
-  border:0;
+  border: 0;
   color: white;
   font-weight: bold;
   display: flex;
@@ -258,13 +275,18 @@ body{
 
 .user-toggle{
     
-    position: absolute;
+    /* position: absolute;
     
     top: 5rem;
     display: flex;
     
     left: 2rem;
+    width: 18%; */
+    position: relative;
+    top: 1rem;
+    display: flex;
     width: 18%;
+    left: 6.5rem;
 }
 
 .nav-link{
@@ -384,6 +406,13 @@ input[type="checkbox"].user-agent  {
 	opacity: 0;
 }
 
+input[type="checkbox"].user  {
+	position: absolute;
+	opacity: 0;
+}
+
+
+
 input[type="checkbox"].user-agent + div {
 	vertical-align: middle;
 	width: 40px;
@@ -443,8 +472,8 @@ input[type="checkbox"].user-agent + div > div {
 }
 
 input[type="checkbox"].user-agent:checked + div > div {
-	-webkit-transform: translate3d(20px, 0, 0);
-	transform: translate3d(20px, 0, 0);
+	-webkit-transform: translate3d(-1px, 0, 0) !important;
+	transform: translate3d(-1px, 0, 0);
 	background-color: #ffffff;
 }
 
@@ -455,7 +484,81 @@ input[type="checkbox"].bigswitch.user-agent + div > div {
 }
 
 
-input[type="checkbox"].user-agent:checked + div > div {
+
+
+
+input[type="checkbox"].user + div {
+	vertical-align: middle;
+	width: 40px;
+	height: 20px;
+	border-radius: 999px;
+	background-color: #dbdbdb;
+	-webkit-transition-duration: .4s;
+	transition-duration: .4s;
+	-webkit-transition-property: background-color, box-shadow;
+	transition-property: background-color, box-shadow;
+	cursor: pointer;
+}
+
+input[type="checkbox"].user + div span {
+	position: absolute;
+    font-size: 1.6rem;
+    color: white;
+    margin-top: 12px;
+}
+
+input[type="checkbox"].user + div span:nth-child( 1 ) {
+    margin-left: 15px;
+}
+
+input[type="checkbox"].user + div span:nth-child( 2 ) {
+    margin-left: 55px;
+}
+
+input[type="checkbox"].user:checked + div {
+	width: 47px;
+	background-position: 0 0;
+	background-color: #3b89ec;
+}
+
+input[type="checkbox"].user + div {
+	width: 47px;
+  height: 21px;
+}
+
+
+input[type="checkbox"].user:checked + div {
+	background-color: #dbdbdb;
+}
+
+input[type="checkbox"].user + div > div {
+	float: left;
+    width: 19px;
+    height: 18px;
+    border-radius: inherit;
+    background: #ffffff;
+    transition-timing-function: cubic-bezier(1,0,0,1);
+    transition-duration: 0.4s;
+    transition-property: transform, background-color;
+    pointer-events: none;
+    margin-top: 1px;
+    margin-left: 1px;
+}
+
+input[type="checkbox"].user:checked + div > div {
+	-webkit-transform: translate3d(20px, 0, 0);
+	transform: translate3d(20px, 0, 0);
+	background-color: #ffffff;
+}
+
+input[type="checkbox"].bigswitch.user + div > div {
+	width: 44px;
+	height: 44px;
+	margin-top: 1px;
+}
+
+
+input[type="checkbox"].user:checked + div > div {
 	/* -webkit-transform: translate3d(46px, 0, 0); */
 	/* transform: translate3d(46px, 0, 0); */
 }
@@ -1215,6 +1318,11 @@ border: 0;
   margin-left: 2rem;
 }
 
+.container-fluid.bR-mobile-container{
+  padding-top: 6.7rem ;
+}
+
+
 @media screen and (min-width: 1600px) {
   .send-voucher-btn{
     width: 13%;
@@ -1248,5 +1356,13 @@ border: 0;
 
   .graph-container-2{
     height: 49rem;
+  }
+
+  .business-profile-container img{
+    width: 9%;
+  }
+
+  .container-fluid.bR-mobile-container{
+    padding-top: 5.2rem !important;
   }
 }

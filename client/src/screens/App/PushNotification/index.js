@@ -53,24 +53,25 @@ export class index extends Component {
       .then(data => {
         if (data.success) {
           let notification = [];
-          data.push.map(x => {
+          data.push.map((x, i) => {
             let user = {
+              no: i,
               title: x.title,
               description: x.description,
               createdAt: x.createdAt
             };
             notification.push(user);
-            return notification
+            return notification;
           });
 
           this.setState({ notification });
         }
       })
       .catch(err => {
-        console.log("Error for users page", err);
+        console.log("Error for gettng a push notification page", err);
 
         alert(
-          "Error connecting to server",
+          "Error connecting to server, fetching the push notification from the push notification page",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }
@@ -104,7 +105,7 @@ export class index extends Component {
             onClick={() => this.props.history.push("/sendnotification")}
           >
             <img
-              alt='img'
+              alt="img"
               src="https://image.flaticon.com/icons/png/512/131/131155.png"
               style={{ height: "100%", width: "100%" }}
             />

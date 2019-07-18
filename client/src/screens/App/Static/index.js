@@ -58,13 +58,15 @@ export default class index extends Component {
       .then(res => res.json())
 
       .then(data => {
-        if(data.static.length >= 1){
-          this.setState({ receivedFAQ: data.static[0].faq })
+        if (data.static.length >= 1) {
+          this.setState({ receivedFAQ: data.static[0].faq });
           this.setState({ receivedPolicy: data.static[0].policies });
         }
       })
 
-      .catch(err => console.log(err));
+      .catch(err =>
+        console.log("getting static from server, on static page", err)
+      );
   };
 
   /**
@@ -93,7 +95,9 @@ export default class index extends Component {
         }
       })
 
-      .catch(err => console.log(err));
+      .catch(err =>
+        console.log("getting policy from server, on policy page", err)
+      );
   };
   /**
   |--------------------------------------------------
@@ -121,7 +125,7 @@ export default class index extends Component {
         }
       })
 
-      .catch(err => console.log(err));
+      .catch(err => console.log("getting faq from server, on faq page", err));
   };
 
   render() {

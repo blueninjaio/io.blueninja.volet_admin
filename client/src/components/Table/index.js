@@ -9,9 +9,82 @@ export class index extends Component {
     this.state = {
       w: "",
       bAccRow: false,
-      columns: []
+      columns: [],
+      toggle: false,
+      isActive: false
     };
   }
+  componentDidMount() {
+    console.log("Isactive", this.props.isActive);
+    console.log("IDS", this.props.id);
+  }
+
+  onActionActivateToggle = (k, i) => {
+    console.log("E: ", k.target.checked);
+    console.log("Id: ", this.props.ids[i]);
+    // this.setState({ isActive: !this.state.isActive });
+    // console.log(this.state.isActive);
+    // let ids = this.props.id;
+    // let chosen = ids[i];
+
+    // console.log("Toggle Activated", chosen);
+
+    // fetch(`${url}/api/bank/toggle`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json; charset=utf-8",
+    //     Accept: "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     _id: chosen,
+    //     isActive: this.state.isActive
+    //   })
+    // })
+    //   .then(res => res.json())
+
+    //   .then(data => {
+    //     if (data.success === true) {
+    //       alert(data.message);
+    //     } else {
+    //       alert(data.message);
+    //     }
+    //   })
+
+    //   .catch(err => console.log(err));
+  };
+
+  onActionDeactivateToggle = i => {
+    this.setState({ toggle: false });
+
+    let ids = this.props.id;
+    let chosen = ids[i];
+
+    console.log("Toggle Activated", chosen);
+
+    fetch(`${url}/api/bank/toggle`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        _id: chosen,
+        isActive: false
+      })
+    })
+      .then(res => res.json())
+
+      .then(data => {
+        if (data.success === true) {
+          alert(data.message);
+          window.location.reload();
+        } else {
+          alert(data.message);
+        }
+      })
+
+      .catch(err => console.log(err));
+  };
 
   /**
   |--------------------------------------------------
@@ -38,6 +111,7 @@ export class index extends Component {
 
         .then(data => {
           if (data.success === true) {
+            alert(data.message);
             window.location.reload();
           } else {
             alert(data.message);
@@ -63,8 +137,8 @@ export class index extends Component {
         .then(res => res.json())
 
         .then(data => {
-          console.log(data);
           if (data.success === true) {
+            alert(data.message);
             window.location.reload();
           } else {
             alert(data.message);
@@ -101,6 +175,7 @@ export class index extends Component {
 
         .then(data => {
           if (data.success === true) {
+            alert(data.message);
             window.location.reload();
           } else {
             alert(data.message);
@@ -128,6 +203,7 @@ export class index extends Component {
 
         .then(data => {
           if (data.success === true) {
+            alert(data.message);
             window.location.reload();
           } else {
             alert(data.message);
@@ -137,6 +213,8 @@ export class index extends Component {
         .catch(err => console.log(err));
     }
   };
+
+  onActionToggle = () => {};
 
   render() {
     return (
@@ -207,6 +285,75 @@ export class index extends Component {
                             {x.name}
                           </button>
                         )}
+                      </td>
+                    ))
+                  : null}
+                {this.props.toggle
+                  ? this.props.toggle.map((x, w) => (
+                      <td
+                        key={w}
+                        style={{ width: this.props.head[w].width }}
+                        className="table-data-mobile"
+                      >
+                        {this.props.isActive.map((x, z) =>
+                          x ? (
+                            <div className="user-toggle" key={z}>
+                              <div className="switch-container">
+                                <label>
+                                  <input
+                                    checked
+                                    ref="switch"
+                                    onChange={k =>
+                                      this.onActionActivateToggle(k, i)
+                                    }
+                                    className="user"
+                                    type="checkbox"
+                                  />
+                                  <div>
+                                    <div />
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="user-toggle" key={z}>
+                              <div className="switch-container">
+                                <label>
+                                  <input
+                                    ref="switch"
+                                    onChange={k =>
+                                      this.onActionActivateToggle(k, i)
+                                    }
+                                    className="user"
+                                    type="checkbox"
+                                  />
+                                  <div>
+                                    <div />
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          )
+                        )
+                        // <div className="user-toggle">
+                        //   <div className="switch-container">
+                        //     <label>
+                        //       <input
+                        //         ref="switch"
+                        //         onClick={() =>
+                        //           this.onActionDeactivateToggle(i)
+                        //         }
+                        //         className="user-agent"
+                        //         type="checkbox"
+                        //       />
+                        //       <div>
+                        //         <div />
+                        //       </div>
+                        //     </label>
+                        //   </div>
+                        // </div>
+                        // ) : (
+                        }
                       </td>
                     ))
                   : null}

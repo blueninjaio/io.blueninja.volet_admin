@@ -60,8 +60,9 @@ export class index extends Component {
       .then(data => {
         if (data.success) {
           let users = [];
-          data.users.map(x => {
+          data.users.map((x, i) => {
             let user = {
+              no: i,
               f_name: x.f_name,
               l_name: x.l_name,
               user_type: x.user_type,
@@ -73,7 +74,7 @@ export class index extends Component {
               dateCreated: x.dateCreated
             };
             users.push(user);
-            return users
+            return users;
           });
 
           this.setState({ users });
@@ -119,7 +120,7 @@ export class index extends Component {
       if (x.f_name.includes(search) || x.l_name.includes(search)) {
         newArray.push(x);
       }
-      return newArray
+      return newArray;
     });
 
     this.setState({ queryArray: newArray });
