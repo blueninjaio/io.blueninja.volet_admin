@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Table from "../../../components/Table";
+import TableCheckBox from "../../../components/TableCheckbox";
 import data from "../../../data/data.json";
 import { url } from "../../../config";
 
@@ -9,8 +9,10 @@ export default class index extends Component {
 
     this.state = {
       popup: false,
-      categories: [],
-      title: ""
+      currency: [],
+      name: "",
+      description: "",
+      ids: []
     };
   }
 
@@ -20,7 +22,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   componentDidMount() {
-    // this.fetchCategories();
+    this.onLoadFetchCurrency();
   }
 
   /**
@@ -28,8 +30,8 @@ export default class index extends Component {
   | fetches all category data from api
   |--------------------------------------------------
   */
-  fetchCategories = () => {
-    fetch(`${url}/api/category`, {
+  onLoadFetchCurrency = () => {
+    fetch(`${url}/api/currency`, {
       method: "GET",
       mode: "cors",
       headers: {
@@ -41,27 +43,17 @@ export default class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          let categories = [];
-          data.categories.map((x, i) => {
-            let cat = {
-              no: i,
-              title: x.title,
-              date: x.dateCreated
-            };
-            categories.push(cat);
-            return categories;
-          });
-          this.setState({ categories });
+          this.setState({ currency: data.currency });
         }
       })
       .catch(err => {
         console.log(
-          "Error for business page, for fetching business types",
+          "Error for currency page, for fetching currency types",
           err
         );
 
         alert(
-          "Error for business page, for fetching business types",
+          "Error for currency page, for fetching currency types",
 
           [{ text: "OK", onClick: () => null }],
           { cancelable: false }
@@ -83,17 +75,18 @@ export default class index extends Component {
   | add a new category
   |--------------------------------------------------
   */
-  addCategory = async () => {
+  onActionAddCurrency = async () => {
     await this.setState({ popup: false });
 
-    fetch(`${url}/api/category`, {
+    fetch(`${url}/api/currency`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
         Accept: "application/json"
       },
       body: JSON.stringify({
-        title: this.state.title
+        name: this.state.name,
+        description: this.state.description
       })
     })
       .then(res => res.json())
@@ -128,17 +121,23 @@ export default class index extends Component {
         {this.state.popup === true ? (
           <div className="cat-popup-container">
             <div>
-              <h3 className="cat-pop-title">Category Title</h3>
+              <h3 className="cat-pop-title">Add New Currency</h3>
             </div>
             <div>
               <input
                 className="form-control cat-pop-input"
-                value={this.state.title}
-                onChange={e => this.setState({ title: e.target.value })}
+                value={this.state.name}
+                onChange={e => this.setState({ name: e.target.value })}
+              />
+              <input
+                className="form-control cat-pop-input"
+                style={{ marginTop: "1rem" }}
+                value={this.state.description}
+                onChange={e => this.setState({ description: e.target.value })}
               />
               <button
                 className="btn cat-save-btn"
-                onClick={() => this.addCategory()}
+                onClick={() => this.onActionAddCurrency()}
               >
                 Save
               </button>
@@ -149,11 +148,10 @@ export default class index extends Component {
           className="container-fluid mobile-container"
           style={{ paddingTop: "7.5rem" }}
         >
-          <Table
-            head={data.tHeadCurrencyTable}
-            body={this.state.categories}
-            method={this.passedFromChild}
-            toggle={data.tBodyToggle}
+          <TableCheckBox
+            head={data.tHeadBanksTable}
+            body={this.state.currency}
+            toggle={"currency"}
           />
         </div>
       </div>

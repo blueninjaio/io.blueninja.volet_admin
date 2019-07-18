@@ -17,6 +17,7 @@ import SendNotifcation from "./SendNotification";
 import PushNotification from "./PushNotification";
 import Feedback from "./Feedback";
 import BusinessTypes from "./BusinessTypes";
+import BusinessCategory from "./BusinessCategory";
 import AgentRequests from "./AgentRequests";
 import PaymentMethods from "./PaymentMethods";
 import Currency from "./Currency";
@@ -203,6 +204,7 @@ class index extends Component {
               <Route path="/banks" component={Banks} />
               <Route path="/paymentmethods" component={PaymentMethods} />
               <Route path="/currency" component={Currency} />
+              <Route path="/businesscategory" component={BusinessCategory} />
             </Switch>
           </div>
         </div>

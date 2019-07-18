@@ -240,7 +240,7 @@
 "tBodyToggle":[
     {
         "id": 1,
-        "name": "Toggle"
+        "name": "toggle"
     }
 ],
 
