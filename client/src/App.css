@@ -1365,4 +1365,13 @@ border: 0;
   .container-fluid.bR-mobile-container{
     padding-top: 5.2rem !important;
   }
+
+  .slide.selected{
+    z-index: 100000000 !important;
+    min-width: 50% !important;
+    transition: .4s ease all !important;
+    margin: 0 -1rem !important;
+    opacity: 1;
+    transform: scale(1) !important;
+}
 }
