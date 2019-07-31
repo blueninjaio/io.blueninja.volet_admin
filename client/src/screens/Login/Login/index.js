@@ -26,19 +26,22 @@ class index extends Component {
     this.setState({ password: e.target.value });
   }
 
-  _storeData = async receivedToken => {
-    this.setState({ token: receivedToken });
+  _storeData = async (token, email) => {
+    this.setState({ token: token });
     try {
-      await localStorage.setItem("user_token", receivedToken);
+      await localStorage.setItem("user_token", token);
 
-      if (receivedToken !== null) {
+      if (token !== null) {
         fetch(`${url}/api/admin/me`, {
-          method: "GET",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "x-access-token": `${receivedToken}`,
-            Authorization: `Bearer ${receivedToken}`
-          }
+            "x-access-token": `${token}`,
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            email: email
+          })
         })
           .then(res => res.json())
 
@@ -65,10 +68,6 @@ class index extends Component {
     let email = this.state.email;
 
     if (email.includes("@")) {
-      if (this.state.token !== null) {
-        this._storeData(this.state.token);
-      }
-
       fetch(`${url}/api/admin/login`, {
         method: "POST",
         headers: {
@@ -93,6 +92,7 @@ class index extends Component {
             localStorage.setItem("user_token", token);
             localStorage.setItem("user_email", email);
             localStorage.setItem("user_id", id);
+            this._storeData(token, email);
             // localStorage.setItem("user_id", id);
             if (token !== null) {
               this.props.loginNow();

@@ -16,12 +16,13 @@ class index extends Component {
 
   async componentDidMount() {
     let receivedToken = localStorage.getItem("user_token");
+    let userEmail = localStorage.getItem("user_email");
     this.setState({ token: receivedToken });
 
     try {
-      if (receivedToken !== null) {
+      if (receivedToken !== null && userEmail) {
         fetch(`${url}/api/admin/me`, {
-          method: "GET",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
             "x-access-token": `${receivedToken}`,
