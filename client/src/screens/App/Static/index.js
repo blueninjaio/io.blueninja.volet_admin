@@ -92,6 +92,7 @@ export default class index extends Component {
         if (data.success === true) {
           alert(data.message);
           console.log(data.success);
+          window.location.reload();
         }
       })
 
@@ -122,6 +123,7 @@ export default class index extends Component {
         if (data.success === true) {
           alert(data.message);
           console.log(data.success);
+          window.location.reload();
         }
       })
 
