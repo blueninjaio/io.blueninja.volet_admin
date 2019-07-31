@@ -58,7 +58,7 @@ export class index extends Component {
   |--------------------------------------------------
   */
   fetchAllBusinessCat = () => {
-    fetch(`${url}/business_category/view`, {
+    fetch(`${url}/api/business_category/view`, {
       method: "GET",
       mode: "cors",
       headers: {
