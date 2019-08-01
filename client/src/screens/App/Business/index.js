@@ -22,9 +22,10 @@ export class index extends Component {
       featuredItems: false,
       openingTimes: false,
       searchValue: "",
+      searchBusiness: true,
+      searchCategory: null,
       selectOption: "",
-      searchBusiness: "",
-      queryArray: [],
+      queryArray: null,
       approved: [],
       approvedSelected: []
     };
@@ -42,7 +43,7 @@ export class index extends Component {
 
   /**
   |--------------------------------------------------
-  | receives and sets state 
+  | receives and sets state
     selected row data from the Table component
   |--------------------------------------------------
   */
@@ -58,7 +59,7 @@ export class index extends Component {
   |--------------------------------------------------
   */
   fetchAllBusinessCat = () => {
-    fetch(`${url}/api/business_category/view`, {
+    fetch(`${url}/api/business/getTypes`, {
       method: "GET",
       mode: "cors",
       headers: {
@@ -141,58 +142,14 @@ export class index extends Component {
 
   /**
   |--------------------------------------------------
-  | search function for merchant name
-  |--------------------------------------------------
-  */
-  merchantSearch = async search => {
-    let queryArray = this.state.approved;
-    // console.log(this.state.business);
-    let newArray = [];
-    queryArray.map(x => {
-      console.log(x);
-      if (
-        x.f_name.includes(search) ||
-        x.l_name.includes(search) ||
-        (x.f_name + " " + x.l_name).includes(search)
-      ) {
-        newArray.push(x);
-      }
-
-      return newArray;
-    });
-
-    this.setState({ queryArray: newArray });
-  };
-
-  /**
-  |--------------------------------------------------
-  | search function for business name
-  |--------------------------------------------------
-  */
-  businessSearch = async search => {
-    let queryArray = this.state.approved;
-    let newArray = [];
-    queryArray.map(x => {
-      if (x.company_name.includes(search)) {
-        newArray.push(x);
-      }
-      return newArray;
-    });
-
-    this.setState({ queryArray: newArray });
-  };
-
-  /**
-  |--------------------------------------------------
   | search function to filter whether it is merchant or business
   |--------------------------------------------------
   */
   updateSearch = async (search, option) => {
-    if (option === "merchant") {
-      this.merchantSearch(search, option);
-    } else if (option === "business") {
-      this.businessSearch(search, option);
-    }
+    this.search({
+      text: search,
+      type: option
+    })
   };
 
   /**
@@ -201,7 +158,7 @@ export class index extends Component {
   |--------------------------------------------------
   */
   reset = () => {
-    this.setState({ queryArray: [] });
+    this.setState({ queryArray: null });
   };
 
   /**
@@ -210,20 +167,33 @@ export class index extends Component {
   |--------------------------------------------------
   */
   changeBusinessType = async e => {
-    let search = e.target.value;
+    this.search({
+      category: e.target.value
+    })
+  };
 
-    let queryArray = this.state.business;
-
+  search = (options) => {
+    let search = {
+      text: options.text || this.state.searchValue,
+      isBusiness: options.type ? options.type === "business" : this.state.searchBusiness,
+      category: options.category || this.state.searchCategory,
+    };
+    let queryArray = this.state.approved;
     let newArray = [];
 
     queryArray.map(x => {
-      if (x.business_category.includes(search)) {
+      if ((!search.text || (search.isBusiness ? x.company_name : x.merchant_name).includes(search.text)) &&
+          (!search.category || x.business_category.includes(search.category))) {
         newArray.push(x);
       }
       return newArray;
     });
-
-    this.setState({ queryArray: newArray });
+    this.setState({
+      searchValue: search.text,
+      searchType: search.type,
+      searchCategory: search.category,
+      queryArray: newArray
+    });
   };
 
   /**
@@ -289,8 +259,8 @@ export class index extends Component {
                 onChange={e => this.changeBusinessType(e)}
               >
                 {this.state.typeOfBusiness.map((x, i) => (
-                  <option value={x.name} key={i}>
-                    {x.name}
+                  <option value={x.title} key={i}>
+                    {x.title}
                   </option>
                 ))}
               </select>
@@ -299,7 +269,7 @@ export class index extends Component {
         </div>
 
         <div className="container-fluid" style={{ paddingTop: "13rem" }}>
-          {this.state.queryArray.length >= 1 ? (
+          {this.state.queryArray ? (
             <Table
               head={data.tHeadMerchantBusiness}
               body={this.state.queryArray}
