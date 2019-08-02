@@ -162,7 +162,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   fetchAllBusiness = () => {
-    fetch(`${url}/api/business_category/view`, {
+    fetch(`${url}/api/business/getTypes`, {
       method: "GET",
       mode: "cors",
       headers: {
