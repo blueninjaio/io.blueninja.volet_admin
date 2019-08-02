@@ -404,7 +404,7 @@
         "to": "Blueninja.IO",
         "type": "Decline",
         "amount": "$2000",
-        "dat": "19th June 2019"
+        "date": "19th June 2019"
     }
 ],
 "tHeadUserAgentTransaction": [
