@@ -128,6 +128,7 @@ export default class index extends Component {
                 className="form-control cat-pop-input"
                 value={this.state.name}
                 onChange={e => this.setState({ name: e.target.value })}
+                placeholder="Enter currency type"
               />
               <input
                 className="form-control cat-pop-input"
