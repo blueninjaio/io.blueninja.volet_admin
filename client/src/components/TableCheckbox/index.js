@@ -15,134 +15,38 @@ export class index extends Component {
     };
   }
 
-  onActionToggle = (id, i, e) => {
-    let toggleStatus = e.target.checked;
-    console.log("Receiving ID: ", id._id);
+  onActionToggle = (x, i, e) => {
+    let toggleStatus = !x.isActive;
+    x.isActive = toggleStatus;
+    console.log("Receiving ID: ", x._id);
     console.log("Row: ", i);
-    console.log("Status: ", e.target.checked);
-    console.log(this.props.toggle);
+    console.log("Status: ", toggleStatus);
+    this.forceUpdate();
 
-    if (this.props.toggle === "banks") {
-      fetch(`${url}/api/bank/toggle`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          _id: id._id,
-          isActive: toggleStatus
-        })
+
+    fetch(`${url}/api/${this.props.toggle}/toggle`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        _id: x._id,
+        isActive: toggleStatus
       })
-        .then(res => res.json())
+    })
+      .then(res => res.json())
 
-        .then(data => {
-          console.log(data);
-          if (data.success === true) {
-            alert(data.message);
-          } else {
-            alert(data.message);
-          }
-        })
-
-        .catch(err => console.log(err));
-    } else if (this.props.toggle === "businessCategory") {
-      fetch(`${url}/api/business_category/toggle`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          _id: id._id,
-          isActive: e.target.checked
-        })
+      .then(data => {
+        console.log(data);
+        if (data.success === true) {
+          alert(data.message);
+        } else {
+          alert(data.message);
+        }
       })
-        .then(res => res.json())
 
-        .then(data => {
-          console.log(data);
-          // if (data.success === true) {
-          //   alert(data.message);
-          // } else {
-          //   alert(data.message);
-          // }
-        })
-
-        .catch(err => console.log(err));
-    } else if (this.props.toggle === "paymentMethods") {
-      fetch(`${url}/api/payment_method/toggle`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          _id: id._id,
-          isActive: e.target.checked
-        })
-      })
-        .then(res => res.json())
-
-        .then(data => {
-          console.log(data);
-          if (data.success === true) {
-            alert(data.message);
-          } else {
-            alert(data.message);
-          }
-        })
-
-        .catch(err => console.log(err));
-    } else if (this.props.toggle === "businessTypes") {
-      fetch(`${url}/api/business_type/toggle`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          _id: id._id,
-          isActive: e.target.checked
-        })
-      })
-        .then(res => res.json())
-
-        .then(data => {
-          console.log(data);
-          if (data.success === true) {
-            alert(data.message);
-          } else {
-            alert(data.message);
-          }
-        })
-
-        .catch(err => console.log(err));
-    } else if (this.props.toggle === "currency") {
-      fetch(`${url}/api/currency/toggle`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          _id: id._id,
-          isActive: e.target.checked
-        })
-      })
-        .then(res => res.json())
-
-        .then(data => {
-          console.log(data);
-          if (data.success === true) {
-            alert(data.message);
-          } else {
-            alert(data.message);
-          }
-        })
-
-        .catch(err => console.log(err));
-    }
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -192,40 +96,22 @@ export class index extends Component {
                   {x.description}
                 </td>
                 <td style={{ width: "25%" }} className="table-data-mobile">
-                  {x.isActive === true ? (
-                    <div className="user-toggle">
-                      <div className="switch-container">
-                        <label>
-                          <input
-                            checked
-                            ref="switch"
-                            onChange={e => this.onActionToggle(x, i, e)}
-                            className="user-agent"
-                            type="checkbox"
-                          />
-                          <div>
-                            <div />
-                          </div>
-                        </label>
-                      </div>
+                  <div className="user-toggle">
+                    <div className="switch-container">
+                      <label>
+                        <input
+                          checked={x.isActive}
+                          ref="switch"
+                          onChange={e => this.onActionToggle(x, i, e)}
+                          className={x.isActive ? "user-agent" : "user"}
+                          type="checkbox"
+                        />
+                        <div>
+                          <div />
+                        </div>
+                      </label>
                     </div>
-                  ) : (
-                    <div className="user-toggle">
-                      <div className="switch-container">
-                        <label>
-                          <input
-                            ref="switch"
-                            onChange={e => this.onActionToggle(x, i, e)}
-                            className="user"
-                            type="checkbox"
-                          />
-                          <div>
-                            <div />
-                          </div>
-                        </label>
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </td>
               </tr>
             ))}
