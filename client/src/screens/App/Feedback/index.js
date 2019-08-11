@@ -55,7 +55,7 @@ export default class index extends Component {
           data.feedbacks.map((x, i) => {
             let user = {
               no: i,
-              _id: x._id,
+              _id: x.user_id,
               rating: x.rating,
               description: x.description,
               dateCreated: x.dateCreated
