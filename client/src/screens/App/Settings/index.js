@@ -89,6 +89,7 @@ export default class index extends Component {
         console.log(data);
         if (data.success === true) {
           alert(data.message);
+          localStorage.setItem("user_email", this.state.email);
           window.location.reload();
           console.log(data.success);
         }
