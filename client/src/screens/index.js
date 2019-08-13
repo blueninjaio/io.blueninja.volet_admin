@@ -27,7 +27,10 @@ class index extends Component {
             "Content-Type": "application/json",
             "x-access-token": `${receivedToken}`,
             Authorization: `Bearer ${receivedToken}`
-          }
+          },
+          body: JSON.stringify({
+            email: userEmail
+          })
         })
           .then(res => res.json())
 
