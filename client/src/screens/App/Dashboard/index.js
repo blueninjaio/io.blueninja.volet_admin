@@ -53,8 +53,8 @@ export default class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          if (data.agent.length >= 1) {
-            let business = data.agent;
+          if (data.agents.length >= 1) {
+            let business = data.agents;
             let pending = [];
             business.map(x => (x.isPending ? pending.push(x) : null));
             this.setState({ pending });

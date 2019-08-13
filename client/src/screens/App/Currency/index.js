@@ -43,7 +43,7 @@ export default class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          this.setState({ currency: data.currency });
+          this.setState({ currency: data.currencies });
         }
       })
       .catch(err => {

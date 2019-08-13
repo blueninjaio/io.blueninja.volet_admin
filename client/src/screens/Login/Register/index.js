@@ -40,18 +40,14 @@ export default class index extends Component {
       })
     })
       .then(res => res.json())
-
       .then(data => {
         console.log("Data", data);
         console.log("Data", data.success);
-        if (data.success === true) {
+        if (data.success) {
           console.log("Registration status: ", data.success);
-          alert(data.message);
-
-          if (data.success === true) {
-            this.props.history.push("/login");
-          }
+          this.props.history.push("/login");
         }
+        alert(data.message);
       })
 
       .catch(err => console.log(err));

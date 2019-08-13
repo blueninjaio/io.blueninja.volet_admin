@@ -54,7 +54,7 @@ export default class index extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          let business = data.agent;
+          let business = data.agents;
           let approved = [];
           let decline = [];
           let pending = [];
