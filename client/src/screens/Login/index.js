@@ -42,6 +42,7 @@ export default class index extends Component {
               <Redirect exact from="/transaction" to="/login" />
               <Redirect exact from="/businessTypes" to="/login" />
               <Redirect exact from="/agentrequests" to="/login" />
+              <Redirect exact from="/businesscategory" to="/login" />
               <Redirect exact from="/settings" to="/login" />
               <Redirect exact from="/banks" to="/login" />
               <Redirect exact from="/paymentmethods" to="/login" />

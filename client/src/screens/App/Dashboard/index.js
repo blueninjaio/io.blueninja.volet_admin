@@ -162,7 +162,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   fetchAllBusiness = () => {
-    fetch(`${url}/api/category`, {
+    fetch(`${url}/api/business/getTypes`, {
       method: "GET",
       mode: "cors",
       headers: {
@@ -180,7 +180,7 @@ export default class index extends Component {
 
             data.categories.map(x => {
               let statistics = {
-                x: x.title,
+                x: x.name,
                 y: 10
               };
 

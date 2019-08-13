@@ -152,7 +152,7 @@ export default class index extends Component {
           <TableCheckBox
             head={data.tHeadBanksTable}
             body={this.state.bCategory}
-            toggle={"businessCategory"}
+            toggle={"business_category"}
           />
         </div>
       </div>
