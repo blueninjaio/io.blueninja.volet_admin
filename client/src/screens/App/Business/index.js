@@ -259,8 +259,8 @@ export class index extends Component {
                 onChange={e => this.changeBusinessType(e)}
               >
                 {this.state.typeOfBusiness.map((x, i) => (
-                  <option value={x.title} key={i}>
-                    {x.title}
+                  <option value={x.name} key={i}>
+                    {x.name}
                   </option>
                 ))}
               </select>
