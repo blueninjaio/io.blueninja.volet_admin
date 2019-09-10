@@ -28,11 +28,11 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   componentDidMount() {
-    this.fetchAllBusiness();
-    this.fetchAllUsers();
-    this.fetchAllFeedback();
-    this.fetchAgents();
-    this.fetchBusinessRequest();
+    // this.fetchAllBusiness();
+    // this.fetchAllUsers();
+    // this.fetchAllFeedback();
+    // this.fetchAgents();
+    // this.fetchBusinessRequest();
   }
 
   /**

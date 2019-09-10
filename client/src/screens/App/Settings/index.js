@@ -316,16 +316,7 @@ export default class index extends Component {
                 >
                   Forgot Password
                 </button>
-                {/* <button
-                  className="btn btn-link collapse-view-btn move-btn"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#faq-edit"
-                  aria-expanded="true"
-                  aria-controls="collapseOne-1"
-                >
-                  Edit
-                </button> */}
+
                 <button
                   className="btn btn-link collapse-view-btn"
                   type="button"
@@ -367,7 +358,6 @@ export default class index extends Component {
               <div className="card-body">
                 <textarea
                   value={this.state.faq}
-                  // onChange={this.inputFAQ.bind(this)}
                   className="form-control static-input"
                   id="exampleFormControlTextarea1"
                   rows="5"

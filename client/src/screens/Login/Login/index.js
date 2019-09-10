@@ -32,7 +32,7 @@ class index extends Component {
       await localStorage.setItem("user_token", token);
 
       if (token !== null) {
-        fetch(`${url}/api/admin/me`, {
+        fetch(`${url}/admin/me`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
