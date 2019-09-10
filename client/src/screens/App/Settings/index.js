@@ -72,14 +72,14 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   onActionChangeEmail = () => {
-    fetch(`${url}/api/admin/changeEmail`, {
+    fetch(`${url}/admin/changeEmail`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
         Accept: "application/json"
       },
       body: JSON.stringify({
-        _id: this.state.id,
+        // _id: this.state.id,
         email: this.state.email
       })
     })
@@ -104,11 +104,8 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   onActionChangePassword = () => {
-    console.log(this.state.new);
-    console.log(this.state.old);
-    console.log(this.state.email);
     if (this.state.new === this.state.confirm) {
-      fetch(`${url}/api/admin/changePassword`, {
+      fetch(`${url}/admin/changePassword`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8",

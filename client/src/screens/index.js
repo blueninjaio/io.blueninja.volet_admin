@@ -3,7 +3,7 @@ import Login from "./Login/index";
 import { loginNow, logoutNow } from "../actions/actions";
 import App from "./App/index";
 import { connect } from "react-redux";
-import { url } from "../config";
+import api from "../api/index";
 
 class index extends Component {
   constructor(props) {
@@ -16,27 +16,13 @@ class index extends Component {
 
   async componentDidMount() {
     let receivedToken = localStorage.getItem("user_token");
-    let userEmail = localStorage.getItem("user_email");
-    this.setState({ token: receivedToken });
 
     try {
-      if (receivedToken !== null && userEmail) {
-        fetch(`${url}/api/admin/me`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-access-token": `${receivedToken}`,
-            Authorization: `Bearer ${receivedToken}`
-          },
-          body: JSON.stringify({
-            email: userEmail
-          })
-        })
-          .then(res => res.json())
-
+      if (receivedToken !== null) {
+        api
+          .getAdminInfo()
           .then(data => {
             if (data.success === true) {
-              // alert(data.message);
               this.props.loginNow();
             }
           })
