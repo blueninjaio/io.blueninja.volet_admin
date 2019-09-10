@@ -68,7 +68,7 @@ class index extends Component {
     let email = this.state.email;
 
     if (email.includes("@")) {
-      fetch(`${url}/api/admin/login`, {
+      fetch(`${url}/admin/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8",
