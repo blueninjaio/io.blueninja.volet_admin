@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-CMD ["yarn","start"]
+CMD ["npm", "run", "start"]
 
 
 EXPOSE 80
