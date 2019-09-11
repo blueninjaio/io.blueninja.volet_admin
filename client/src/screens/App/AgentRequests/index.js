@@ -24,7 +24,7 @@ export default class index extends Component {
   }
 
   componentWillUnmount() {
-    this.fetchBusiness();
+    // this.fetchBusiness();
   }
 
   /**
@@ -33,7 +33,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   componentDidMount() {
-    this.fetchBusiness();
+    // this.fetchBusiness();
   }
 
   /**

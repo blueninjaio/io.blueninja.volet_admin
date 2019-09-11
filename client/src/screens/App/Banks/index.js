@@ -23,7 +23,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   componentDidMount() {
-    this.onLoadFetchBanks();
+    // this.onLoadFetchBanks();
   }
 
   /**

@@ -37,8 +37,8 @@ export class index extends Component {
   |--------------------------------------------------
   */
   componentDidMount() {
-    this.fetchAllBusiness();
-    this.fetchAllBusinessCat();
+    // this.fetchAllBusiness();
+    // this.fetchAllBusinessCat();
   }
 
   /**

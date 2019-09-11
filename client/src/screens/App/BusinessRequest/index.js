@@ -26,7 +26,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   componentDidMount() {
-    this.fetchBusiness();
+    // this.fetchBusiness();
   }
 
   /**
