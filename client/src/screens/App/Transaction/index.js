@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
 import { url } from "../../../config";
+import api from "../../../api/index";
 
 export default class index extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class index extends Component {
       transactions: {
         user: [],
         userAgent: [],
-        merchant: [],
+        merchant: []
       }
     };
   }
@@ -34,25 +35,14 @@ export default class index extends Component {
     this.setState({ approveDecline: state });
   };
 
-  fetchTransactions = (type) => {
-
-    fetch(`${url}/api/transaction/` + type, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json; charset=utf-8",
-        "Accept": "application/json"
-      }
-    })
-      .then(res => res.json())
+  fetchTransactions = type => {
+    api
+      .getTransactions(type)
       .then(data => {
         if (data.success) {
           let formattedResults = [];
           data.transactions.map(x => {
-            let {
-              from, to, business, bType, type, amount, date
-            } = x;
+            let { from, to, business, bType, type, amount, date } = x;
             let display = {
               from,
               to,
@@ -62,7 +52,9 @@ export default class index extends Component {
               amount,
               date
             };
-            Object.keys(display).forEach(key => display[key] === undefined && delete display[key]);
+            Object.keys(display).forEach(
+              key => display[key] === undefined && delete display[key]
+            );
             formattedResults.push(display);
           });
           console.log(formattedResults);
@@ -137,7 +129,7 @@ export default class index extends Component {
             <button
               onClick={() =>
                 this.switchTab({
-                  useragentTab: true,
+                  useragentTab: true
                 })
               }
             >

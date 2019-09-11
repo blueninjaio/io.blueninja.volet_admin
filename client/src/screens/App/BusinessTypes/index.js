@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TableCheckBox from "../../../components/TableCheckbox";
 import data from "../../../data/data.json";
-import { url } from "../../../config";
+import api from "../../../api/index";
 
 export default class index extends Component {
   constructor(props) {
@@ -32,16 +32,8 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   onLoadFetchBTypes = () => {
-    fetch(`${url}/api/business_type`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+    api
+      .getBusinessTypes()
       .then(data => {
         if (data.success) {
           this.setState({ bType: data.types });
@@ -76,18 +68,8 @@ export default class index extends Component {
   onActionAddBType = async () => {
     await this.setState({ popup: false });
 
-    fetch(`${url}/api/business_type`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        name: this.state.name,
-        description: this.state.description
-      })
-    })
-      .then(res => res.json())
+    api
+      .postBusinessTypes(this.state.name, this.state.description)
 
       .then(data => {
         if (data.success === true) {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./styles.css";
 import { url } from "../../config";
+import api from "../../api/index";
 
 export class index extends Component {
   constructor(props) {
@@ -59,20 +60,8 @@ export class index extends Component {
     let ids = this.props.id;
     let chosen = ids[i];
 
-    console.log("Toggle Activated", chosen);
-
-    fetch(`${url}/api/bank/toggle`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        _id: chosen,
-        isActive: false
-      })
-    })
-      .then(res => res.json())
+    api
+      .postBankToggle(chosen, false)
 
       .then(data => {
         if (data.success === true) {
@@ -97,17 +86,8 @@ export class index extends Component {
       let chosen = ids[i];
 
       console.log("Approved Chosen:", chosen);
-      fetch(`${url}/api/business/approve`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          _id: chosen
-        })
-      })
-        .then(res => res.json())
+      api
+        .postBusinessApprove(chosen)
 
         .then(data => {
           if (data.success === true) {
@@ -161,17 +141,8 @@ export class index extends Component {
       let chosen = ids[i];
 
       console.log("Approved Chosen:", chosen);
-      fetch(`${url}/api/business/decline`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          _id: chosen
-        })
-      })
-        .then(res => res.json())
+      api
+        .postBusinessDecline(chosen)
 
         .then(data => {
           if (data.success === true) {

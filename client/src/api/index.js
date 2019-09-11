@@ -42,5 +42,53 @@ export default {
   },
   adminLogin: async (email, password) => {
     return post("/admin/login", { email, password });
+  },
+  getMerchants: async () => {
+    return get("/merchants");
+  },
+  getBusiness: async () => {
+    return get("/business");
+  },
+  getBusinessTypes: async () => {
+    return get("/business_type");
+  },
+  getTransactions: async type => {
+    return get(`/transaction/${type}`);
+  },
+  getFeedbacks: async () => {
+    return get("/feedback");
+  },
+  postBusinessTypes: async (name, description) => {
+    return post("/business_type", { name, description });
+  },
+  getBusinessCategory: async () => {
+    return get("/business_category");
+  },
+  postBusinessCategory: async (name, description) => {
+    return post("/business_category", { name, description });
+  },
+  getVouchers: async () => {
+    return get("/vouchers");
+  },
+  postVouchers: async (name, description, amount, quantity, expiry) => {
+    return post("/vouchers", { name, description, amount, quantity, expiry });
+  },
+  getStatic: async () => {
+    return get("/static");
+  },
+  postPolicy: async policy => {
+    return post("/static/policies", { policy });
+  },
+  postFAQ: async faq => {
+    return post("/static/faq", { faq });
+  },
+  postBankToggle: async (_id, isActive) => {
+    return post("/bank/toggle", { _id, isActive });
+  },
+  postBusinessApprove: async _id => {
+    return post("/business/approve", { _id });
+  },
+  postBusinessDecline: async _id => {
+    return post("/business/decline", { _id });
   }
 };

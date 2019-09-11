@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { url } from "../../../config";
+import api from "../../../api/index";
 /**
 |--------------------------------------------------
 | renders static pages
@@ -48,14 +49,8 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   getStatic = () => {
-    fetch(`${url}/api/static`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+    api
+      .getStatic()
 
       .then(data => {
         if (data.static.length >= 1) {
@@ -75,17 +70,8 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   submitPolicy = () => {
-    fetch(`${url}/api/static/policies`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        policy: this.state.policy
-      })
-    })
-      .then(res => res.json())
+    api
+      .postPolicy(this.state.policy)
 
       .then(data => {
         console.log(data);
@@ -106,17 +92,8 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   submitFAQ = () => {
-    fetch(`${url}/api/static/faq`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        faq: this.state.faq
-      })
-    })
-      .then(res => res.json())
+    api
+      .postFAQ(this.state.faq)
 
       .then(data => {
         console.log(data);

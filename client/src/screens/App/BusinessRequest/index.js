@@ -35,7 +35,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   fetchBusiness = async () => {
-    fetch(`${url}/api/business`, {
+    fetch(`${url}/business`, {
       method: "GET",
       mode: "cors",
       headers: {

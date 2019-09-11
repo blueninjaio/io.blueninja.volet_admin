@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
-import { url } from "../../../config";
+import api from "../../../api/index";
 
 export class index extends Component {
   constructor(props) {
@@ -59,16 +59,8 @@ export class index extends Component {
   |--------------------------------------------------
   */
   fetchAllBusinessCat = () => {
-    fetch(`${url}/api/business/getTypes`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+    api
+      .getBusinessTypes()
       .then(data => {
         if (data.success) {
           this.setState({ typeOfBusiness: data.categories });
@@ -90,16 +82,8 @@ export class index extends Component {
   |--------------------------------------------------
   */
   fetchAllBusiness = () => {
-    fetch(`${url}/api/business`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+    api
+      .getBusiness()
       .then(data => {
         if (data.success) {
           let approved = [];
@@ -149,7 +133,7 @@ export class index extends Component {
     this.search({
       text: search,
       type: option
-    })
+    });
   };
 
   /**
@@ -169,21 +153,28 @@ export class index extends Component {
   changeBusinessType = async e => {
     this.search({
       category: e.target.value
-    })
+    });
   };
 
-  search = (options) => {
+  search = options => {
     let search = {
       text: options.text || this.state.searchValue,
-      isBusiness: options.type ? options.type === "business" : this.state.searchBusiness,
-      category: options.category || this.state.searchCategory,
+      isBusiness: options.type
+        ? options.type === "business"
+        : this.state.searchBusiness,
+      category: options.category || this.state.searchCategory
     };
     let queryArray = this.state.approved;
     let newArray = [];
 
     queryArray.map(x => {
-      if ((!search.text || (search.isBusiness ? x.company_name : x.merchant_name).includes(search.text)) &&
-          (!search.category || x.business_category.includes(search.category))) {
+      if (
+        (!search.text ||
+          (search.isBusiness ? x.company_name : x.merchant_name).includes(
+            search.text
+          )) &&
+        (!search.category || x.business_category.includes(search.category))
+      ) {
         newArray.push(x);
       }
       return newArray;
