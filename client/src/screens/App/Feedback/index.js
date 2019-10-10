@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
-import { url } from "../../../config";
+import api from "../../../api/index";
 
 export default class index extends Component {
   constructor(props) {
@@ -39,16 +39,8 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   fetchAllFeedback = () => {
-    fetch(`${url}/api/feedbacks`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+    api
+      .getFeedbacks()
       .then(data => {
         if (data.success) {
           let feedback = [];

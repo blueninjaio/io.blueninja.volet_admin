@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { loginNow, getToken } from "../../../actions/actions";
 import { connect } from "react-redux";
-import { url } from "../../../config";
+import api from "../../../api/index";
 
 import { NavLink } from "react-router-dom";
 
@@ -15,8 +15,6 @@ class index extends Component {
       token: ""
     };
   }
-
-  onActionValidateEmail = () => {};
 
   inputEmail(e) {
     this.setState({ email: e.target.value });
@@ -32,18 +30,8 @@ class index extends Component {
       await localStorage.setItem("user_token", token);
 
       if (token !== null) {
-        fetch(`${url}/api/admin/me`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-access-token": `${token}`,
-            Authorization: `Bearer ${token}`
-          },
-          body: JSON.stringify({
-            email: email
-          })
-        })
-          .then(res => res.json())
+        api
+          .getAdminInfo()
 
           .then(data => {
             if (data.success === true) {
@@ -68,18 +56,8 @@ class index extends Component {
     let email = this.state.email;
 
     if (email.includes("@")) {
-      fetch(`${url}/api/admin/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          email: this.state.email,
-          password: this.state.password
-        })
-      })
-        .then(res => res.json())
+      api
+        .adminLogin(this.state.email, this.state.password)
 
         .then(data => {
           if (data.success === true) {
@@ -93,7 +71,7 @@ class index extends Component {
             localStorage.setItem("user_email", email);
             localStorage.setItem("user_id", id);
             this._storeData(token, email);
-            // localStorage.setItem("user_id", id);
+
             if (token !== null) {
               this.props.loginNow();
             }
@@ -126,21 +104,21 @@ class index extends Component {
           placeholder="Enter password"
         />
 
-        <NavLink to="/forgotpassword">
+        {/* <NavLink to="/forgotpassword">
           <small id="emailHelp" className="form-text forgot-password-text">
             Forgot Password?
           </small>
-        </NavLink>
+        </NavLink> */}
         <button className="login-btn" onClick={() => this.login()}>
           Login
         </button>
 
-        <small
+        {/* <small
           id="emailHelp"
           className="form-text forgot-password-text go-register-text"
         >
           Don't have an account? <NavLink to="/register">Sign up</NavLink>
-        </small>
+        </small> */}
       </div>
     );
   }

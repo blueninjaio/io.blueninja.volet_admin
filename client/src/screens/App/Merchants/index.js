@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
-import { url } from "../../../config";
+import api from "../../../api/index";
 
 export class index extends Component {
   constructor(props) {
@@ -53,16 +53,8 @@ export class index extends Component {
   |--------------------------------------------------
   */
   fetchAllMerchants = () => {
-    fetch(`${url}/api/merchants`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+    api
+      .getMerchants()
       .then(data => {
         if (data.success) {
           this.setState({ approvedSelected: data.merchants });

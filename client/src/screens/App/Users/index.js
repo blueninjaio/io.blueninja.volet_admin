@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
-import { url } from "../../../config";
+import api from "../../../api";
 
 export class index extends Component {
   constructor(props) {
@@ -47,18 +47,22 @@ export class index extends Component {
   |--------------------------------------------------
   */
   fetchAllUsers = () => {
-    fetch(`${url}/api/users`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+    // fetch(`${url}/users`, {
+    //   method: "GET",
+    //   mode: "cors",
+    //   headers: {
+    //     "Access-Control-Allow-Origin": "*",
+    //     "Content-Type": "application/json; charset=utf-8",
+    //     Accept: "application/json",
+    //     Authorization: `Bearer ${token}`
+    //   }
+    // })
+    //   .then(res => res.json())
+    api
+      .getUsers()
       .then(data => {
         if (data.success) {
+          console.log(data);
           let users = [];
           data.users.map((x, i) => {
             let user = {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TableCheckBox from "../../../components/TableCheckbox";
 import data from "../../../data/data.json";
 import { url } from "../../../config";
+import api from "../../../api/index";
 
 export default class index extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   componentDidMount() {
-    this.onLoadFetchBCategory();
+    // this.onLoadFetchBCategory();
   }
 
   /**
@@ -32,16 +33,8 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   onLoadFetchBCategory = () => {
-    fetch(`${url}/api/business_category`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+    api
+      .getBusinessCategory()
       .then(data => {
         if (data.success) {
           console.log(data.categories);
@@ -77,18 +70,8 @@ export default class index extends Component {
   onActionAddBCategory = async () => {
     await this.setState({ popup: false });
 
-    fetch(`${url}/api/business_category`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        name: this.state.name,
-        description: this.state.description
-      })
-    })
-      .then(res => res.json())
+    api
+      .postBusinessCategory(this.state.name, this.state.description)
 
       .then(data => {
         if (data.success === true) {

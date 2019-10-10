@@ -22,7 +22,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   componentDidMount() {
-    this.onLoadFetchPMethods();
+    // this.onLoadFetchPMethods();
   }
 
   /**

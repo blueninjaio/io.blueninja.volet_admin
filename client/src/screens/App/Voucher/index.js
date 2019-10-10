@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
-import { url } from "../../../config";
+import api from "../../../api/index";
 
 export default class index extends Component {
   constructor(props) {
@@ -50,21 +50,14 @@ export default class index extends Component {
   addVoucher = () => {
     this.setState({ addVoucher: false });
 
-    fetch(`${url}/api/vouchers`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        name: this.state.name,
-        description: this.state.desc,
-        amount: parseInt(this.state.amount),
-        quantity: parseInt(this.state.quantity),
-        expiry: this.state.expiry
-      })
-    })
-      .then(res => res.json())
+    api
+      .postVouchers(
+        this.state.name,
+        this.state.desc,
+        parseInt(this.state.amount),
+        parseInt(this.state.quantity),
+        this.state.expiry
+      )
 
       .then(data => {
         if (data.success === true) {
@@ -84,16 +77,8 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   getVouchers = () => {
-    fetch(`${url}/api/vouchers`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+    api
+      .getVouchers()
       .then(data => {
         if (data.success) {
           let vouchers = [];

@@ -1,0 +1,23 @@
+version: '3'
+services:
+  volet_admin:
+    container_name: volet_admin
+    build:
+      context: ./client 
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+
+  webserver:
+    container_name: nginx
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+        - ./:/var/www
+        - ./nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - "3000:80"
+      - "8081:443"
