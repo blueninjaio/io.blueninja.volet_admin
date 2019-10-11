@@ -592,29 +592,33 @@
     }
 ],
 "tHeadVoucherTable": [
-   
+  {
+    "id": 1,
+    "title": "Code",
+    "width": "20%"
+  },
     {
-        "id": 1,
+        "id": 2,
         "title": "Name",
         "width": "20%"
     },
     {
-        "id": 2,
+        "id": 3,
         "title": "Description",
         "width": "20%"
     },
     {
-        "id": 3,
-        "title": "Amount",
-        "width": "20%"
-    },
-    {
         "id": 4,
-        "title": "Quantity",
-        "width": "20%"
+        "title": "Amount",
+        "width": "10%"
     },
     {
         "id": 5,
+        "title": "Quantity",
+        "width": "10%"
+    },
+    {
+        "id": 6,
         "title": "Expiry",
         "width": "20%"
     }

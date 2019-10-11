@@ -8,6 +8,7 @@ export default class index extends Component {
     super(props);
 
     this.state = {
+        code: "",
       name: "",
       desc: "",
       amount: "",
@@ -52,6 +53,7 @@ export default class index extends Component {
 
     api
       .postVouchers(
+          this.state.code,
         this.state.name,
         this.state.desc,
         parseInt(this.state.amount),
@@ -86,6 +88,7 @@ export default class index extends Component {
 
           data.vouchers.map(x => {
             let user = {
+                code: x.code,
               name: x.name,
               description: x.description,
               amount: x.amount,
@@ -94,6 +97,7 @@ export default class index extends Component {
             };
 
             let voucherUser = {
+                voucher_code: x.code,
               voucher_name: x.name,
               voucher_desc: x.description,
               voucher_usage: x.usage
@@ -164,6 +168,12 @@ export default class index extends Component {
               </button>
             </div>
             <div>
+                <input
+                    className="form-control voucher-pop-input"
+                    value={this.state.code}
+                    placeholder="Code"
+                    onChange={e => this.setState({ code: e.target.value })}
+                />
               <input
                 className="form-control voucher-pop-input"
                 value={this.state.name}
@@ -227,6 +237,13 @@ export default class index extends Component {
                   />
                 </button>
 
+                  <div
+                      className="business-email-container"
+                      style={{ marginTop: "6rem" }}
+                  >
+                      <span>Voucher Code: </span>
+                      <span className="email-span">{x.voucher_code} </span>
+                  </div>
                 <div
                   className="business-email-container"
                   style={{ marginTop: "6rem" }}

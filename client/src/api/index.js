@@ -70,8 +70,8 @@ export default {
   getVouchers: async () => {
     return get("/vouchers");
   },
-  postVouchers: async (name, description, amount, quantity, expiry) => {
-    return post("/vouchers", { name, description, amount, quantity, expiry });
+  postVouchers: async (code, name, description, amount, quantity, expiry) => {
+    return post("/vouchers", { code, name, description, amount, quantity, expiry });
   },
   getStatic: async () => {
     return get("/static");
@@ -90,5 +90,11 @@ export default {
   },
   postBusinessDecline: async _id => {
     return post("/business/decline", { _id });
-  }
+  },
+    postAgentApprove: async _id => {
+        return post("/users/agent/approve", { _id });
+    },
+    postAgentDecline: async _id => {
+        return post("/users/agent/decline", { _id });
+    }
 };

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Table from "../../../components/Table";
 import data from "../../../data/data.json";
 import { url } from "../../../config";
+import api from "../../../api";
 
 export default class index extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   componentDidMount() {
-    // this.fetchBusiness();
+     this.fetchBusiness();
   }
 
   /**
@@ -42,144 +43,56 @@ export default class index extends Component {
   |--------------------------------------------------
   */
   fetchBusiness = async () => {
-    fetch(`${url}/api/agents`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "application/json"
-      }
-    })
-      .then(res => res.json())
+      console.log("Fetching users");
+      api.getUsers()
       .then(data => {
+          console.log(data);
         if (data.success) {
-          let business = data.agents;
-          let approved = [];
+          let approved = data.users.filter(user => user.account_type === 'UserAgent');
           let decline = [];
-          let pending = [];
+          let pending = data.users.filter(user => user.account_type === 'User' && user.agent && user.agent.applied);
+            console.log(data.users, approved, pending)
 
-          business.map(x =>
-            x.isPending
-              ? pending.push(x)
-              : x.isApproved
-              ? approved.push(x)
-              : x.isDeclined
-              ? decline.push(x)
-              : null
-          );
-
-          let pendingReceived = [];
-
-          pending.map((x, i) => {
-            // console.log(x);
-            if (x.user_id !== null) {
-              fetch(`${url}/api/users/id`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json; charset=utf-8",
-                  Accept: "application/json"
-                },
-                body: JSON.stringify({
-                  _id: x.user_id
-                })
-              })
-                .then(res => res.json())
-
-                .then(data => {
-                  if (data.success === true) {
-                    this.setState({ type: data.user.user_type });
-                    let pend = {
-                      no: i,
-                      user_id: this.state.type,
-                      dateCreated: x.dateCreated,
-                      isPending: "is Pending"
-                    };
-                    this.state.ids.push(x.user_id);
-
-                    pendingReceived.push(pend);
-                    return pendingReceived;
-                  }
-                })
-
-                .catch(err => console.log(err));
-            }
+          let pendingReceived = pending.map((x, i) => {
+              let pend = {
+                  no: i,
+                  user_id: x.contact,
+                  dateCreated: x.dateCreated,
+                  isPending: "is Pending"
+              };
+              this.state.ids.push(x._id);
+              return pend;
           });
 
           this.setState({ pending: pendingReceived });
 
-          let approveReceived = [];
-          approved.map((x, i) => {
-            if (x.user_id !== null) {
-              fetch(`${url}/api/users/id`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json; charset=utf-8",
-                  Accept: "application/json"
-                },
-                body: JSON.stringify({
-                  _id: x.user_id
-                })
-              })
-                .then(res => res.json())
-
-                .then(data => {
-                  if (data.success === true) {
-                    this.setState({ approveType: data.user.user_type });
-                    let approve = {
-                      no: i,
-                      user_id: this.state.approveType,
-                      isPending: "is Approved",
-                      dateCreated: x.dateCreated
-                    };
-                    approveReceived.push(approve);
-                    return approveReceived;
-                  }
-                })
-
-                .catch(err => console.log(err));
-            }
+          let approveReceived = approved.map((x, i) => {
+              let approve = {
+                  no: i,
+                  user_id: x.contact,
+                  isPending: "is Approved",
+                  dateCreated: x.dateCreated
+              };
+              return approve;
           });
 
           this.setState({ approved: approveReceived });
 
-          let declineReceived = [];
-          decline.map((x, i) => {
-            if (x.user_id !== null) {
-              fetch(`${url}/api/users/id`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json; charset=utf-8",
-                  Accept: "application/json"
-                },
-                body: JSON.stringify({
-                  _id: x.user_id
-                })
-              })
-                .then(res => res.json())
-
-                .then(data => {
-                  if (data.success === true) {
-                    this.setState({ declineType: data.user.user_type });
-                    let decline = {
-                      no: i,
-                      user_id: this.state.declineType,
-                      isPending: "is Declined",
-                      dateCreated: x.dateCreated
-                    };
-                    declineReceived.push(decline);
-                    return declineReceived;
-                  }
-                })
-
-                .catch(err => console.log(err));
-            }
+          let declineReceived = decline.map((x, i) => {
+              let decline = {
+                  no: i,
+                  user_id: x.contact,
+                  isPending: "is Declined",
+                  dateCreated: x.dateCreated
+              };
+              return decline;
           });
 
           this.setState({ decline: declineReceived });
         }
       })
       .catch(err => {
+          console.log(err);
         alert(
           "Error connecting to server from the agent request page",
 
@@ -319,14 +232,6 @@ export default class index extends Component {
               body={this.state.decline}
               method={this.passedFromChild}
             />
-          ) : null}
-          {this.state.approveDecline === true ? (
-            <div className="approve-decline-container">
-              <button>Approve</button>
-              <button onClick={() => this.setState({ approveDecline: false })}>
-                Decline
-              </button>
-            </div>
           ) : null}
         </div>
       </div>

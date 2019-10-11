@@ -104,17 +104,7 @@ export class index extends Component {
       let chosen = ids[i];
 
       console.log("Approved Chosen:", chosen);
-      fetch(`${url}/api/agents/approve`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          user_id: chosen
-        })
-      })
-        .then(res => res.json())
+      api.postAgentApprove(chosen)
 
         .then(data => {
           if (data.success === true) {
@@ -140,7 +130,7 @@ export class index extends Component {
       let ids = this.props.id;
       let chosen = ids[i];
 
-      console.log("Approved Chosen:", chosen);
+      console.log("Declined Chosen:", chosen);
       api
         .postBusinessDecline(chosen)
 
@@ -159,18 +149,8 @@ export class index extends Component {
       let ids = this.props.id;
       let chosen = ids[i];
 
-      console.log("Approved Chosen:", chosen);
-      fetch(`${url}/api/agents/decline`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          user_id: chosen
-        })
-      })
-        .then(res => res.json())
+      console.log("Declined Chosen:", chosen);
+        api.postAgentDecline(chosen)
 
         .then(data => {
           if (data.success === true) {
